@@ -14,6 +14,8 @@ import RegisterScreen from './registrationForm';
 import PostRegisterScreen from './postRegisterScreen';
 import LoginScreen from './loginForm';
 
+import PasswordScreen from './passwordForm';
+
 import CartScreen from './cartScreen';
 
 
@@ -109,6 +111,16 @@ cart : {
 
 Login: {
   screen: LoginScreen,
+navigationOptions: () => ({
+  headerTintColor: 'rgba(12, 57, 14, 0.85)',
+  drawerLabel: <Hidden />,
+  drawerLockMode: "locked-closed",
+}),
+},
+
+
+Password: {
+  screen: PasswordScreen,
 navigationOptions: () => ({
   headerTintColor: 'rgba(12, 57, 14, 0.85)',
   drawerLabel: <Hidden />,

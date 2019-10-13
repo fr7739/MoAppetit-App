@@ -152,7 +152,7 @@ export default class LoginScreen extends React.Component {
           <KeyboardAvoidingView style={styles.KBAV} behavior="position" enabled>
           <View style={styles.container}>
    
-          <Text style={styles.CircleMoAppetit}>"MoeAppetit"</Text>
+          <Text style={styles.CircleMoAppetit}>"MoAppetit"</Text>
           <View style={styles.buttonHolder}>
                 <Button 
               style={{ container: styles.buttonStyleDown}} 
@@ -189,6 +189,10 @@ export default class LoginScreen extends React.Component {
           <View>
               <Button style={{ container: styles.buttonStyle2}} text="Facebook Login" raised={true} primary={true} onPress={ () => this.handleSubmitFacebook()}/>
           </View>
+          <View>
+              <Button style={{ container: styles.buttonStyle2}} text="Forgot Password" raised={true} primary={true} onPress={ () => this.props.navigation.navigate('Password')}/>
+          </View>
+
       </View>
       </KeyboardAvoidingView>
       </ImageBackground>
