@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, ImageBackground,  KeyboardAvoidingView, Image, Text} from 'react-native';
 export default StyleSheet.create({
-  
   TextField:
   {
     
