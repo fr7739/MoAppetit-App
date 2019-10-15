@@ -80,8 +80,7 @@ export default class CartScreen extends React.Component {
                     <View 
                       key = { key } 
                       style = { styles.Animated_View_Style }>
- 
- 
+                    <Text style = { styles.View_Inside_Text } > Row { item.Array_Value_Index } </Text>
                     </View>
  
                 );
