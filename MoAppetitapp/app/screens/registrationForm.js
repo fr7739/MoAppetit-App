@@ -121,7 +121,8 @@ export default class RegistrationForm extends React.Component {
         if (registerResponse.status === 200) {
             const userInfo = {
                 hasura_id: resultResponse.hasura_id,
-                name: name
+                name: name,
+                phone: resultResponse.phone
             }
 
             // Calling the setUser API

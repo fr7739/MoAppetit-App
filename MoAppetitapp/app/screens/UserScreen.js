@@ -6,14 +6,21 @@ import {Button} from 'react-native-material-ui';
 import styles from './styles.js';
 import getAddressAPI from '../hasuraAPI/getAddressAPI';
 import setAddressAPI from '../hasuraAPI/setAddressAPI';
+import setUserAPI from '../hasuraAPI/setUserAPI';
+import getFullUserAPI from "../hasuraAPI/getFullUserAPI"
+import setUseFullInfoAPI from '../hasuraAPI/setUserFullInfoAPI.js';
 
 export default class UserScreen extends React.Component {
    constructor(props) {
     super(props);
 
 
-
     this.state = {
+      user_id: 0,  //USer section
+      hasura_id: global.hasura_id,  //USer section
+      name: "",  //USer section
+      config: null,  //USer section
+      phone: null,  //USer section
       addressline1: '',
       addressline2: '',
       addressline3: '',
@@ -27,16 +34,46 @@ export default class UserScreen extends React.Component {
   };
 //maybe
  this.addresses = [];
+ this.userState  = {"id:":"0","hasura_id": global.hasura_id, "config": "null", "name":"","phone":"0"};
  if( this.loadAddresses())
+ {
+   console.log("hello");
+ }
+ if( this.loadUserInfo())
  {
    console.log("hello");
  }
   }
 
+  async  loadUserInfo() {
+    const passInUserObject = {
+      hasura_id: global.hasura_id 
+    }
 
+    let getFullUserResponse = await getFullUserAPI(passInUserObject);
+   // console.log("ab1212");
+    //console.log("After ab: " + JSON.stringify(getFullUserResponse));
+    const resultResponseGetFullUser = await getFullUserResponse.json();
+    
+    console.log("AAAAAAAAPPPPPP: " + JSON.stringify(resultResponseGetFullUser));
+    console.log("cd34343");
+    console.log("find me 123: " + resultResponseGetFullUser);
+    //for (const key in getFullUserResponse) {
+      
+
+    this.userState.user_id = resultResponseGetFullUser[0].id;
+    this.userState.hasura_id = resultResponseGetFullUser[0].hasura_id;
+    this.userState.config = String(resultResponseGetFullUser[0].config);
+    this.userState.name = String(resultResponseGetFullUser[0].name);
+    this.userState.phone = String(resultResponseGetFullUser[0].phone);
+    //}
+    this.forceUpdate();
+  
+    console.log("this.state: " + JSON.stringify(this.userState));
+  }
   async  loadAddresses() {
       const addressInfo = {
-        user_id: 0
+        user_id: 0 
       }
   
       // Calling the getAddressAPI API
@@ -134,6 +171,17 @@ handleLoad = async (name) => {
     handleaddressline1Change = addressline1 => {
      this.setState({addressline1})
  }
+
+
+
+ handleNameChange = name => {
+   this.userState.name = String(name);
+ }
+
+
+ handlePhoneChange = phone => {
+  this.userState.phone = phone;
+}
  // Handling change when user enters text
  handleaddressline2Change = addressline2 => {
   this.setState({addressline2})
@@ -167,7 +215,35 @@ handlezipChange = zip => {
       }
   }
 
+handleUserSubmit = async(userInfo) =>{
+  console.log("Trying to Submit User");
+  let UserResponse = await setUseFullInfoAPI(this.userState) ;
+  const resultUserResponse = await UserResponse.json();
+  console.log("Response number was: "+UserResponse.status);
+  /*const user_info = {
+    id: data.id,
+    hasura_id: resultUserResponse.hasura_id,
+    name: resultUserResponse.name,
+    config: resultUserResponse.config,
+    phone: resultUserResponse.phone
+  }*/
+/*
+  let setAddressResponse = await setAddressAPI(addressInfo)
+        const resultResponseSetAddress = await setAddressResponse.json()
+        if (resultResponseSetAddress["affected_rows"]) {
+            this.setAddressError('')
+            console.log("No error");
+        }
+        else {
+            this.setAddressError('Error adding to database') ;
+            console.log("Error pulling from the  database");
+        }
 
+*/
+        
+
+
+}
   
   
 
@@ -215,37 +291,7 @@ handlezipChange = zip => {
 
    renderAddresses() {
 
-    /*
-    const addressInfo = {
-      user_id: 0
-    }
 
-    //asdasdasdasdas
-    // Calling the getAddressAPI API
-    let getAddressResponse = await getAddressAPI(addressInfo);
-    const resultResponseGetAddress = await getAddressResponse.json();
-    console.log("AAAAAAAAPPPPPP: " + JSON.stringify(resultResponseGetAddress));
-    for (const key in resultResponseGetAddress) {
-       
-        //console.log("ooo: "+ JSON.stringify(resultResponseGetAddress[key]));
-        console.log("addressline1: " + resultResponseGetAddress[key].addressline1);
-      this.addresses.push ({
-        addressline1 :  resultResponseGetAddress[key].addressline1,
-        addressline2 :  resultResponseGetAddress[key].addressline2,
-        addressline3 :  resultResponseGetAddress[key].addressline3,
-        city: resultResponseGetAddress[key].city,
-        state: resultResponseGetAddress[key].state,
-        zip: resultResponseGetAddress[key].zip,
-        id: resultResponseGetAddress[key].id,
-        user_id: resultResponseGetAddress[key].user_id
-      
-      });
-
-    
-    }
-    console.log
-    */
-   
 
 
     return (this.addresses.map( (item) => {
@@ -297,6 +343,32 @@ console.log("Count of addresses: " + this.addresses.length);
         <ScrollView>
           <View style={styles.container}>
               <View><Text style={styles.subPageHeadStyle}>User Info</Text></View>
+              <View style={styles.fieldsArea2}>
+             
+    
+              <TextField tintColor='rgba(12, 57, 14, 0.85)'
+                              required
+                              value= {this.userState["name"]}
+                              label="Name"
+                              
+                    onChangeText={this.handleNameChange}
+                              />
+              
+              <TextField tintColor='rgba(12, 57, 14, 0.85)'
+                              required
+                              value= {this.userState["phone"]}
+                              label="Phone"
+                            
+                    onChangeText={this.handlePhoneChange}
+                              />
+
+
+              <View>
+              <Button style={{ container: styles.buttonStyle2}} onPress={this.handleUserSubmit} text="Edit Info" raised={true} primary={true} />
+              </View>
+                </View>
+
+              <View><Text style={styles.subPageHeadStyle}>Add Address</Text></View>
                <View style={styles.fieldsArea2}>
                     <TextField tintColor='rgba(12, 57, 14, 0.85)'
                     required
