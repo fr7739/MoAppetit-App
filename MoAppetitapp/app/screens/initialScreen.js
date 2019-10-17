@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
   buttonStyle: {
       width: 100,
       height: 40,
-      backgroundColor: 'rgba(12, 57, 14, 0.85)',
+      backgroundColor: 'rgba(12, 57, 14, 0.69)',
   },
 });
 

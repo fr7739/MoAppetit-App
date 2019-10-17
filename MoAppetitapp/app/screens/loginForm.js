@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, ImageBackground,  KeyboardAvoidingView, Image, Text} from 'react-native';
+import { StyleSheet, View, ImageBackground,  KeyboardAvoidingView, Image, Text, TouchableOpacity,TextInput} from 'react-native';
 import {Button} from 'react-native-material-ui';
 import { TextField } from 'react-native-materialui-textfield';
 import loginAPI from '../hasuraAPI/loginAPI';
@@ -9,6 +9,9 @@ import facebooklogIn from '../hasuraAPI/facebookAPI';
 import { initAsync } from 'expo-google-sign-in';
 import {AsyncStorage} from 'react-native';
 import styles from './styles.js';
+
+import { Icon } from 'native-base';
+
 
 
 
@@ -167,32 +170,54 @@ export default class LoginScreen extends React.Component {
               raised={true} 
               onPress={() => this.props.navigation.navigate('Register')}/>
        </View>
-       
-       <View style={styles.fieldsArea2}>
-          <TextField tintColor='rgba(12, 57, 14, 0.85)'
+       </View>
+
+       <View style={styles.rectangle}>
+       <View style={styles.inputContainer}>
+          <Image style={[styles.icon, styles.inputIcon]} source={{uri: 'https://png.icons8.com/envelope/androidL/40/3498db'}}/>
+          <TextInput style={styles.inputs}          
           required
           value= {this.state.email}
           onChangeText={this.handleEmailChange}
-          label="Email"
-          />
-          <TextField tintColor='rgba(12, 57, 14, 0.85)'
+          placeholder="Email"
+          keyboardType="email-address"
+          underlineColorAndroid='transparent'/>
+          </View>
+
+          <View style={styles.inputContainer}>
+          <Image style={[styles.icon, styles.inputIcon]} source={{uri: 'https://png.icons8.com/password/androidL/40/3498db'}}/>
+          <TextInput style={styles.inputs}
           required
           secureTextEntry={true}
           value= {this.state.password}
           onChangeText={this.handlePasswordChange}
-          label="Password"
-          />
-      </View>
-          <View>
-              <Button style={{ container: styles.buttonStyle2}} text="Login" raised={true} primary={true} onPress={ () => this.handleSubmit()}/>
+          placeholder="Password"
+          underlineColorAndroid='transparent'/>
           </View>
+        
+
           <View>
-              <Button style={{ container: styles.buttonStyle2}} text="Facebook Login" raised={true} primary={true} onPress={ () => this.handleSubmitFacebook()}/>
-          </View>
+          <TouchableOpacity style={styles.restoreButtonContainer}>
+          <Button style={{ container: styles.restoreButtonContainer}} text="Forgot Password" raised={true} primary={true} onPress={ () => this.props.navigation.navigate('Password')}/>
+        </TouchableOpacity>
+        </View>
+
+
           <View>
-              <Button style={{ container: styles.buttonStyle2}} text="Forgot Password" raised={true} primary={true} onPress={ () => this.props.navigation.navigate('Password')}/>
+          <TouchableOpacity style={[styles.buttonContainer, styles.loginButton]}>
+              <Button style={{ container: styles.loginButton}} text="Login" raised={true} primary={true} onPress={ () => this.handleSubmit()}/>
+              </TouchableOpacity>
           </View>
 
+
+          <View>
+          <TouchableOpacity style={[styles.buttonContainer, styles.fabookButton]}>
+          <View style={styles.socialButtonContent}>
+            <Image style={styles.icon} source={{uri: 'https://png.icons8.com/facebook/androidL/40/FFFFFF'}}/>
+            <Button style={{ container: styles.fabookButton}} text="  Facebook Login  " raised={true} primary={true} onPress={ () => this.handleSubmitFacebook()}/>
+          </View>
+        </TouchableOpacity>
+          </View>
       </View>
       </KeyboardAvoidingView>
       </ImageBackground>

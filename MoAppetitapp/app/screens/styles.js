@@ -34,7 +34,8 @@ export default StyleSheet.create({
         marginBottom: 0,
         paddingBottom: 0,
         backgroundColor: "white",
-        width: "60%"
+        width: "60%",
+        
     },
 
     CircleMoAppetit:
@@ -54,6 +55,7 @@ export default StyleSheet.create({
       borderRadius: 75,
       borderWidth: 0,
       overflow: "hidden",
+      marginBottom:15,
     },
     aboutImage:
     {
@@ -75,18 +77,34 @@ export default StyleSheet.create({
     }, //
     container: {
      flex: 1,
-      paddingTop: 20,
+      paddingTop: 50,
       alignItems: 'center',
       justifyContent: 'center',
       paddingLeft: 20,
-      paddingRight: 20
+      paddingRight: 20,
+      borderRadius:100,
+
     },
     buttonStyle2:
     {
     width: 375,
     borderWidth: 3,
     justifyContent: 'center',
-    backgroundColor: 'rgba(132,132,132, 0.85)'
+    backgroundColor: '#7a42f4',
+      padding: 10,
+      margin: 15,
+      height: 40,
+    },
+
+    buttonStyle4:
+    {
+      height:45,
+      flexDirection: 'row',
+      justifyContent: 'center',
+      alignItems: 'center',
+      marginBottom:20,
+      width:250,
+      borderRadius:30,
     },
 
     buttonStyle3:
@@ -107,17 +125,28 @@ export default StyleSheet.create({
     },
 
     buttonStyleDown: {
-        flex: 2,
-          backgroundColor: 'rgba(232,232,232, 0.85)',
-          width: '60%',
-        height: 40,
+      flex: 2,
+      backgroundColor: 'rgba(232,232,232, 0.85)',
+      width: 299,
+      height: 40,
+      borderWidth: 3,
+      borderRadius: 30,
+      overflow: "hidden",
+      left: "0%",
+      marginBottom:5,
+
       
       },
     buttonStyle: {
       flex: 2,
-        backgroundColor: 'rgba(12, 57, 14, 0.85)',
-        width: '60%',
+      backgroundColor: 'rgba(12, 57, 14, 0.85)',
+      width: 299,
       height: 40,
+      borderWidth: 3,
+      borderRadius: 30,
+      overflow: "hidden",
+      left: "3%",
+      marginBottom:5,
     
     },
     subPageHeadStyle:
@@ -134,7 +163,121 @@ export default StyleSheet.create({
       backgroundColor: 'rgba(12, 57, 14, 0.85)',
       justifyContent: "center",
       color:"white"
-    }
+    },
+
+    rectangle: {
+      height: 370,
+      width: 299,
+      backgroundColor: 'rgba(12, 57, 14, 0.85)',
+      borderWidth: 4,
+      borderRadius: 33,
+      overflow: "hidden",
+      left: "29%",
+      marginBottom:25,
+
+  },
+
+  input: {
+    borderBottomColor: '#F5FCFF',
+    backgroundColor: '#FFFFFF',
+    borderRadius:30,
+    borderBottomWidth: 1,
+    width:250,
+    height:45,
+    marginBottom:20,
+    flexDirection: 'row',
+    alignItems:'center'
+
+},
+
+socialButtonContent:{
+  flexDirection: 'row',
+  justifyContent: 'center',
+  alignItems: 'center', 
+},
+
+fabookButton: {
+  backgroundColor: "#3b5998",
+  overflow: "hidden",
+  left: 22,
+},
+
+buttonContainer: {
+  height:45,
+  flexDirection: 'row',
+  justifyContent: 'center',
+  alignItems: 'center',
+  marginBottom:20,
+  width:250,
+  borderRadius:30,
+},
+
+icon:{
+  width:30,
+  height:30,
+},
+
+inputIcon:{
+  marginLeft:15,
+  justifyContent: 'center'
+},
+
+inputContainer: {
+  borderBottomColor: '#F5FCFF',
+  backgroundColor: '#FFFFFF',
+  borderRadius:30,
+  borderBottomWidth: 1,
+  width:299,
+  height:45,
+  marginBottom:15,
+  flexDirection: 'row',
+  alignItems:'center'
+},
+
+inputs:{
+  height:45,
+  marginLeft:16,
+  borderBottomColor: '#FFFFFF',
+  flex:1,
+},
+
+restoreButtonContainer:{
+  width:230,
+  marginBottom:15,
+  left: 20,
+},
+
+loginButton: {
+  backgroundColor: '#3498db',
+  width:250,
+  overflow: "hidden",
+  left: 20,
+
+
+},
+
+loginText: {
+  color: 'white',
+},
+
+ buttonContainer: {
+    height:45,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom:20,
+    width:250,
+    borderRadius:30,
+  },
+
+   rectangle2: {
+    height: 120,
+    width: 302,
+    backgroundColor: 'rgba(12, 57, 14, 0.85)',
+    borderWidth: 4,
+    borderRadius: 33,
+    left: 3,
+},
   });
 
   

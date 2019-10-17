@@ -37,6 +37,7 @@
     "react-navigation-drawer": "^2.2.2",
     "react-navigation-stack": "^1.7.3",
     "shopify-buy": "^2.7.2",
+    "styled-components": "^4.4.0",
     "ws": "^7.1.2"
   },
   "devDependencies": {

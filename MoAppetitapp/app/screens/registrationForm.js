@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, ImageBackground, Image, KeyboardAvoidingView, Text} from 'react-native';
+import { StyleSheet, View, ImageBackground, Image, KeyboardAvoidingView, Text, TextInput, TouchableOpacity} from 'react-native';
 import {Button} from 'react-native-material-ui';
 import { TextField } from 'react-native-materialui-textfield';
 import registerAPI from '../hasuraAPI/registerAPI';
@@ -143,61 +143,82 @@ export default class RegistrationForm extends React.Component {
     // Rendering to the UI the input options and submit button
     render() {
         return (
-            <ImageBackground source={require('../assets/OpeningPageBackground.jpg')} resizeMode='cover'   style={styles.backgroundImage} 
-            >{/* Thamima: Changes */} 
-            <KeyboardAvoidingView style={styles.KBAV} behavior="position" enabled>
-                        <View style={styles.container}>
-                 
-                        <Text style={styles.CircleMoAppetit}>MoeAppetit</Text>
-                        <View style={styles.buttonHolder}>
-                              <Button 
-                            style={{ container: styles.buttonStyle}} 
-                            primary={true} 
-                            text="Login" 
-                            raised={true} 
-                            onPress={() => this.props.navigation.navigate('Login')}/>
-                            <Button 
-                            style={{ container: styles.buttonStyleDown}} 
-                            primary={true} 
-                            text="Register" 
-                            raised={true} 
-                            onPress={() => this.props.navigation.navigate('Register')}/>
-                     </View>
-                     <View style={styles.fieldsArea}>
-    
-            <TextField tintColor='rgba(12, 57, 14, 0.85)'
+            <ImageBackground source={require('../assets/OpeningPageBackground.jpg')} resizeMode='cover'style={styles.backgroundImage}>
+            {/* Thamima: Changes */} 
+        <KeyboardAvoidingView style={styles.KBAV} behavior="position" enabled>
+        <View style={styles.container}>
+ 
+        <Text style={styles.CircleMoAppetit}>"MoAppetit"</Text>
+        <View style={styles.buttonHolder}>
+              <Button 
+            style={{ container: styles.buttonStyleDown}} 
+            primary={true} 
+            text="Login" 
+            raised={true}  
+            onPress={() => this.props.navigation.navigate('Login')}/>
+            <Button 
+            style={{ container: styles.buttonStyle}} 
+            primary={true} 
+            text="Register" 
+            raised={true} 
+            onPress={() => this.props.navigation.navigate('Register')}/>
+     </View>
+     </View>
+
+            <View style={styles.rectangle}>
+            <View style={styles.inputContainer}>
+            <TextInput style={styles.inputs} 
             required
             value= {this.state.name}
             onChangeText={this.handleNameChange}
-            label="Name"
-                        />
-<TextField tintColor='rgba(12, 57, 14, 0.85)'
-            required
-            value= {this.state.email}
-            onChangeText={this.handleEmailChange}
-            label="Email"
-            />
-            <TextField tintColor='rgba(12, 57, 14, 0.85)'
-            required
-            secureTextEntry={true}
-            value= {this.state.password}
-            onChangeText={this.handlePasswordChange}
-            label="Password"
-            />
-            <TextField tintColor='rgba(12, 57, 14, 0.85)'
-            required
-            secureTextEntry={true}
+            placeholder="Name"
+            keyboardType="Name"
+            underlineColorAndroid='transparent'/>
+            </View>
+                        
+
+       <View style={styles.inputContainer}>
+          <Image style={[styles.icon, styles.inputIcon]} source={{uri: 'https://png.icons8.com/envelope/androidL/40/3498db'}}/>
+          <TextInput style={styles.inputs}          
+          required
+          value= {this.state.email}
+          onChangeText={this.handleEmailChange}
+          placeholder="Email"
+          keyboardType="email-address"
+          underlineColorAndroid='transparent'/>
+          </View>
+
+          <View style={styles.inputContainer}>
+          <Image style={[styles.icon, styles.inputIcon]} source={{uri: 'https://png.icons8.com/password/androidL/40/3498db'}}/>
+          <TextInput style={styles.inputs}
+          required
+          secureTextEntry={true}
+          value= {this.state.password}
+          onChangeText={this.handlePasswordChange}
+          placeholder="Password"
+          underlineColorAndroid='transparent'/>
+          </View>
+        
+
+          <View style={styles.inputContainer}>
+          <Image style={[styles.icon, styles.inputIcon]} source={{uri: 'https://png.icons8.com/password/androidL/40/3498db'}}/>
+          <TextInput style={styles.inputs}
+          required
+          secureTextEntry={true}
             value= {this.state.password2}
             onChangeText={this.handlePassword2Change}
-            label="Comfirm Password"
-            />
-             {/* Thamima: Changes: onPress Event */} 
-            
-        </View>
+            placeholder="Confirm Password"
+            underlineColorAndroid='transparent'/>
+            </View>
         <View>
-              <Button style={{ container: styles.buttonStyle2}} onPress={this.handleSubmit} text="Register" raised={true} primary={true} />
+        <TouchableOpacity style={[styles.buttonContainer, styles.loginButton]}>
+              <Button style={{ container: styles.loginButton}} onPress={this.handleSubmit} text="Register" raised={true} primary={true} />
+              </TouchableOpacity>
+
               </View>
-        </View>
+
+              </View>
+ 
         </KeyboardAvoidingView>
         </ImageBackground>
         )

@@ -1,6 +1,6 @@
 import React from 'react';
 import { TextField } from 'react-native-materialui-textfield';
-import { StyleSheet, View, ImageBackground,  KeyboardAvoidingView, Image, Text} from 'react-native';
+import { StyleSheet, View, ImageBackground,  KeyboardAvoidingView, Image, Text, TouchableOpacity, TextInput} from 'react-native';
 import styles from './styles.js';
 import {Button} from 'react-native-material-ui';
 import passwordAPI from '../hasuraAPI/passwordAPI';
@@ -107,21 +107,29 @@ export default class LoginScreen extends React.Component {
             <KeyboardAvoidingView style={styles.KBAV} behavior="position" enabled>
                         <View style={styles.container}>
                  
-                        <Text style={styles.CircleMoAppetit}>MoeAppetit</Text>
+                        <TouchableOpacity style={styles.CircleMoAppetit}>
+                        <Text>MoAppetit</Text>
+                        </TouchableOpacity>
                         
-                     <View style={styles.fieldsArea}>
-    
-            
-<TextField tintColor='rgba(12, 57, 14, 0.85)'
-            required
-            value= {this.state.email}
-            onChangeText={this.handleEmailChange}
-            label="Email"
-            />           
+        <View style={styles.rectangle2}>
+       <View style={styles.inputContainer}>
+          <Image style={[styles.icon, styles.inputIcon]} source={{uri: 'https://png.icons8.com/envelope/androidL/40/3498db'}}/>
+          <TextInput style={styles.inputs}          
+          required
+          value= {this.state.email}
+          onChangeText={this.handleEmailChange}
+          placeholder="Email"
+          keyboardType="email-address"
+          underlineColorAndroid='transparent'/>
+          </View>
+        
+          <View>
+          <TouchableOpacity style={[styles.buttonContainer, styles.loginButton]}>
+              <Button style={{ container: styles.loginButton}} text="Login" raised={true} primary={true} onPress={ () => this.handleSubmit()}/>
+              </TouchableOpacity>
+          </View>
+
         </View>
-        <View>
-              <Button style={{ container: styles.buttonStyle2}} onPress={this.handleSubmit} text="EMAIL" raised={true} primary={true} />
-              </View>
         </View>
         </KeyboardAvoidingView>
         </ImageBackground>
