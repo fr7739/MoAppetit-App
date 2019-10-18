@@ -218,6 +218,13 @@ export default class LoginScreen extends React.Component {
           </View>
         </TouchableOpacity>
           </View>
+
+          <View>
+          <TouchableOpacity style={styles.restoreButtonContainer}>
+          <Button style={{ container: styles.restoreButtonContainer}} text="Contact Us" raised={true} primary={true} onPress={ () => this.props.navigation.navigate('Contact Us')}/>
+        </TouchableOpacity>
+        </View>
+
       </View>
       </KeyboardAvoidingView>
       </ImageBackground>
