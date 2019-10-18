@@ -60,7 +60,7 @@ export default class UserScreen extends React.Component {
     console.log("find me 123: " + resultResponseGetFullUser);
     //for (const key in getFullUserResponse) {
       
-
+    global.User_ID = this.userState.user_id;
     this.userState.user_id = resultResponseGetFullUser[0].id;
     this.userState.hasura_id = resultResponseGetFullUser[0].hasura_id;
     this.userState.config = String(resultResponseGetFullUser[0].config);
@@ -72,6 +72,7 @@ export default class UserScreen extends React.Component {
     console.log("this.state: " + JSON.stringify(this.userState));
   }
   async  loadAddresses() {
+    this.addresses = [];
       const addressInfo = {
         user_id: 0 
       }
@@ -287,6 +288,15 @@ handleUserSubmit = async(userInfo) =>{
      // console.log(resultResponse.message) ;
        // this.setAddressError(resultResponse.message)
     //}
+    
+    this.state.addressline1 = "";
+    this.state.addressline2 = "";
+    this.state.addressline3 = "";
+    this.state.city = "";
+    this.state.state = "";
+    this.state.zip = "";
+    this.loadAddresses();
+    this.forceUpdate();
   }
 
    renderAddresses() {
@@ -300,12 +310,12 @@ handleUserSubmit = async(userInfo) =>{
         return (
             <View style={styles.container}>
               
-              <Text style={styles.subPageHeadStyle}> {item.addressline1}</Text>
-              <Text style={styles.subPageHeadStyle}> {item.addressline2}</Text>
-              <Text style={styles.subPageHeadStyle}> {item.addressline3}</Text>
-              <Text style={styles.subPageHeadStyle}> {item.city}</Text>
-              <Text style={styles.subPageHeadStyle}> {item.state}</Text>
-              <Text style={styles.subPageHeadStyle}> {item.zip}</Text>
+              <Text style={styles.subPageHeadStyle}>Address Line 1:  {item.addressline1}</Text>
+              <Text style={styles.subPageHeadStyle}>Address Line 2:  {item.addressline2}</Text>
+              <Text style={styles.subPageHeadStyle}>Address Line 3:  {item.addressline3}</Text>
+              <Text style={styles.subPageHeadStyle}>City:  {item.city}</Text>
+              <Text style={styles.subPageHeadStyle}>State:  {item.state}</Text>
+              <Text style={styles.subPageHeadStyle}>Zip: {item.zip}</Text>
            
               
               </View>
@@ -333,7 +343,6 @@ console.log("Count of addresses: " + this.addresses.length);
 
           <ScrollView>
           <View style={styles.container}>
-             <Text style={styles.subPageHeadStyle}>Addresses will go here.</Text>
              {this.renderAddresses()}
              {this.renderf()}
              </View>
