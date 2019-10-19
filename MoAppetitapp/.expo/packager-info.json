@@ -1,9 +1,9 @@
 {
-  "packagerPort": 19002,
-  "packagerPid": 3000,
+  "packagerPort": 19001,
+  "packagerPid": 8048,
   "expoServerPort": 19000,
   "devToolsPort": 19002,
   "expoServerNgrokUrl": "https://hp-jgp.anonymous.moappetitapp.exp.direct",
   "packagerNgrokUrl": "https://packager.hp-jgp.anonymous.moappetitapp.exp.direct",
-  "ngrokPid": 15044
+  "ngrokPid": 7140
 }
