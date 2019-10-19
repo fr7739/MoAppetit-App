@@ -196,27 +196,17 @@ export default class LoginScreen extends React.Component {
           </View>
         
 
+          <View style = {styles.signupTextCont}>
+      <Text style = {styles.signupText}> </Text>
+      <TouchableOpacity onPress={ () => this.props.navigation.navigate('Password')}> 
+      <Text style = {styles.signupButton2}> Forgot Password </Text> 
+      </TouchableOpacity>
+      </View>
+
           <View>
           <TouchableOpacity style={styles.restoreButtonContainer}>
-          <Button style={{ container: styles.restoreButtonContainer}} text="Forgot Password" raised={true} primary={true} onPress={ () => this.props.navigation.navigate('Password')}/>
-        </TouchableOpacity>
-        </View>
-
-
-          <View>
-          <TouchableOpacity style={[styles.buttonContainer, styles.loginButton]}>
-              <Button style={{ container: styles.loginButton}} text="Login" raised={true} primary={true} onPress={ () => this.handleSubmit()}/>
+              <Button style={{ container: styles.restoreButtonContainer}} text="Login" raised={true} primary={true} onPress={ () => this.handleSubmit()}/>
               </TouchableOpacity>
-          </View>
-
-
-          <View>
-          <TouchableOpacity style={[styles.buttonContainer, styles.fabookButton]}>
-          <View style={styles.socialButtonContent}>
-            <Image style={styles.icon} source={{uri: 'https://png.icons8.com/facebook/androidL/40/FFFFFF'}}/>
-            <Button style={{ container: styles.fabookButton}} text="  Facebook Login  " raised={true} primary={true} onPress={ () => this.handleSubmitFacebook()}/>
-          </View>
-        </TouchableOpacity>
           </View>
 
           <View>

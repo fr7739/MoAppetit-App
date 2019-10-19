@@ -15,6 +15,7 @@ export default StyleSheet.create({
     marginRight: -100,
     paddingLeft: 0,
     paddingRight: 0,
+    marginTop: 20
   },
     fieldsArea: 
     {
@@ -39,23 +40,23 @@ export default StyleSheet.create({
     },
 
     CircleMoAppetit:
-    {
-      
+    {  
       textAlign: 'center',
       textAlignVertical: 'center',
       backgroundColor: 'rgba(12, 57, 14, 0.85)', 
-      fontSize:22,
+      fontSize:80,
       lineHeight: 0, 
       paddingTop: 65,
-      //fontFamily: "Arial",
+      fontFamily: 'serif',
       width: 150,
       height: 150,
       color: "#E8E8E8",
-  
       borderRadius: 75,
       borderWidth: 0,
       overflow: "hidden",
       marginBottom:15,
+      margin: 10,
+
     },
     aboutImage:
     {
@@ -260,16 +261,6 @@ loginText: {
   color: 'white',
 },
 
- buttonContainer: {
-    height:45,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom:20,
-    width:250,
-    borderRadius:30,
-  },
-
    rectangle2: {
     height: 120,
     width: 302,
@@ -278,6 +269,133 @@ loginText: {
     borderRadius: 33,
     left: 3,
 },
+
+// style for Initialscreen
+buttonContainer2: {
+ 
+},
+
+// style for Initialscreen
+loginButton2: {
+  backgroundColor: '#3498db',
+  width:350,
+  overflow: "hidden",
+  marginBottom:5,
+  height: 50,
+},
+
+// style for Initialscreen
+fabookButton2: {
+  backgroundColor: "#3b5998",
+  overflow: "hidden",
+  width:350,
+  marginBottom:5,
+  height: 50,
+},
+
+// style for Initialscreen
+socialButtonContent2:{
+},
+
+
+// style for Initialscreen
+welcome: {
+  fontSize: 23,
+  textAlign: 'center',
+  margin: 10,
+},
+
+
+// style for Initialscreen
+  signupTextCont: 
+  {
+  flexGrow: 1,
+  alignItems: 'flex-end',
+  justifyContent: 'center',
+  paddingVertical: 16,
+  flexDirection: 'row'
+},
+
+
+// style for Initialscreen
+signupText: 
+{
+color: "#000000",
+fontSize: 16,
+},
+
+// style for Initialscreen
+signupButton: 
+{
+color: "#32cd32", 
+fontSize: 16,
+fontWeight: '500'
+},
+
+// style for Initialscreen
+signupButton2: 
+{
+color: "#32cd32", 
+fontSize: 16,
+fontWeight: '500',
+left: 40,
+},
+
+
+
+
+
+// style for Password
+  container2: {
+    flex: 2,
+    justifyContent: "center",
+    // alignItems: "center",
+    backgroundColor: "#F5FCFF"
+  },
+
+
+  // style for password
+  input2: {
+    margin: 15,
+    height: 40,
+    borderColor: "black",
+    borderWidth: 1
+  },
+
+  submitButton: {
+    backgroundColor: "black",
+    padding: 10,
+    margin: 15,
+    alignItems: "center",
+    height: 40
+  },
+
+
+    // style for password
+  submitButtonText: {
+    color: "white"
+  },
+
+
+  // style for password
+  loginButton3: {
+    backgroundColor: '#3498db',
+    width:384,
+    overflow: "hidden",
+    //marginBottom:5,
+    height: 50,
+    left: 14
+  },
+
+
+    // style for password
+  welcome2: {
+    fontSize: 17,
+    textAlign: 'center',
+    margin: 10,
+  },
+  
+
   });
 
   

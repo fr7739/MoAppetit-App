@@ -1,6 +1,6 @@
 import React from 'react';
 import { TextField } from 'react-native-materialui-textfield';
-import { StyleSheet, View, ImageBackground,  KeyboardAvoidingView, Image, Text, TouchableOpacity, TextInput} from 'react-native';
+import { StyleSheet, Platform, View, ImageBackground,  KeyboardAvoidingView, Image, Text, TouchableOpacity, TextInput} from 'react-native';
 import styles from './styles.js';
 import {Button} from 'react-native-material-ui';
 import passwordAPI from '../hasuraAPI/passwordAPI';
@@ -101,38 +101,37 @@ export default class LoginScreen extends React.Component {
 
     // Rendering to the UI the input options and submit button
     render() {
-        return (
-            <ImageBackground source={require('../assets/OpeningPageBackground.jpg')} resizeMode='cover'   style={styles.backgroundImage} 
-            >{/* Thamima: Changes */} 
-            <KeyboardAvoidingView style={styles.KBAV} behavior="position" enabled>
-                        <View style={styles.container}>
-                 
-                        <TouchableOpacity style={styles.CircleMoAppetit}>
-                        <Text>MoAppetit</Text>
-                        </TouchableOpacity>
-                        
-        <View style={styles.rectangle2}>
-       <View style={styles.inputContainer}>
-          <Image style={[styles.icon, styles.inputIcon]} source={{uri: 'https://png.icons8.com/envelope/androidL/40/3498db'}}/>
-          <TextInput style={styles.inputs}          
-          required
-          value= {this.state.email}
-          onChangeText={this.handleEmailChange}
-          placeholder="Email"
-          keyboardType="email-address"
-          underlineColorAndroid='transparent'/>
-          </View>
-        
-          <View>
-          <TouchableOpacity style={[styles.buttonContainer, styles.loginButton]}>
-              <Button style={{ container: styles.loginButton}} text="Login" raised={true} primary={true} onPress={ () => this.handleSubmit()}/>
-              </TouchableOpacity>
-          </View>
+        return(
+           <View style={styles.container2}>
+            <Text style={styles.welcome}>
+            Forgot your password?
+            </Text>
 
-        </View>
-        </View>
-        </KeyboardAvoidingView>
-        </ImageBackground>
-        )
+            <Text style={styles.welcome2}>
+            We'll send you a link to reset your password
+            </Text>
+            
+              <TextInput
+                style={styles.input2}
+                underlineColor="transparent"
+                placeholder=" Email"
+                placeholderTextColor="black"
+                autoCapitalize="none"
+              />
+               <TouchableOpacity style={[styles.buttonContainer2]}>
+                <Button style={{ container: styles.loginButton3}} text="Submit" raised={true} primary={true} onPress={ () => this.handleSubmit()}/>
+                
+                <View style = {styles.signupTextCont}>
+                <Text style = {styles.signupText}> Don't have an account? </Text>
+                <TouchableOpacity onPress={ () => this.props.navigation.navigate('Register')}> 
+                <Text style = {styles.signupButton}> Sign up </Text> 
+                </TouchableOpacity>
+                </View>
+                </TouchableOpacity>
+
+            </View>
+            
+
+          );
+      }
     }
-}

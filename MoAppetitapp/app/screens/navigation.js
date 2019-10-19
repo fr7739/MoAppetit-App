@@ -13,10 +13,10 @@ import UserScreen from "../screens/UserScreen"
 import RegisterScreen from './registrationForm';
 import PostRegisterScreen from './postRegisterScreen';
 import LoginScreen from './loginForm';
-
 import PasswordScreen from './passwordForm';
-
 import CartScreen from './cartScreen';
+import initialScreen from './initialScreen';
+
 
 
 //import { createStackNavigator, StackNavigator } from 'react-navigation-stack';
@@ -149,8 +149,18 @@ navigationOptions: () => ({
 }),
 },
 
+initialScreen: {
+  screen: initialScreen,
+navigationOptions: () => ({
+  headerTintColor: 'rgba(12, 57, 14, 0.85)',
+  drawerLabel: <Hidden />,
+  drawerLockMode: "locked-closed",
+}),
+},
+
+
 }, {
-initialRouteName: "Login",
+initialRouteName: "initialScreen",
 contentOptions: {
   activeTintColor: '#e91e63'
 },
