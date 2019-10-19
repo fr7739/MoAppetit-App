@@ -211,8 +211,8 @@ export default class RegistrationForm extends React.Component {
             underlineColorAndroid='transparent'/>
             </View>
         <View>
-        <TouchableOpacity style={[styles.buttonContainer, styles.loginButton]}>
-              <Button style={{ container: styles.loginButton}} onPress={this.handleSubmit} text="Register" raised={true} primary={true} />
+        <TouchableOpacity style={[styles.buttonContainer3]}>
+              <Button style={{ container: styles.buttonContainer3}} onPress={this.handleSubmit} text="Register" raised={true} primary={true} />
               </TouchableOpacity>
 
               </View>

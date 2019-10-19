@@ -168,12 +168,12 @@ export default StyleSheet.create({
 
     rectangle: {
       height: 370,
-      width: 299,
+      width: 325,
       backgroundColor: 'rgba(12, 57, 14, 0.85)',
-      borderWidth: 4,
-      borderRadius: 33,
+      borderWidth: 2,
+      borderRadius: 40,
       overflow: "hidden",
-      left: "29%",
+      left: 163,
       marginBottom:25,
 
   },
@@ -211,6 +211,7 @@ buttonContainer: {
   marginBottom:20,
   width:250,
   borderRadius:30,
+  left:15,
 },
 
 icon:{
@@ -226,13 +227,16 @@ inputIcon:{
 inputContainer: {
   borderBottomColor: '#F5FCFF',
   backgroundColor: '#FFFFFF',
-  borderRadius:30,
+  borderRadius:10,
   borderBottomWidth: 1,
-  width:299,
+  width:290,
   height:45,
-  marginBottom:15,
+  marginBottom:12,
   flexDirection: 'row',
-  alignItems:'center'
+  alignItems:'center',
+  left: 15,
+  marginTop:15,
+
 },
 
 inputs:{
@@ -395,6 +399,20 @@ left: 40,
     margin: 10,
   },
   
+  // Button Container for Register
+  buttonContainer3: {
+    height:45,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom:20,
+    width:250,
+    borderRadius:30,
+    left:15,
+    marginTop:15,
+  
+  },
+
 
   });
 

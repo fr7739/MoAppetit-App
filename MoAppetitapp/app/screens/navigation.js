@@ -46,11 +46,6 @@ Home: {
   
 'Contact Us': { 
   screen: ContactUs,
-  navigationOptions: {
-    drawerLabel: <Hidden />,
-    drawerLockMode: "locked-closed",
-  }
-
 },
 
 'About Us': {

@@ -1,9 +1,9 @@
 {
   "expoServerPort": 19000,
-  "packagerPort": 19001,
-  "packagerPid": 12612,
+  "packagerPort": null,
+  "packagerPid": null,
   "expoServerNgrokUrl": "https://cq-eej.anonymous.moappetitapp.exp.direct",
   "packagerNgrokUrl": "https://packager.cq-eej.anonymous.moappetitapp.exp.direct",
-  "ngrokPid": 9980,
+  "ngrokPid": 8840,
   "devToolsPort": 19002
 }
