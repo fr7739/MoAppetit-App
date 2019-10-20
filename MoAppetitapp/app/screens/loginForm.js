@@ -154,7 +154,7 @@ export default class LoginScreen extends React.Component {
               {/* Thamima: Changes */} 
           <KeyboardAvoidingView style={styles.KBAV} behavior="position" enabled>
           <View style={styles.container}>
-   
+          
           <Text style={styles.CircleMoAppetit}>"MoAppetit"</Text>
           <View style={styles.buttonHolder}>
                 <Button 
@@ -172,7 +172,7 @@ export default class LoginScreen extends React.Component {
        </View>
        </View>
 
-       <View style={styles.rectangle}>
+       <View style={styles.rectangle2}>
        <View style={styles.inputContainer}>
           <Image style={[styles.icon, styles.inputIcon]} source={{uri: 'https://png.icons8.com/envelope/androidL/40/3498db'}}/>
           <TextInput style={styles.inputs}          
@@ -195,10 +195,9 @@ export default class LoginScreen extends React.Component {
           underlineColorAndroid='transparent'/>
           </View>
         
-          <View style = {styles.signupTextCont}>
-      <Text style = {styles.signupText}> </Text>
+          <View>
       <TouchableOpacity onPress={ () => this.props.navigation.navigate('Password')}> 
-      <Text style = {styles.signupButton}> Forgot Password </Text> 
+      <Text style = {styles.signupButton2}> Forgot Password </Text> 
       </TouchableOpacity>
       </View>
 

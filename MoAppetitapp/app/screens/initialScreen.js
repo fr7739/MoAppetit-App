@@ -7,6 +7,9 @@ import styles from './styles.js';
 import { Icon } from 'native-base';
 import facebooklogIn from '../hasuraAPI/facebookAPI';
 
+import { Card} from 'react-native-elements';
+
+
 
 
 // Added by Salwa
@@ -37,21 +40,31 @@ export default class InitialScreen extends React.Component {
       Create an account to start
     </Text>
 
-        <TouchableOpacity style={styles.CircleMoAppetit}>
-        <Image
-        source={require('../assets/HeaderImage.png')}
-        resizeMode="contain"
-        style={{ borderRadius: 75
-        }}
-      />        
         
-        </TouchableOpacity>
+
+<Card>
+  <Image 
+  source={require('../assets/HeaderImage.png')}
+  style={{
+    height: 135,
+    width: 400,
+
+  }}
+/>
+  
+</Card>
+
+        
         
         <View>
         <TouchableOpacity style={[styles.buttonContainer2]}>
             <Button style={{ container: styles.loginButton2}} text="Continue with Email" raised={true} primary={true} onPress={ () => this.props.navigation.navigate('Register')}/>
             </TouchableOpacity>
         </View>
+
+        <Text numberOfLines={1}>               
+    __________________________ or __________________________
+        </Text>
 
         <View>
         <TouchableOpacity style={[styles.buttonContainer2]}>

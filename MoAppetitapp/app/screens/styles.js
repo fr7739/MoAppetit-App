@@ -58,6 +58,7 @@ export default StyleSheet.create({
       margin: 10,
 
     },
+
     aboutImage:
     {
       width: 50,
@@ -166,6 +167,7 @@ export default StyleSheet.create({
       color:"white"
     },
 
+    //rectangle Container for Registerform
     rectangle: {
       height: 370,
       width: 325,
@@ -203,12 +205,14 @@ fabookButton: {
   left: 22,
 },
 
+
+//buttonContainer for loginform
 buttonContainer: {
   height:45,
   flexDirection: 'row',
   justifyContent: 'center',
   alignItems: 'center',
-  marginBottom:20,
+  marginBottom:300,
   width:250,
   borderRadius:30,
   left:15,
@@ -265,36 +269,46 @@ loginText: {
   color: 'white',
 },
 
+//rectangle Container for Loginform
    rectangle2: {
-    height: 120,
-    width: 302,
+    height: 300,
+    width: 325,
     backgroundColor: 'rgba(12, 57, 14, 0.85)',
-    borderWidth: 4,
-    borderRadius: 33,
-    left: 3,
+    borderWidth: 2,
+    borderRadius: 40,
+    overflow: "hidden",
+    left: 163,
+    marginBottom:70,
 },
 
 // style for Initialscreen
 buttonContainer2: {
- 
+  marginTop:30,
+
 },
 
 // style for Initialscreen
 loginButton2: {
   backgroundColor: '#3498db',
-  width:350,
+  width:380,
   overflow: "hidden",
-  marginBottom:5,
+  marginBottom:30,
   height: 50,
+  borderWidth: 2,
+  borderRadius: 40,
+  overflow: "hidden",
 },
 
 // style for Initialscreen
 fabookButton2: {
   backgroundColor: "#3b5998",
   overflow: "hidden",
-  width:350,
-  marginBottom:5,
+  width:380,
+  //marginBottom:5,
   height: 50,
+  borderWidth: 2,
+  borderRadius: 40,
+  marginTop:-20,
 },
 
 // style for Initialscreen
@@ -304,7 +318,7 @@ socialButtonContent2:{
 
 // style for Initialscreen
 welcome: {
-  fontSize: 23,
+  fontSize: 25,
   textAlign: 'center',
   margin: 10,
 },
@@ -339,15 +353,12 @@ fontWeight: '500'
 // style for Initialscreen
 signupButton2: 
 {
-color: "#32cd32", 
-fontSize: 16,
+color: "#ffffff", 
+fontSize: 11,
 fontWeight: '500',
-left: 40,
+left: 20,
+marginBottom:180,
 },
-
-
-
-
 
 // style for Password
   container2: {
@@ -374,12 +385,10 @@ left: 40,
     height: 40
   },
 
-
     // style for password
   submitButtonText: {
     color: "white"
   },
-
 
   // style for password
   loginButton3: {
@@ -394,7 +403,7 @@ left: 40,
 
     // style for password
   welcome2: {
-    fontSize: 17,
+    fontSize: 15,
     textAlign: 'center',
     margin: 10,
   },
@@ -409,10 +418,74 @@ left: 40,
     width:250,
     borderRadius:30,
     left:15,
-    marginTop:15,
-  
+    marginTop:15, 
   },
 
+  //buttonContainer for loginform
+buttonContainer4: {
+  height:45,
+  flexDirection: 'row',
+  justifyContent: 'center',
+  alignItems: 'center',
+  marginBottom:5,
+  width:250,
+  borderRadius:30,
+  left:15,
+},
+
+
+//rectangle Container for PasswordForm
+rectangle3: {
+  height: 150,
+  width: 325,
+  backgroundColor: 'rgba(12, 57, 14, 0.85)',
+  borderWidth: 2,
+  borderRadius: 40,
+  overflow: "hidden",
+  // left: 1,
+  marginBottom:10,
+  //marginTop:100,
+  
+},
+
+
+// InputContainer for Password
+inputContainer2: {
+  borderBottomColor: '#F5FCFF',
+  backgroundColor: '#FFFFFF',
+  borderWidth: 2,
+  borderRadius: 40,
+  overflow: "hidden",
+  width:325,
+  height:150,
+  marginBottom:5,
+  flexDirection: 'row',
+  alignItems:'center',
+  //left: 15,
+  marginTop:200,
+},
+
+
+// CircleMoAppetit for InitialScreen
+CircleMoAppetit2:
+    {  
+      textAlign: 'center',
+      textAlignVertical: 'center',
+      backgroundColor: 'rgba(12, 57, 14, 0.85)', 
+      fontSize:80,
+      lineHeight: 0, 
+      paddingTop: 65,
+      fontFamily: 'serif',
+      width: 150,
+      height: 150,
+      color: "#E8E8E8",
+      borderRadius: 75,
+      borderWidth: 0,
+      overflow: "hidden",
+      marginBottom:90,
+      margin: 10,
+
+    },
 
   });
 

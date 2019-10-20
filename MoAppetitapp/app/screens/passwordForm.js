@@ -101,37 +101,39 @@ export default class LoginScreen extends React.Component {
 
     // Rendering to the UI the input options and submit button
     render() {
-        return(
-           <View style={styles.container2}>
-            <Text style={styles.welcome}>
+        return (
+          <ImageBackground source={require('../assets/OpeningPageBackground.jpg')} resizeMode='cover'style={styles.backgroundImage}>
+              {/* Thamima: Changes */} 
+          <KeyboardAvoidingView style={styles.KBAV} behavior="position" enabled>
+   
+          <View style={styles.inputContainer2}>
+          <Text style={styles.welcome}>
             Forgot your password?
-            </Text>
-
             <Text style={styles.welcome2}>
             We'll send you a link to reset your password
             </Text>
-            
-              <TextInput
-                style={styles.input2}
-                underlineColor="transparent"
-                placeholder=" Email"
-                placeholderTextColor="black"
-                autoCapitalize="none"
-              />
-               <TouchableOpacity style={[styles.buttonContainer2]}>
-                <Button style={{ container: styles.loginButton3}} text="Submit" raised={true} primary={true} onPress={ () => this.handleSubmit()}/>
-                
-                <View style = {styles.signupTextCont}>
-                <Text style = {styles.signupText}> Don't have an account? </Text>
-                <TouchableOpacity onPress={ () => this.props.navigation.navigate('Register')}> 
-                <Text style = {styles.signupButton}> Sign up </Text> 
-                </TouchableOpacity>
-                </View>
-                </TouchableOpacity>
+            </Text>
 
-            </View>
-            
-
-          );
-      }
+       </View>
+       <View style={styles.rectangle3}>
+       <View style={styles.inputContainer}>
+          <Image style={[styles.icon, styles.inputIcon]} source={{uri: 'https://png.icons8.com/envelope/androidL/40/3498db'}}/>
+          <TextInput style={styles.inputs}          
+          required
+          value= {this.state.email}
+          onChangeText={this.handleEmailChange}
+          placeholder="Email"
+          keyboardType="email-address"
+          underlineColorAndroid='transparent'/>
+          </View>
+          <View>
+          <TouchableOpacity style={[styles.buttonContainer4]}>
+              <Button style={{container: styles.buttonContainer4}} text="Submit" raised={true} primary={true} onPress={ () => this.handleSubmit()}/>
+              </TouchableOpacity>
+          </View>
+      </View>
+      </KeyboardAvoidingView>
+      </ImageBackground>
+      )
+  }
     }
