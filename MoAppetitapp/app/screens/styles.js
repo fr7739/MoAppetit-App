@@ -133,6 +133,45 @@ export default StyleSheet.create({
       backgroundColor: 'rgba(12, 57, 14, 0.85)',
       justifyContent: "center",
       color:"white"
+    },
+    existingRatingContainer: {
+      flex: 1,
+      paddingTop: 20,
+      alignItems: 'center',
+      justifyContent: 'center',
+      paddingLeft: 20,
+      paddingRight: 20
+    },
+      //
+      editRatingContainer: {
+        flex: 5,
+         paddingTop: 20,
+         alignItems: 'center',
+         justifyContent: 'center',
+         paddingLeft: 20,
+         paddingRight: 20
+       },
+    RatingsfieldsArea: 
+    {
+        flex: 4,
+        borderWidth: 3,
+        marginBottom: 0,
+        paddingBottom: 0,
+        backgroundColor: "white",
+        width: "60%"
+    },
+
+    subRatingStyle:
+    {
+      fontSize:12,
+      textAlign: "left",
+      backgroundColor: 'rgba(12, 57, 14, 0.85)',
+      justifyContent: "center",
+      color:"white"
+    },
+    RatingsfieldsAreaPicker:
+    {
+      
     }
   });
 
