@@ -195,16 +195,15 @@ export default class LoginScreen extends React.Component {
           underlineColorAndroid='transparent'/>
           </View>
         
-          <View>
       <TouchableOpacity onPress={ () => this.props.navigation.navigate('Password')}> 
+      <View>
       <Text style = {styles.signupButton2}> Forgot Password </Text> 
-      </TouchableOpacity>
       </View>
-
+      </TouchableOpacity> 
 
           <View>
-          <TouchableOpacity style={[styles.buttonContainer]}>
-              <Button style={{container: styles.buttonContainer}} text="Login" raised={true} primary={true} onPress={ () => this.handleSubmit()}/>
+          <TouchableOpacity style={[styles.buttonContainer4]}>
+              <Button style={{container: styles.buttonContainer4}} text="Login" raised={true} primary={true} onPress={ () => this.handleSubmit()}/>
               </TouchableOpacity>
           </View>
       </View>

@@ -357,7 +357,7 @@ color: "#ffffff",
 fontSize: 11,
 fontWeight: '500',
 left: 20,
-marginBottom:180,
+marginBottom:20,
 },
 
 // style for Password
@@ -427,7 +427,7 @@ buttonContainer4: {
   flexDirection: 'row',
   justifyContent: 'center',
   alignItems: 'center',
-  marginBottom:5,
+  marginBottom:-15,
   width:250,
   borderRadius:30,
   left:15,
