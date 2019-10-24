@@ -8,13 +8,4 @@
   "ngrokPid": 20596,
   "devToolsPort": 19002
 
-  // From Master Branch
-  //"packagerPort": 19001,
-  //"packagerPid": 16376,
-  //"expoServerPort": 19000,
-  //"devToolsPort": 19002,
-  //"expoServerNgrokUrl": "https://fv-vyj.anonymous.moappetitapp.exp.direct",
-  //"packagerNgrokUrl": "https://packager.fv-vyj.anonymous.moappetitapp.exp.direct",
-  //"ngrokPid": 18100
-
 }
