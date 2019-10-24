@@ -7,28 +7,6 @@ export const client = Client.buildClient({
 });
 
 
-
-const Products = (props) => {
-    let products = props.products.map((product) => {
-      return (
-        <Product
-          addVariantToCart={props.addVariantToCart}
-          client={props.client}
-          key={product.id.toString()}
-          product={product}
-          />
-        );
-      }
-    );
-
-    return (
-        <Wrapper>
-          {products}
-        </Wrapper>
-      );
-    }
-    
-    export default Products;
 /* let prod = 
 
     client.product.fetchAll().then( products => {

@@ -172,7 +172,7 @@ export default class RegistrationForm extends React.Component {
             value= {this.state.name}
             onChangeText={this.handleNameChange}
             placeholder="Name"
-            keyboardType="Name"
+            keyboardType="default"
             underlineColorAndroid='transparent'/>
             </View>
                         
