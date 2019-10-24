@@ -117,6 +117,15 @@ export default StyleSheet.create({
     backgroundColor: 'rgba(132,132,132, 0.85)'
     },
 
+    buttonStyle6:
+    {
+    width: 150,
+    height: 150,
+    borderWidth: 3,
+    borderColor: 'black',
+    justifyContent: 'center',
+    },
+
     textDisplay:
     {
       width: "60%",

@@ -1,11 +1,5 @@
 {
-
   "hostType": "lan",
-  "lanType": "ip",
-  "dev": true,
-  "minify": false,
-  "urlRandomness": "cq-eej",
-  "hostType": "tunnel",
   "lanType": "ip",
   "dev": true,
   "minify": false,
