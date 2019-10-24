@@ -103,7 +103,7 @@ export default class LoginScreen extends React.Component {
         }
         else {
             console.log("Auth Token: " +loginResult.auth_token)
-            globalThis.hasura_id =  loginResult.hasura_id;
+            global.hasura_id =  loginResult.hasura_id;
             console.log("All login result: "+loginResult);
             await AsyncStorage.setItem('token', loginResult.auth_token);
             this.setLoginError('')
