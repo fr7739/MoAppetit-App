@@ -5,8 +5,8 @@ import {Button} from 'react-native-material-ui';
 import styles from '../screens/styles';
 import { Icon } from 'native-base';
 import { Header } from 'react-native-elements';
-import '../hasuraAPI/shopifyAPI'
-import { client, products } from '../hasuraAPI/shopifyAPI';
+import { client } from '../hasuraAPI/shopifyAPI';
+import Prod from '../components/Product'
 
 
 
@@ -54,8 +54,16 @@ export default class MainScreen extends React.Component {
     super(props);
     this.state = {
         auth: '',
+        products: [],
       };
     }
+    componentWillMount(){
+      client.product.fetchAll().then((res) => {
+        this.setState({
+          products: res,
+        })
+      })
+      }
 
 switchToContactUs = async() =>
 {
@@ -89,13 +97,7 @@ switchToAboutUs = async() =>
                     leftComponent={<Icon name="menu" onPress={() => this.props.navigation.openDrawer()} />}
                     rightComponent={<Icon name="md-cart" onPress={() => this.props.navigation.navigate('cart')} />}
                    />
-              <View>
-                <Text>{console.log(prod3._55)}</Text>
-              <Button style={ {container: styles.buttonStyle3}}  text={(prod._55+ ": " +prod2._55)} raised={true} primary={true} onPress={ () => this.switchToAboutUs() }/>
-              </View>
-              <View>
-              <Button style={{ container: styles.buttonStyle3}} text={(prod3._55+ ": " +prod4._55)} raised={true} primary={true} onPress={ () => this.switchToContactUs()}/>            
-              </View>
+              <Prod products = {this.state.products} client = {client} />
            </ImageBackground>
       );
   }
