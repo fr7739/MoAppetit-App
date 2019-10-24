@@ -14,8 +14,10 @@ import RatingsScreen from "../screens/RatingsScreen"
 import RegisterScreen from './registrationForm';
 import PostRegisterScreen from './postRegisterScreen';
 import LoginScreen from './loginForm';
-
+import PasswordScreen from './passwordForm';
 import CartScreen from './cartScreen';
+import initialScreen from './initialScreen';
+
 
 
 //import { createStackNavigator, StackNavigator } from 'react-navigation-stack';
@@ -45,11 +47,6 @@ Home: {
   
 'Contact Us': { 
   screen: ContactUs,
-  navigationOptions: {
-    drawerLabel: <Hidden />,
-    drawerLockMode: "locked-closed",
-  }
-
 },
 
 'About Us': {
@@ -129,6 +126,16 @@ navigationOptions: () => ({
 }),
 },
 
+
+Password: {
+  screen: PasswordScreen,
+navigationOptions: () => ({
+  headerTintColor: 'rgba(12, 57, 14, 0.85)',
+  drawerLabel: <Hidden />,
+  drawerLockMode: "locked-closed",
+}),
+},
+
   // Post Registration screen with option to login after verifying email
   PostRegister: {
     screen: PostRegisterScreen,
@@ -150,8 +157,18 @@ navigationOptions: () => ({
 }),
 },
 
+initialScreen: {
+  screen: initialScreen,
+navigationOptions: () => ({
+  headerTintColor: 'rgba(12, 57, 14, 0.85)',
+  drawerLabel: <Hidden />,
+  drawerLockMode: "locked-closed",
+}),
+},
+
+
 }, {
-initialRouteName: "Login",
+initialRouteName: "initialScreen",
 contentOptions: {
   activeTintColor: '#e91e63'
 },
