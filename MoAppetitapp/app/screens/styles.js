@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, ImageBackground,  KeyboardAvoidingView, Image, Text} from 'react-native';
 export default StyleSheet.create({
-  
   TextField:
   {
     
@@ -166,6 +165,7 @@ export default StyleSheet.create({
       justifyContent: "center",
       color:"white"
     },
+
 
     //rectangle Container for Registerform
     rectangle: {
@@ -487,6 +487,45 @@ CircleMoAppetit2:
 
     },
 
+    existingRatingContainer: {
+      flex: 1,
+      paddingTop: 20,
+      alignItems: 'center',
+      justifyContent: 'center',
+      paddingLeft: 20,
+      paddingRight: 20
+    },
+      //
+      editRatingContainer: {
+        flex: 5,
+         paddingTop: 20,
+         alignItems: 'center',
+         justifyContent: 'center',
+         paddingLeft: 20,
+         paddingRight: 20
+       },
+    RatingsfieldsArea: 
+    {
+        flex: 4,
+        borderWidth: 3,
+        marginBottom: 0,
+        paddingBottom: 0,
+        backgroundColor: "white",
+        width: "60%"
+    },
+
+    subRatingStyle:
+    {
+      fontSize:12,
+      textAlign: "left",
+      backgroundColor: 'rgba(12, 57, 14, 0.85)',
+      justifyContent: "center",
+      color:"white"
+    },
+    RatingsfieldsAreaPicker:
+    {
+      
+    }
   });
 
   

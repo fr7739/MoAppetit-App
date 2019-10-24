@@ -95,7 +95,7 @@ export default class LoginScreen extends React.Component {
           this.setState({ isFormValid: false });
         }
       };
-
+  
     handleSubmit = async () => {
         let loginResponse = await loginAPI(this.state)
         const loginResult = await loginResponse.json()
@@ -106,6 +106,8 @@ export default class LoginScreen extends React.Component {
         }
         else {
             console.log("Auth Token: " +loginResult.auth_token)
+            global.hasura_id =  loginResult.hasura_id;
+            console.log("All login result: "+loginResult);
             await AsyncStorage.setItem('token', loginResult.auth_token);
             this.setLoginError('')
         }
