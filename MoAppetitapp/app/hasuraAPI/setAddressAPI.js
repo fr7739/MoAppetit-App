@@ -1,3 +1,4 @@
+
 // Added by IMI
 const SET_ADDRESS_URL = "https://data.moappetit.com/v1/query";
 
@@ -9,23 +10,6 @@ export const setAddressAPI = async (data) => {
             "Content-Type": "application/json"
         }
     };
-
-
-    //If there is no user ID, get it based on the hasura_id that we know exists
-    if(global.user_id == null)
-    {
-        const passInUserObject = {
-            hasura_id: global.hasura_id 
-            }
-        
-        let getFullUserResponse = await getFullUserAPI(passInUserObject);
-        const resultResponseGetFullUser = await getFullUserResponse.json();
-        global.User_ID = resultResponseGetFullUser[0].id;
-    }
-    if(global.user_id != null)
-    {
-        data.user_id = global.user_id;
-    }
 
     let body = {
         type: "insert",

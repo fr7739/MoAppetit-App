@@ -36,10 +36,10 @@ export const setRatingAPI = async (data) => {
             objects: [
                 {
                     //id: data.id,
-                    ratinglevel: (data.ratingLevel),
+                    ratinglevel: parseInt(data.ratingLevel,10),
                     ratingDescription: (data.ratingDescription),
-                    product_id: (data.product_id),
-                    user_id: (data.user_id)
+                    product_id: parseInt(data.product_id,10),
+                    user_id: parseInt(data.user_id)
                     
                 }
             ]
