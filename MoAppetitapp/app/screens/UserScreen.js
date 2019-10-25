@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View,  FlatList, Text, ScrollView, Image, ImageBackground} from 'react-native';
+import { StyleSheet, View,  FlatList, Text, ScrollView, Image, ImageBackground, TextInput, TouchableOpacity} from 'react-native';
 import { TextField } from 'react-native-materialui-textfield';
 import {AsyncStorage} from 'react-native';
 import {Button} from 'react-native-material-ui';
@@ -327,7 +327,7 @@ handleUserSubmit = async(userInfo) =>{
 
 
 renderf(){
-  return ( <Text style={styles.subPageHeadStyle}> sdfsdfsdfsdfsdf</Text>
+  return ( <Text style={styles.subPageHeadStyle}></Text>
       );
   };
 
@@ -339,10 +339,11 @@ console.log("Count of addresses: " + this.addresses.length);
       return (
 
 
-        <ImageBackground source={require('../assets/OpeningPageBackground.jpg')} resizeMode='cover' style={styles.backgroundImage}>
+        <ScrollView>
 
           <ScrollView>
-          <View style={styles.container}>
+          <View 
+          style={styles.container}>
              {this.renderAddresses()}
              {this.renderf()}
              </View>
@@ -350,84 +351,124 @@ console.log("Count of addresses: " + this.addresses.length);
 
 
         <ScrollView>
-          <View style={styles.container}>
               <View><Text style={styles.subPageHeadStyle}>User Info</Text></View>
-              <View style={styles.fieldsArea2}>
              
     
-              <TextField tintColor='rgba(12, 57, 14, 0.85)'
-                              required
-                              value= {this.userState["name"]}
-                              label="Name"
-                              
-                    onChangeText={this.handleNameChange}
-                              />
+          <View style={styles.rectangle5}>
+          <View style={styles.inputContainer}>
+          <TextInput style={styles.inputs}          
+          required
+          value= {this.userState["name"]}
+          label="Name"
+          onChangeText={this.handleNameChange}
+          />
+          </View>
               
-              <TextField tintColor='rgba(12, 57, 14, 0.85)'
-                              required
-                              value= {this.userState["phone"]}
-                              label="Phone"
-                            
-                    onChangeText={this.handlePhoneChange}
-                              />
 
 
+          <View style={styles.inputContainer}>
+          <TextInput style={styles.inputs}
+          required
+          secureTextEntry={true}
+          value= {this.userState["phone"]}
+          onChangeText={this.handlePhoneChange}
+          />
+          </View>
+              
+
+
+              
               <View>
-              <Button style={{ container: styles.buttonStyle2}} onPress={this.handleUserSubmit} text="Edit Info" raised={true} primary={true} />
+          <TouchableOpacity style={[styles.buttonContainer6]}></TouchableOpacity>
+              <Button style={{ container: styles.buttonContainer6}} onPress={this.handleUserSubmit} text="Edit Info" raised={true} primary={true} />
               </View>
                 </View>
 
+
               <View><Text style={styles.subPageHeadStyle}>Add Address</Text></View>
-               <View style={styles.fieldsArea2}>
-                    <TextField tintColor='rgba(12, 57, 14, 0.85)'
-                    required
-                    value= {this.state.addressline1}
-                    onChangeText={this.handleaddressline1Change}
-                    label="Address Line 1"
-                    />
-                    <TextField tintColor='rgba(12, 57, 14, 0.85)'
-                    required
-                    secureTextEntry={false}
-                    value= {this.state.addressline2}
-                    onChangeText={this.handleaddressline2Change}
-                    label="Address Line 2"
-                    />
-                    
-                    <TextField tintColor='rgba(12, 57, 14, 0.85)'
-                    required
-                    secureTextEntry={false}
-                    value= {this.state.addressline3}
-                    onChangeText={this.handleaddressline3Change}
-                    label="Address Line 3"
-                    />      
-                    <TextField tintColor='rgba(12, 57, 14, 0.85)'
-                    required
-                    secureTextEntry={false}
-                    onChangeText={this.handlecityChange}
-                    value= {this.state.city}
-                    label="City"
-                    />   
-                    <TextField tintColor='rgba(12, 57, 14, 0.85)'
-                    required
-                    secureTextEntry={false}
-                    value= {this.state.state} 
-                    onChangeText={this.handlestateChange}
-                    label="State"
-                    />
-                    <TextField tintColor='rgba(12, 57, 14, 0.85)'
-                    required
-                    secureTextEntry={false} 
-                    onChangeText={this.handlezipChange}
-                    value= {this.state.zip}
-                    label="Zip"
-                    />
+
+              
+          <View style={styles.rectangle6}>
+          <View style={styles.inputContainer}>
+          <TextInput style={styles.inputs} 
+            required
+            value= {this.state.addressline1}            
+            onChangeText={this.handleaddressline1Change}
+            placeholder="Address Line 1"
+            keyboardType="default"
+            underlineColorAndroid='transparent'/>
             </View>
+
+
+            <View style={styles.inputContainer}>      
+            <TextInput style={styles.inputs} 
+            required
+            value= {this.state.addressline2}            
+            onChangeText={this.handleaddressline2Change}
+            placeholder="Address Line 2"
+            keyboardType="default"
+            underlineColorAndroid='transparent'/>
+            </View>
+
+
+             <View style={styles.inputContainer}>        
+            <TextInput style={styles.inputs} 
+            required
+            value= {this.state.addressline3}            
+            onChangeText={this.handleaddressline3Change}
+            placeholder="Address Line 3"
+            keyboardType="default"
+            underlineColorAndroid='transparent'/>
+            </View>     
+                    
+                    
+            <View style={styles.inputContainer}>        
+            <TextInput style={styles.inputs} 
+            required
+            secureTextEntry={false}
+            onChangeText={this.handlecityChange}
+            value= {this.state.city}
+            placeholder="City"
+            keyboardType="default"
+            underlineColorAndroid='transparent'/>
+            </View> 
+                      
+
+            <View style={styles.inputContainer}>        
+            <TextInput style={styles.inputs} 
+            required
+            secureTextEntry={false}
+            value= {this.state.state} 
+            onChangeText={this.handlestateChange}
+            placeholder="State"
+            keyboardType="default"
+            underlineColorAndroid='transparent'/>
+            </View>
+
+
+
+            <View style={styles.inputContainer}>        
+            <TextInput style={styles.inputs} 
+            required
+            secureTextEntry={false}
+            value= {this.state.zip} 
+            onChangeText={this.handlezipChange}
+            placeholder="Zip"
+            keyboardType="default"
+            underlineColorAndroid='transparent'/>
+            </View>
+            
             <View>
-              <Button style={{ container: styles.buttonStyle2}} onPress={this.handleSubmit} text="Add Addresss" raised={true} primary={true} />
+            <TouchableOpacity style={[styles.buttonContainer5]}>
+              <Button style={{ container: styles.buttonContainer5}} onPress={this.handleSubmit} text="Add Addresss" raised={true} primary={true} />
+              </TouchableOpacity>
               </View>
-        </View>
+              
+              </View>
+
         </ScrollView>
-        </ImageBackground>
+        </ScrollView>
+
       );
   }
 }

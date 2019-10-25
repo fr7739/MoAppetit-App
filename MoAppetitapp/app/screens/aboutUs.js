@@ -1,8 +1,12 @@
+  
 import React from 'react';
-import { StyleSheet, View, Text, ScrollView, Image, ImageBackground} from 'react-native';
+import { StyleSheet, View, Text, ScrollView, Image, ImageBackground, KeyboardAvoidingView} from 'react-native';
 import {AsyncStorage} from 'react-native';
 import {Button} from 'react-native-material-ui';
 import styles from './styles.js';
+
+import { Card} from 'react-native-elements';
+
 
 export default class AboutUsScreen extends React.Component {
   constructor(props) {
@@ -15,13 +19,28 @@ export default class AboutUsScreen extends React.Component {
 
   render() {
       return (
-        <ImageBackground source={require('../assets/OpeningPageBackground.jpg')} resizeMode='cover'style={styles.backgroundImage}>
-
         <ScrollView>
-          <View style={styles.container}>
-              <View><Text style={styles.subPageHeadStyle}>About US</Text></View>
-              <View>
-               <Text style ={styles.longText}>
+
+        
+        <View style={styles.container}>
+        
+
+        
+
+<Card>
+  <Image 
+  source={require('../assets/HeaderImage.png')}
+  style={{
+    height: 135,
+    width: 400,
+
+  }}
+/>
+  
+</Card>
+
+              <Text>About US</Text>
+               <Text>
               I remember my mom’s weary face while running errands, she would go from preparing breakfast, to dropping us off to school, to doing the laundry, to washing the dishes, to cleaning the mess we caused in every corner of the house, to buying the groceries, cooking us food, go through our homework, and finally putting us to sleep..
               The very last thought on my mind every night was: “My mother is a super mom”.
  
@@ -32,11 +51,12 @@ export default class AboutUsScreen extends React.Component {
               Time is Precious and so are you.
  
               We value Time and We Value you.
+
                 </Text>
             </View>
-          </View>
           </ScrollView>
-          </ImageBackground>
+
+
       );
   }
 }

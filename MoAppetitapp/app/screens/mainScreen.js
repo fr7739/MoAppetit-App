@@ -3,10 +3,13 @@ import { StyleSheet, View, ImageBackground, KeyboardAvoidingView, Image, Text} f
 import {AsyncStorage} from 'react-native';
 import {Button} from 'react-native-material-ui';
 import styles from '../screens/styles';
-import { Icon } from 'native-base';
+import { Icon, Container } from 'native-base';
 import { Header } from 'react-native-elements';
 import { client } from '../hasuraAPI/shopifyAPI';
-import Prod from '../components/Product'
+import Prod from '../components/Product';
+
+import { Card} from 'react-native-elements';
+
 
 
 
@@ -91,14 +94,38 @@ switchToAboutUs = async() =>
     
       return (
 
+        <Container>
+
+
         
-        <ImageBackground source={require('../assets/OpeningPageBackground.jpg')} resizeMode='cover'style={styles.backgroundImage}>
+
+        
+
+     
+
+
                 <Header transparent
                     leftComponent={<Icon name="menu" onPress={() => this.props.navigation.openDrawer()} />}
                     rightComponent={<Icon name="md-cart" onPress={() => this.props.navigation.navigate('cart')} />}
                    />
+                     <View style={styles.container}>
+   
+                <Card>
+          <Image 
+          source={require('../assets/HeaderImage.png')}
+          style={{
+            height: 135,
+            width: 400,
+        
+          }}
+        />
+          
+        </Card>
+        </View>
+                   
               <Prod products = {this.state.products} client = {client} />
-           </ImageBackground>
+              </Container>
+
       );
   }
 }

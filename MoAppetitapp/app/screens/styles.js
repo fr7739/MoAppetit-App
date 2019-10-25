@@ -426,7 +426,7 @@ marginBottom:20,
     marginBottom:20,
     width:250,
     borderRadius:30,
-    left:15,
+    left:18,
     marginTop:15, 
   },
 
@@ -439,7 +439,7 @@ buttonContainer4: {
   marginBottom:-15,
   width:250,
   borderRadius:30,
-  left:15,
+  left:18,
 },
 
 
@@ -534,7 +534,67 @@ CircleMoAppetit2:
     RatingsfieldsAreaPicker:
     {
       
-    }
+    },
+
+    //rectangle Container for Registerform
+    rectangle4: {
+      height: 370,
+      width: 225,
+      backgroundColor: 'rgba(12, 57, 14, 0.85)',
+      borderWidth: 2,
+      borderRadius: 40,
+      //overflow: "hidden",
+      right: 500,
+      marginBottom:50,
+  },
+
+  //rectangle Container for Userscreen User
+  rectangle5: {
+    height: 300,
+    width: 325,
+    backgroundColor: 'rgba(12, 57, 14, 0.85)',
+    borderWidth: 2,
+    borderRadius: 40,
+    overflow: "hidden",
+    left: 45,
+    marginBottom:70,
+},
+
+//rectangle Container for UserScreen Address
+rectangle6: {
+  height: 600,
+  width: 325,
+  backgroundColor: 'rgba(12, 57, 14, 0.85)',
+  borderWidth: 2,
+  borderRadius: 40,
+  overflow: "hidden",
+  left: 45,
+  marginBottom:70,
+},
+
+ //buttonContainer for userscreen address
+ buttonContainer5: {
+  height:45,
+  flexDirection: 'row',
+  justifyContent: 'center',
+  alignItems: 'center',
+  marginBottom:-20,
+  width:250,
+  borderRadius:30,
+  left:18,
+},
+
+ //buttonContainer for userscreen address
+ buttonContainer6: {
+  height:40,
+  flexDirection: 'row',
+  justifyContent: 'center',
+  alignItems: 'center',
+  marginBottom:-5,
+  width:250,
+  borderRadius:30,
+  left:35,
+},
   });
 
   

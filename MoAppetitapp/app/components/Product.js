@@ -9,13 +9,13 @@ class Prod extends Component {
             return(
                 <View key = {product.id.toString()} style = {{borderWidth: 2, backgroundColor: 'white'}}>
                     <Text>{console.log(product.images[0].src)}</Text>
-                    <View style = {{flex: 1, flexDirection: 'row', justifyContent: 'center'}}>
+                    <View style = {{flex: 1, flexDirection: 'row', justifyContent: 'flex-start'}}>
                         <Image source={{uri: product.images[0].src}} style = {styles.buttonStyle6} />
                     </View>
-                    <View style = {{flex: 1, flexDirection: 'row', justifyContent: 'center'}}>
+                    <View style = {{flex: 1, flexDirection: 'row', justifyContent: 'flex-start'}}>
                         <Text>{product.title}</Text>
                     </View>
-                    <View style = {{flex: 1, flexDirection: 'row', justifyContent: 'center'}}>
+                    <View style = {{flex: 1, flexDirection: 'row', justifyContent: 'flex-start'}}>
                         <Text>Price: {product.variants[0].price}</Text>
                     </View>
                 </View>

@@ -148,7 +148,7 @@ export default class RatingsScreen extends React.Component {
   } 
 
   render() {
-    console.log(this.allProducts);
+    //console.log(this.allProducts);
     //if(this.loadAllProducts())
     //{
 
@@ -157,20 +157,17 @@ export default class RatingsScreen extends React.Component {
       return <Picker.Item key={item.id} value={item.id} label={item.name} />;
     });
     return (
-      <ImageBackground
-        source={require("../assets/OpeningPageBackground.jpg")}
-        resizeMode="cover"
-        style={styles.backgroundImage}
-      >
-        <ScrollView>
-        <View style={styles.existingRatingContainer}>
+     
+      <ScrollView>
+
+        <View 
+        style={styles.existingRatingContainer}>
             <Text style={styles.subPageHeadStyle}>Existing Ratings</Text>
           </View>
           <View style={styles.container}>{this.renderRatings()}</View>
-        </ScrollView>
 
-        <ScrollView>
-          <View style={styles.editRatingContainer}>
+          <View style={styles.rectangle5}>
+            
             <View>
               <Text style={styles.subPageHeadStyle}>New Rating</Text>
             </View>
@@ -225,7 +222,6 @@ export default class RatingsScreen extends React.Component {
               />
           </View>
         </ScrollView>
-      </ImageBackground>
     );
   }
 }
