@@ -31,7 +31,7 @@ export default class AboutUsScreen extends React.Component {
   <Image 
   source={require('../assets/HeaderImage.png')}
   style={{
-    height: 135,
+    height: 195,
     width: 400,
 
   }}
@@ -39,9 +39,16 @@ export default class AboutUsScreen extends React.Component {
   
 </Card>
 
-              <Text>About US</Text>
-               <Text>
-              I remember my mom’s weary face while running errands, she would go from preparing breakfast, to dropping us off to school, to doing the laundry, to washing the dishes, to cleaning the mess we caused in every corner of the house, to buying the groceries, cooking us food, go through our homework, and finally putting us to sleep..
+<View style={styles.inputContainer5}>
+             
+        <Text style={styles.welcome}>
+            About Us
+            </Text>
+            </View>
+ <View style={styles.inputContainer3}>
+         
+ <Text style={styles.welcome3}>
+            I remember my mom’s weary face while running errands, she would go from preparing breakfast, to dropping us off to school, to doing the laundry, to washing the dishes, to cleaning the mess we caused in every corner of the house, to buying the groceries, cooking us food, go through our homework, and finally putting us to sleep..
               The very last thought on my mind every night was: “My mother is a super mom”.
  
               I grew up to know that my mother is like many mothers around the world who run around with tens of tasks on their back, and unfortunately most of them don’t have time for themselves.
@@ -51,10 +58,13 @@ export default class AboutUsScreen extends React.Component {
               Time is Precious and so are you.
  
               We value Time and We Value you.
+            
+            </Text>
 
-                </Text>
+       </View>
             </View>
           </ScrollView>
+          
 
 
       );

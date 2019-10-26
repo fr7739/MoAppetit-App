@@ -9,7 +9,7 @@ class Prod extends Component {
             return(
                 <View key = {product.id.toString()} style = {{borderWidth: 2, backgroundColor: 'white'}}>
                     <Text>{console.log(product.images[0].src)}</Text>
-                    <View style = {{flex: 1, flexDirection: 'row', justifyContent: 'flex-start'}}>
+                    <View style = {{flex: 1, flexDirection: 'row', justifyContent: 'space-between'}}>
                         <Image source={{uri: product.images[0].src}} style = {styles.buttonStyle6} />
                     </View>
                     <View style = {{flex: 1, flexDirection: 'row', justifyContent: 'flex-start'}}>

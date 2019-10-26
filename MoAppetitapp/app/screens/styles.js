@@ -76,14 +76,16 @@ export default StyleSheet.create({
       width: '100%',//
      height: '100%', //
     }, //
+
     container: {
      flex: 1,
-      paddingTop: 50,
+      //paddingTop: 1,
       alignItems: 'center',
       justifyContent: 'center',
       paddingLeft: 20,
       paddingRight: 20,
-      borderRadius:100,
+      borderRadius:200,
+      marginTop:0
 
     },
     buttonStyle2:
@@ -412,8 +414,15 @@ marginBottom:20,
 
     // style for password
   welcome2: {
-    fontSize: 15,
+    fontSize: 14,
     textAlign: 'center',
+    margin: 10,
+  },
+
+   // style for About Page
+   welcome3: {
+    fontSize: 16,
+    textAlign: 'justify',
     margin: 10,
   },
   
@@ -516,11 +525,10 @@ CircleMoAppetit2:
     RatingsfieldsArea: 
     {
         flex: 4,
-        borderWidth: 3,
-        marginBottom: 0,
+        marginBottom: 3,
         paddingBottom: 0,
         backgroundColor: "white",
-        width: "60%"
+        width: 325,
     },
 
     subRatingStyle:
@@ -595,6 +603,74 @@ rectangle6: {
   borderRadius:30,
   left:35,
 },
+
+// InputContainer for Password
+inputContainer3: {
+  borderBottomColor: '#F5FCFF',
+  backgroundColor: '#FFFFFF',
+  borderWidth: 2,
+  borderRadius: 40,
+  overflow: "hidden",
+  width:400,
+  height:450,
+  marginBottom:5,
+  flexDirection: 'row',
+  alignItems:'center',
+  //left: 15,
+  //marginTop:200,
+},
+
+//buttonContainer for rating
+buttonContainer7: {
+  height:40,
+  flexDirection: 'row',
+  justifyContent: 'center',
+  alignItems: 'center',
+  marginBottom:50,
+  width:250,
+  borderRadius:30,
+  left:35,
+},
+
+//rectangle Container for rating
+rectangle7: {
+  height: 350,
+  width: 325,
+  backgroundColor: 'rgba(12, 57, 14, 0.85)',
+  borderWidth: 2,
+  borderRadius: 40,
+  overflow: "hidden",
+  left: 45,
+  marginBottom:70,
+},
+
+// InputContainer for user Page
+inputContainer4: {
+  borderBottomColor: '#F5FCFF',
+  backgroundColor: '#FFFFFF',
+  borderWidth: 2,
+  borderRadius: 40,
+  overflow: "hidden",
+  width:325,
+  height:50,
+  marginBottom:5,
+  flexDirection: 'row',
+  alignItems:'center',
+  left: 45,
+  //marginTop:200,
+},
+
+// style for Initialscreen
+inputContainer5: {
+  backgroundColor: '#3498db',
+  width:400,
+  overflow: "hidden",
+  marginBottom:30,
+  height: 50,
+  borderWidth: 2,
+  borderRadius: 40,
+},
+
   });
 
   

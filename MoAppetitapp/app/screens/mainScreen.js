@@ -10,6 +10,9 @@ import Prod from '../components/Product';
 
 import { Card} from 'react-native-elements';
 
+import { createBottomTabNavigator, createAppContainer } from 'react-navigation';  
+
+
 
 
 
@@ -60,6 +63,7 @@ export default class MainScreen extends React.Component {
         products: [],
       };
     }
+    
     componentWillMount(){
       client.product.fetchAll().then((res) => {
         this.setState({
@@ -96,14 +100,6 @@ switchToAboutUs = async() =>
 
         <Container>
 
-
-        
-
-        
-
-     
-
-
                 <Header transparent
                     leftComponent={<Icon name="menu" onPress={() => this.props.navigation.openDrawer()} />}
                     rightComponent={<Icon name="md-cart" onPress={() => this.props.navigation.navigate('cart')} />}
@@ -112,9 +108,13 @@ switchToAboutUs = async() =>
    
                 <Card>
           <Image 
+          Header transparent
+          leftComponent={<Icon name="menu" onPress={() => this.props.navigation.openDrawer()} />}
+          rightComponent={<Icon name="md-cart" onPress={() => this.props.navigation.navigate('cart')} />}
+
           source={require('../assets/HeaderImage.png')}
           style={{
-            height: 135,
+            height: 195,
             width: 400,
         
           }}

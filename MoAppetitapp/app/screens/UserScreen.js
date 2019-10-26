@@ -351,9 +351,13 @@ console.log("Count of addresses: " + this.addresses.length);
 
 
         <ScrollView>
-              <View><Text style={styles.subPageHeadStyle}>User Info</Text></View>
+        <View style={styles.inputContainer4}>
              
-    
+        <Text style={styles.welcome}>
+            User Info
+            </Text>
+            </View>
+
           <View style={styles.rectangle5}>
           <View style={styles.inputContainer}>
           <TextInput style={styles.inputs}          
@@ -384,9 +388,11 @@ console.log("Count of addresses: " + this.addresses.length);
               </View>
                 </View>
 
-
-              <View><Text style={styles.subPageHeadStyle}>Add Address</Text></View>
-
+          <View style={styles.inputContainer4}>
+          <Text style={styles.welcome}>
+            Add Address
+            </Text>
+            </View>
               
           <View style={styles.rectangle6}>
           <View style={styles.inputContainer}>
@@ -460,7 +466,7 @@ console.log("Count of addresses: " + this.addresses.length);
             
             <View>
             <TouchableOpacity style={[styles.buttonContainer5]}>
-              <Button style={{ container: styles.buttonContainer5}} onPress={this.handleSubmit} text="Add Addresss" raised={true} primary={true} />
+              <Button style={{ container: styles.buttonContainer5}} onPress={this.handleSubmit} text="Submit" raised={true} primary={true} />
               </TouchableOpacity>
               </View>
               

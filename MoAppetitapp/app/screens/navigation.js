@@ -44,10 +44,6 @@ Home: {
     drawerLockMode: "locked-closed",
   }),
   },
-  
-'Contact Us': { 
-  screen: ContactUs,
-},
 
 'About Us': {
   screen: AboutUs,
@@ -55,7 +51,22 @@ Home: {
   navigationOptions: {
     drawerIcon: () => (
       <Image
-        source={require('../assets/Vector.jpg')}
+        source={require('../assets/newspaper.png')}
+        resizeMode="contain"
+        style={{ width: 20, height: 20 }}
+      />
+    )
+  }
+},
+
+
+'My Profile': {
+  screen: UserScreen,
+
+  navigationOptions: {
+    drawerIcon: () => (
+      <Image
+        source={require('../assets/user.png')}
         resizeMode="contain"
         style={{ width: 20, height: 20 }}
       />
@@ -69,33 +80,35 @@ Home: {
   navigationOptions: {
     drawerIcon: () => (
       <Image
-        source={require('../assets/Vector.jpg')}
+        source={require('../assets/star-empty.png')}
         resizeMode="contain"
         style={{ width: 20, height: 20 }}
       />
     )
   }
 },
-'User': {
-  screen: UserScreen,
 
-  navigationOptions: {
-    drawerIcon: () => (
-      <Image
-        source={require('../assets/Vector.jpg')}
-        resizeMode="contain"
-        style={{ width: 20, height: 20 }}
-      />
-    )
-  }
-},
+
 
 Main: {
   screen: MainScreen, 
   navigationOptions: {
     drawerIcon: () => (
       <Image
-        source={require('../assets/home-icon.png')}
+        source={require('../assets/home3.png')}
+        resizeMode="contain"
+        style={{ width: 20, height: 20 }}
+      />
+    )
+  }
+},
+
+'Contact Us': { 
+  screen: ContactUs,
+  navigationOptions: {
+    drawerIcon: () => (
+      <Image
+        source={require('../assets/mail4.png')}
         resizeMode="contain"
         style={{ width: 20, height: 20 }}
       />
@@ -104,7 +117,16 @@ Main: {
 },
 
 Debug: {
-  screen: DebugScreen
+  screen: DebugScreen,
+  navigationOptions: {
+    drawerIcon: () => (
+      <Image
+        source={require('../assets/cog.png')}
+        resizeMode="contain"
+        style={{ width: 20, height: 20 }}
+      />
+    )
+  }
 },
 
 cart : {

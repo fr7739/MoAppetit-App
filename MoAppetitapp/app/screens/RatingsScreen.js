@@ -166,18 +166,20 @@ export default class RatingsScreen extends React.Component {
           </View>
           <View style={styles.container}>{this.renderRatings()}</View>
 
-          <View style={styles.rectangle5}>
-            
-            <View>
-              <Text style={styles.subPageHeadStyle}>New Rating</Text>
+          <View style={styles.inputContainer4}>
+             
+        <Text style={styles.welcome}>
+            New Rating
+            </Text>
             </View>
+          <View style={styles.rectangle7}>
             <View style={styles.RatingsfieldsArea}>
               <TextField
                 tintColor="rgba(12, 57, 14, 0.85)"
-                required
-                
+                required    
                 value={this.state["ratingDescription"]}
-                label="Description"
+                placeholder="Description"
+                keyboardType="default"
                 onChangeText={this.handleratingDescriptionChange}
               />
               <Picker
@@ -214,7 +216,7 @@ export default class RatingsScreen extends React.Component {
         
             </View>
             <Button
-                style={{ container: styles.buttonStyle2 }}
+                style={{ container: styles.buttonContainer7 }}
                 onPress={this.handleRatingSubmit}
                 text="Save Rating"
                 raised={true}
