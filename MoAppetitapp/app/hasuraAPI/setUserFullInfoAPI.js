@@ -9,7 +9,6 @@ export const setUseFullInfoAPI = async (data) => {
             "Content-Type": "application/json"
         }
     };
-    console.log(data);
     let body = {
         type: "update",
         args: {

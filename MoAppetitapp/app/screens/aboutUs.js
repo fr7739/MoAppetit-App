@@ -1,6 +1,6 @@
   
 import React from 'react';
-import { StyleSheet, View, Text, ScrollView, Image, ImageBackground, KeyboardAvoidingView} from 'react-native';
+import { StyleSheet, View, Text, ScrollView, Image, ImageBackground} from 'react-native';
 import {AsyncStorage} from 'react-native';
 import {Button} from 'react-native-material-ui';
 import styles from './styles.js';
@@ -19,10 +19,12 @@ export default class AboutUsScreen extends React.Component {
 
   render() {
       return (
-        <ScrollView>
+        <ImageBackground source={require('../assets/OpeningPageBackground.jpg')} resizeMode='cover'style={styles.backgroundImage}>
+
+        {/* <ScrollView> */}
 
         
-        <View style={styles.container}>
+        {/* <View style={styles.container}>
         
 
         
@@ -37,7 +39,7 @@ export default class AboutUsScreen extends React.Component {
   }}
 />
   
-</Card>
+</Card> */}
 
 <View style={styles.inputContainer5}>
              
@@ -62,10 +64,9 @@ export default class AboutUsScreen extends React.Component {
             </Text>
 
        </View>
-            </View>
-          </ScrollView>
+          {/* </ScrollView> */}
           
-
+      </ImageBackground>
 
       );
   }

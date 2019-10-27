@@ -46,7 +46,7 @@ export default StyleSheet.create({
       fontSize:80,
       lineHeight: 0, 
       paddingTop: 65,
-      fontFamily: 'serif',
+      //fontFamily: 'serif',
       width: 150,
       height: 150,
       color: "#E8E8E8",
@@ -493,7 +493,7 @@ CircleMoAppetit2:
       fontSize:80,
       lineHeight: 0, 
       paddingTop: 65,
-      fontFamily: 'serif',
+      //fontFamily: 'serif',
       width: 150,
       height: 150,
       color: "#E8E8E8",
@@ -598,10 +598,11 @@ rectangle6: {
   flexDirection: 'row',
   justifyContent: 'center',
   alignItems: 'center',
-  marginBottom:-5,
+  marginBottom:17,
   width:250,
   borderRadius:30,
   left:35,
+  //marginTop:-15,
 },
 
 // InputContainer for Password
@@ -613,10 +614,10 @@ inputContainer3: {
   overflow: "hidden",
   width:400,
   height:450,
-  marginBottom:5,
+  marginBottom:160,
   flexDirection: 'row',
   alignItems:'center',
-  //left: 15,
+  left: 5,
   //marginTop:200,
 },
 
@@ -632,22 +633,20 @@ buttonContainer7: {
   left:35,
 },
 
-//rectangle Container for rating
+//rectangle Container for usercreen
 rectangle7: {
-  height: 350,
+  height: 280,
   width: 325,
   backgroundColor: 'rgba(12, 57, 14, 0.85)',
   borderWidth: 2,
   borderRadius: 40,
   overflow: "hidden",
   left: 45,
-  marginBottom:70,
+  marginBottom:80,
 },
 
 // InputContainer for user Page
 inputContainer4: {
-  borderBottomColor: '#F5FCFF',
-  backgroundColor: '#FFFFFF',
   borderWidth: 2,
   borderRadius: 40,
   overflow: "hidden",
@@ -657,7 +656,8 @@ inputContainer4: {
   flexDirection: 'row',
   alignItems:'center',
   left: 45,
-  //marginTop:200,
+  marginBottom:10,
+  backgroundColor: '#3498db',
 },
 
 // style for Initialscreen
@@ -665,10 +665,53 @@ inputContainer5: {
   backgroundColor: '#3498db',
   width:400,
   overflow: "hidden",
-  marginBottom:30,
+  marginBottom:50,
+  marginTop: 50,
   height: 50,
   borderWidth: 2,
   borderRadius: 40,
+  left: 5
+},
+
+//rectangle Container for userscreen
+rectangle8: {
+  height: 260,
+  width: 325,
+  backgroundColor: 'rgba(12, 57, 14, 0.85)',
+  borderWidth: 2,
+  borderRadius: 40,
+  overflow: "hidden",
+  left: 45,
+  marginBottom:50,
+  marginTop:0,
+},
+
+// style for Ratingscreen
+inputContainer6: {
+  borderWidth: 2,
+  borderRadius: 40,
+  overflow: "hidden",
+  width:325,
+  height:50,
+  marginBottom:50,
+  flexDirection: 'row',
+  alignItems:'center',
+  left: 45,
+  marginTop:270,
+  backgroundColor: '#3498db',
+},
+
+//rectangle Container for RatingScreen
+rectangle8: {
+  height: 280,
+  width: 325,
+  backgroundColor: 'rgba(12, 57, 14, 0.85)',
+  borderWidth: 2,
+  borderRadius: 40,
+  overflow: "hidden",
+  left: 45,
+  marginBottom:80,
+  marginTop:-30
 },
 
   });

@@ -1,12 +1,12 @@
 import React from 'react';
-import { StyleSheet, View,  FlatList, Text, ScrollView, Image, ImageBackground, TextInput, TouchableOpacity} from 'react-native';
+import { View, Text, ScrollView, TextInput, TouchableOpacity, ImageBackground} from 'react-native';
 import { TextField } from 'react-native-materialui-textfield';
-import {AsyncStorage} from 'react-native';
+//import {AsyncStorage} from 'react-native';
 import {Button} from 'react-native-material-ui';
 import styles from './styles.js';
 import getAddressAPI from '../hasuraAPI/getAddressAPI';
 import setAddressAPI from '../hasuraAPI/setAddressAPI';
-import setUserAPI from '../hasuraAPI/setUserAPI';
+//import setUserAPI from '../hasuraAPI/setUserAPI';
 import getFullUserAPI from "../hasuraAPI/getFullUserAPI"
 import setUseFullInfoAPI from '../hasuraAPI/setUserFullInfoAPI.js';
 
@@ -20,7 +20,7 @@ export default class UserScreen extends React.Component {
       hasura_id: global.hasura_id,  //USer section
       name: "",  //USer section
       config: null,  //USer section
-      phone: null,  //USer section
+      phone: "",  //USer section
       addressline1: '',
       addressline2: '',
       addressline3: '',
@@ -80,7 +80,7 @@ export default class UserScreen extends React.Component {
       // Calling the getAddressAPI API
       let getAddressResponse = await getAddressAPI(addressInfo);
       const resultResponseGetAddress = await getAddressResponse.json();
-      console.log("AAAAAAAAPPPPPP: " + JSON.stringify(resultResponseGetAddress));
+      //console.log("AAAAAAAAPPPPPP: " + JSON.stringify(resultResponseGetAddress));
       for (const key in resultResponseGetAddress) {
          
           //console.log("ooo: "+ JSON.stringify(resultResponseGetAddress[key]));
@@ -334,10 +334,11 @@ renderf(){
 
   render() {
     //this.loadAddresses();
-console.log("Mark!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-console.log("Count of addresses: " + this.addresses.length);
+//console.log("Mark!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+//console.log("Count of addresses: " + this.addresses.length);
       return (
 
+        <ImageBackground source={require('../assets/OpeningPageBackground.jpg')} resizeMode='cover'style={styles.backgroundImage}>
 
         <ScrollView>
 
@@ -358,35 +359,42 @@ console.log("Count of addresses: " + this.addresses.length);
             </Text>
             </View>
 
-          <View style={styles.rectangle5}>
-          <View style={styles.inputContainer}>
-          <TextInput style={styles.inputs}          
-          required
-          value= {this.userState["name"]}
-          label="Name"
-          onChangeText={this.handleNameChange}
-          />
-          </View>
+            {/* <View style={styles.container}>
+             {this.renderAddresses()}
+             {this.renderf()}
+             </View> */}
+          </ScrollView>
+
+
+        <ScrollView>
+        <View style={styles.rectangle7}>
+        <View style={styles.RatingsfieldsArea}>       
+        <TextField 
+        required
+        label = ''
+        tintColor="rgba(12, 57, 14, 0.85)"
+        value= {this.userState["name"]}
+        placeholder="Name"
+        //keyboardType="default"                              
+        onChangeText={this.handleNameChange}
+        />
               
-
-
-          <View style={styles.inputContainer}>
-          <TextInput style={styles.inputs}
-          required
-          secureTextEntry={true}
-          value= {this.userState["phone"]}
-          onChangeText={this.handlePhoneChange}
-          />
-          </View>
+        <TextField
+        required
+        label = ''
+        tintColor="rgba(12, 57, 14, 0.85)"
+        value= {this.userState["phone"]}
+        placeholder="Phone"
+        //keyboardType="Phone"                 
+        onChangeText={this.handlePhoneChange}
+        />
+        </View>
               
-
-
-              
-              <View>
+        <View>
           <TouchableOpacity style={[styles.buttonContainer6]}></TouchableOpacity>
-              <Button style={{ container: styles.buttonContainer6}} onPress={this.handleUserSubmit} text="Edit Info" raised={true} primary={true} />
-              </View>
-                </View>
+          <Button style={{ container: styles.buttonContainer6}} onPress={this.handleUserSubmit} text="Edit Info" raised={true} primary={true} />
+          </View>
+          </View>
 
           <View style={styles.inputContainer4}>
           <Text style={styles.welcome}>
@@ -438,6 +446,7 @@ console.log("Count of addresses: " + this.addresses.length);
             keyboardType="default"
             underlineColorAndroid='transparent'/>
             </View> 
+            
                       
 
             <View style={styles.inputContainer}>        
@@ -471,9 +480,10 @@ console.log("Count of addresses: " + this.addresses.length);
               </View>
               
               </View>
-
+               
         </ScrollView>
         </ScrollView>
+        </ImageBackground>
 
       );
   }

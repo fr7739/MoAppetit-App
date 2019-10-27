@@ -26,22 +26,20 @@ export default class RatingsScreen extends React.Component {
     super(props);
 
     this.state = {
-      user_id: 0,
+      user_id: "",
       hasura_id: global.hasura_id,
-      ratingLevel: 0,
+      ratingLevel: "",
       ratingDescription: "",
-      product_id: 0
+      product_id: ""
     };
     this.allProducts = [];
     this.ratings = [];
     //this.userState  = {"id:":"0","hasura_id": global.hasura_id, "config": "null", "name":"","phone":"0"};
     if (this.loadRatings()) {
-      console.log("Ratings Loaded");
     }
     if( this.loadAllProducts())
     {
-      console.log("Products Loaded");
-    }
+   }
   }
 
   async loadAllProducts() {
@@ -50,13 +48,9 @@ export default class RatingsScreen extends React.Component {
     while(this.allProducts.length > 0) {
       this.allProducts.pop();
     }
-    console.log("??????");
     let getProductsResponse = await getAllProductsAPI(this.state);
-    console.log(getProductsResponse);
-    const resultProducts = await getProductsResponse.json();
-    console.log("sdfsdfsdfsdfsdfjjjjj");
+  const resultProducts = await getProductsResponse.json();
     for (const key in resultProducts) {
-      console.log("Pushing an item")
       if(this.allProducts.findIndex( x => x.id == resultProducts[key].id) == -1)
       {
       this.allProducts.push({
@@ -86,13 +80,11 @@ export default class RatingsScreen extends React.Component {
     let getRatingResponse = await getRatingAPI(ratingsInfo);
     const resultResponseGetRating = await getRatingResponse.json();
     for (const key in resultResponseGetRating) {
-      console.log("iii:"+JSON.stringify(resultResponseGetRating[key]));
-      console.log("Key: "+key);
       this.ratings.push({
         user_id: resultResponseGetRating[key].user_id,
         product_id: resultResponseGetRating[key].product_id,
         /*Join*/
-        productName:  this.allProducts.find(function(element) { return element.id == resultResponseGetRating[key].product_id}).name,
+        //productName:  this.allProducts.find(function(element) { return element.id == resultResponseGetRating[key].product_id}).name,
         id: resultResponseGetRating[key].id,
         ratingLevel: resultResponseGetRating[key].ratinglevel,
         ratingDescription: resultResponseGetRating[key].ratingDescription
@@ -103,7 +95,6 @@ export default class RatingsScreen extends React.Component {
 
   // Handling change when user enters text
   handlerratinglevelChange = (itemValue, itemIndex) => {
-    console.log("Rating itemValue: "+itemValue);
     this.setState({ratingLevel: itemValue});
   };
 
@@ -114,15 +105,12 @@ export default class RatingsScreen extends React.Component {
   
 
   handleproduct_idChange = (itemValue, itemIndex) => {
-    console.log("itemValue: "+itemValue);
     this.setState({product_id: itemValue});
   };
 
   handleRatingSubmit = async (userInfo) => {
-    console.log("Trying to Submit User");
     let RatingResponse = await setRatingAPI(this.state);
     const resultUserResponse = await RatingResponse.json();
-    console.log("Response number was: " + RatingResponse.status);
 
     this.state.ratingLevel = "";
     this.state.ratingDescription = "";
@@ -148,35 +136,36 @@ export default class RatingsScreen extends React.Component {
   } 
 
   render() {
-    //console.log(this.allProducts);
     //if(this.loadAllProducts())
     //{
 
     //}
+    
     let productItems = this.allProducts.map((item) => {
       return <Picker.Item key={item.id} value={item.id} label={item.name} />;
     });
     return (
-     
-      <ScrollView>
+      <ImageBackground source={require('../assets/OpeningPageBackground.jpg')} resizeMode='cover'style={styles.backgroundImage}>
 
-        <View 
+      <ScrollView>
+        
+        {/* <View 
         style={styles.existingRatingContainer}>
             <Text style={styles.subPageHeadStyle}>Existing Ratings</Text>
           </View>
-          <View style={styles.container}>{this.renderRatings()}</View>
+          <View style={styles.container}>{this.renderRatings()}</View> */}
 
-          <View style={styles.inputContainer4}>
+          <View style={styles.inputContainer6}>
              
         <Text style={styles.welcome}>
             New Rating
             </Text>
             </View>
-          <View style={styles.rectangle7}>
+          <View style={styles.rectangle8}>
             <View style={styles.RatingsfieldsArea}>
               <TextField
-                tintColor="rgba(12, 57, 14, 0.85)"
-                required    
+                label = ''
+                tintColor="rgba(12, 57, 14, 0.85)"    
                 value={this.state["ratingDescription"]}
                 placeholder="Description"
                 keyboardType="default"
@@ -224,6 +213,7 @@ export default class RatingsScreen extends React.Component {
               />
           </View>
         </ScrollView>
+        </ImageBackground>
     );
   }
 }
