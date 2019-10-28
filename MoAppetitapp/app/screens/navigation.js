@@ -17,6 +17,7 @@ import LoginScreen from './loginForm';
 import PasswordScreen from './passwordForm';
 import CartScreen from './cartScreen';
 import initialScreen from './initialScreen';
+import productScreen from './productScreen'
 
 
 
@@ -103,6 +104,13 @@ Main: {
   }
 },
 
+Product: {
+  screen: productScreen, 
+  navigationOptions: {
+    drawerLabel: <Hidden />
+  }
+},
+
 Debug: {
   screen: DebugScreen
 },
@@ -168,7 +176,7 @@ navigationOptions: () => ({
 
 
 }, {
-initialRouteName: "initialScreen",
+initialRouteName: "Main",
 contentOptions: {
   activeTintColor: '#e91e63'
 },

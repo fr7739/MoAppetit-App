@@ -1,9 +1,9 @@
 {
   "expoServerPort": 19000,
-  "packagerPort": 19001,
-  "packagerPid": 9860,
+  "packagerPort": null,
+  "packagerPid": null,
   "expoServerNgrokUrl": "https://fv-vyj.essono.moappetitapp.exp.direct",
   "packagerNgrokUrl": "https://packager.fv-vyj.essono.moappetitapp.exp.direct",
-  "ngrokPid": 692,
+  "ngrokPid": 3208,
   "devToolsPort": 19002
 }

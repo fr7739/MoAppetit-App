@@ -1,6 +1,6 @@
 {
   "devToolsPort": 19002,
-  "expoServerPort": 19000,
+  "expoServerPort": null,
   "packagerPort": 19001,
   "packagerPid": 25136,
   "expoServerNgrokUrl": "https://c2-924.anonymous.moappetit-app.exp.direct",
