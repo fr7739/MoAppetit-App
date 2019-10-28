@@ -10,6 +10,7 @@ import Prod from '../components/Product';
 
 import { Card} from 'react-native-elements';
 
+
 import { createBottomTabNavigator, createAppContainer } from 'react-navigation';  
  
 // Added by Mamadou Store Token
@@ -81,10 +82,8 @@ switchToAboutUs = async() =>
           
         </Card>
         </View>
-                   
-              <Prod products = {this.state.products} client = {client} />
-              </Container>
-
+              <Prod products = {this.state.products} client = {client} navigation = {this.props.navigation} />
+           </Container>
       );
   }
 }
