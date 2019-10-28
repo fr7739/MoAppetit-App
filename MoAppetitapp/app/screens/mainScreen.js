@@ -9,44 +9,6 @@ import { client } from '../hasuraAPI/shopifyAPI';
 import Prod from '../components/Product'
 
 
-
-let prod = 
-
-    client.product.fetchAll().then( products => {
-    // Do something with the product
-    console.log(products[0]);
-    console.log("This is hopefully a product name: " +products[0].title+ " and description: " +products[0].description)
-    return products[0].title;
-  }).catch(e => {
-      console.log('Caught error: ' +e)
-  });  
-
-  let prod2 = 
-
-    client.product.fetchAll().then( products => {
-    // Do something with the product
-    return products[0].description;
-  }).catch(e => {
-      console.log('Caught error: ' +e)
-  });  
-
-  let prod3 = 
-
-    client.product.fetchAll().then( products => {
-    // Do something with the product
-    return products[1].title;
-  }).catch(e => {
-      console.log('Caught error: ' +e)
-  });  
-
-  let prod4 = 
-
-    client.product.fetchAll().then( products => {
-    // Do something with the product
-    return products[1].description;
-  }).catch(e => {
-      console.log('Caught error: ' +e)
-  });  
 // Added by Mamadou Store Token
 // Rendering to the UI the post Registration screen with the login button and informing the user that they need to validate their email
 export default class MainScreen extends React.Component {
@@ -97,7 +59,7 @@ switchToAboutUs = async() =>
                     leftComponent={<Icon name="menu" onPress={() => this.props.navigation.openDrawer()} />}
                     rightComponent={<Icon name="md-cart" onPress={() => this.props.navigation.navigate('cart')} />}
                    />
-              <Prod products = {this.state.products} client = {client} />
+              <Prod products = {this.state.products} client = {client} navigation = {this.props.navigation} />
            </ImageBackground>
       );
   }
