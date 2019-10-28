@@ -2,8 +2,9 @@ import React from 'react';
 import { StyleSheet, View, ImageBackground, KeyboardAvoidingView, Image, Text} from 'react-native';
 import {AsyncStorage} from 'react-native';
 import {Button} from 'react-native-material-ui';
+import { StackActions, NavigationActions } from 'react-navigation';
 import styles from '../screens/styles';
-import { Icon } from 'native-base';
+import { Icon, Container } from 'native-base';
 import { Header } from 'react-native-elements';
 import { client } from '../hasuraAPI/shopifyAPI';
 import ProductPage from '../components/productPage'
@@ -16,7 +17,8 @@ constructor(props){
     this.state ={
         productID: string,
         product: '',
-        productIMG: ''
+        productIMG: '',
+        updated: false,
     }
 }
 
@@ -68,14 +70,37 @@ this.getProdID().then(() => {
      
 }
 
+handleRefresh = () =>{
+  if(this.state.updated === true){
+    this.setState({
+        updated: false
+    })
+    console.log(this.state.updated)
+}
+else{
+    this.setState({
+        updated: true
+    })
+    console.log(this.state.updated)
+}
+this.forceUpdate()
+}
+
+
+
+
 
 
       render(){
-
         return(
-            
-            <ProductPage product = {this.state.product} client = {client} image = {this.state.productIMG} />
-
+          <Container>
+          <Header transparent
+          leftComponent={<Icon name="menu" onPress={() => this.props.navigation.openDrawer()} />}
+          rightComponent={<Icon name="md-cart" onPress={() => this.props.navigation.navigate('cart')} />}
+         />
+        <ProductPage product = {this.state.product} client = {client} image = {this.state.productIMG} />
+        
+        </Container>
         )
       }
 }

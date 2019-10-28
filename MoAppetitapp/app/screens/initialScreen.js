@@ -16,6 +16,14 @@ import { Card} from 'react-native-elements';
 // Rendering to the UI the Login and Register buttons
 export default class InitialScreen extends React.Component {
 
+  setLoginError = error => {
+    // If there's an error display that, otherwise send to new screen to tell the user to verify email address and then login
+    this.setState({error})
+    console.log(this.state)
+    if(error === '') {
+        this.props.navigation.navigate('Main')
+    }
+}
 
   handleSubmitFacebook = async () => {
     let loginResponse2 = await facebooklogIn()

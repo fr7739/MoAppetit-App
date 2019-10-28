@@ -31,6 +31,7 @@ export default class MainScreen extends React.Component {
         })
       })
       }
+   
 
 switchToContactUs = async() =>
 {

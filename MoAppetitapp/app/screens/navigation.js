@@ -198,7 +198,7 @@ navigationOptions: () => ({
 
 
 }, {
-initialRouteName: "Main",
+initialRouteName: "initialScreen",
 contentOptions: {
   activeTintColor: '#e91e63'
 },

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, ScrollView, TextInput, TouchableOpacity, ImageBackground} from 'react-native';
+import { View, Text, ScrollView, TextInput, KeyboardAvoidingView, TouchableOpacity, ImageBackground} from 'react-native';
 import { TextField } from 'react-native-materialui-textfield';
 //import {AsyncStorage} from 'react-native';
 import {Button} from 'react-native-material-ui';
@@ -37,11 +37,9 @@ export default class UserScreen extends React.Component {
  this.userState  = {"id:":"0","hasura_id": global.hasura_id, "config": "null", "name":"","phone":"0"};
  if( this.loadAddresses())
  {
-   console.log("hello");
  }
  if( this.loadUserInfo())
  {
-   console.log("hello");
  }
   }
 
@@ -51,14 +49,9 @@ export default class UserScreen extends React.Component {
     }
 
     let getFullUserResponse = await getFullUserAPI(passInUserObject);
-   // console.log("ab1212");
-    //console.log("After ab: " + JSON.stringify(getFullUserResponse));
+ 
     const resultResponseGetFullUser = await getFullUserResponse.json();
     
-    console.log("AAAAAAAAPPPPPP: " + JSON.stringify(resultResponseGetFullUser));
-    console.log("cd34343");
-    console.log("find me 123: " + resultResponseGetFullUser);
-    //for (const key in getFullUserResponse) {
       
     global.User_ID = this.userState.user_id;
     this.userState.user_id = resultResponseGetFullUser[0].id;
@@ -69,7 +62,6 @@ export default class UserScreen extends React.Component {
     //}
     this.forceUpdate();
   
-    console.log("this.state: " + JSON.stringify(this.userState));
   }
   async  loadAddresses() {
     this.addresses = [];
@@ -80,11 +72,8 @@ export default class UserScreen extends React.Component {
       // Calling the getAddressAPI API
       let getAddressResponse = await getAddressAPI(addressInfo);
       const resultResponseGetAddress = await getAddressResponse.json();
-      //console.log("AAAAAAAAPPPPPP: " + JSON.stringify(resultResponseGetAddress));
       for (const key in resultResponseGetAddress) {
          
-          //console.log("ooo: "+ JSON.stringify(resultResponseGetAddress[key]));
-          console.log("addressline1: " + resultResponseGetAddress[key].addressline1);
         this.addresses.push ({
           addressline1 :  resultResponseGetAddress[key].addressline1,
           addressline2 :  resultResponseGetAddress[key].addressline2,
@@ -308,15 +297,30 @@ handleUserSubmit = async(userInfo) =>{
       // console.log("ff Item: "+ item);
       
         return (
-            <View style={styles.container}>
-              
+            <View key = {item.id}style={styles.rectangle6}>
+              <View style={styles.inputContainer}>
               <Text style={styles.subPageHeadStyle}>Address Line 1:  {item.addressline1}</Text>
+              </View>
+
+              <View style={styles.inputContainer}>
               <Text style={styles.subPageHeadStyle}>Address Line 2:  {item.addressline2}</Text>
+              </View>
+
+              <View style={styles.inputContainer}>
               <Text style={styles.subPageHeadStyle}>Address Line 3:  {item.addressline3}</Text>
+              </View>
+
+              <View style={styles.inputContainer}>
               <Text style={styles.subPageHeadStyle}>City:  {item.city}</Text>
+              </View>
+
+              <View style={styles.inputContainer}>
               <Text style={styles.subPageHeadStyle}>State:  {item.state}</Text>
+              </View>
+
+              <View style={styles.inputContainer}>
               <Text style={styles.subPageHeadStyle}>Zip: {item.zip}</Text>
-           
+              </View>
               
               </View>
         );
@@ -402,7 +406,7 @@ renderf(){
             </Text>
             </View>
               
-          <View style={styles.rectangle6}>
+          <View style={styles.rectangle9}>
           <View style={styles.inputContainer}>
           <TextInput style={styles.inputs} 
             required

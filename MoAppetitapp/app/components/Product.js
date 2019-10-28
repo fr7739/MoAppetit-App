@@ -5,6 +5,12 @@ import {AsyncStorage} from 'react-native';
 
 
 class Prod extends Component {
+    constructor(props){
+        super(props)
+        this.state ={
+            updated: false
+        }
+    }
 
     setValue = async (key, data) => {
         try {
@@ -15,7 +21,20 @@ class Prod extends Component {
         }
     }
 
+
+    async removeItemValue(key) {
+        try {
+          await AsyncStorage.removeItem(key);
+          return true;
+        }
+        catch(exception) {
+          return false;
+        }
+      }
     handleProductPage(key, data, key2, data2){
+        this.removeItemValue(key)
+        this.removeItemValue(key2)
+        
         this.setValue(key, data)
         this.setValue(key2, data2)
        
@@ -34,11 +53,11 @@ class Prod extends Component {
                         </TouchableOpacity>
                     </View>
                     
-                    <View style = {{flex: 1, flexDirection: 'row', justifyContent: 'flex-start'}}>
+                    <View style = {{flex: 1, flexDirection: 'row', justifyContent: 'center'}}>
                         <Text>{product.title}</Text>
                     </View>
                     
-                    <View style = {{flex: 1, flexDirection: 'row', justifyContent: 'flex-start'}}>
+                    <View style = {{flex: 1, flexDirection: 'row', justifyContent: 'center'}}>
                         <Text>Price: {product.variants[0].price}</Text>
                     </View>
                 </View>

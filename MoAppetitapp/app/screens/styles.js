@@ -163,7 +163,7 @@ export default StyleSheet.create({
     },
     subPageHeadStyle:
     {
-      fontSize:22,
+      fontSize:16,
       backgroundColor: 'rgba(12, 57, 14, 0.85)',
       justifyContent: "center",
       color:"white"
@@ -570,7 +570,18 @@ CircleMoAppetit2:
 
 //rectangle Container for UserScreen Address
 rectangle6: {
-  height: 600,
+  height: 450,
+  width: 325,
+  backgroundColor: 'rgba(12, 57, 14, 0.85)',
+  borderWidth: 2,
+  borderRadius: 40,
+  overflow: "hidden",
+  left: 0,
+  marginBottom:70,
+},
+
+rectangle9: {
+  height: 500,
   width: 325,
   backgroundColor: 'rgba(12, 57, 14, 0.85)',
   borderWidth: 2,

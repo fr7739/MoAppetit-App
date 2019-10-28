@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView } from 'react-native';
+import {Button} from 'react-native-material-ui';
 import styles from '../screens/styles'
 import {AsyncStorage} from 'react-native';
 
@@ -8,10 +9,30 @@ constructor(props){
     super(props)
 
     this.state ={
-    prodIMG: this.props.image
+    prodIMG: this.props.image,
+    updated: false
     }
 }
 
+componentWillUpdate(newProps, newState){
+    console.log("new props: " +newProps)
+    console.log("new State: " +newState)
+  }
+
+handleRefresh = () =>{
+    if(this.state.updated === true){
+      this.setState({
+          updated: false
+      })
+      console.log(this.state.updated)
+  }
+  else{
+      this.setState({
+          updated: true
+      })
+      console.log(this.state.updated)
+  }
+}
     render(){
 
             return(
@@ -23,10 +44,13 @@ constructor(props){
                     </View>
 
                     <View style = {{ flexDirection: 'row', justifyContent: 'center'}}>
- 
                     </View>
                 </View>
 
             )
+        }
+
+        componentDidUpdate(prevProps, prevState, snapshot){
+            
         }
     }
