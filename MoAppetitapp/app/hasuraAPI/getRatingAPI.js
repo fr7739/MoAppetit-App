@@ -27,10 +27,10 @@ export const getAllProductAPI = async (data) => {
   //  }
     //console.log("Global UserID: "+global.user_id);
     let body = {  
-        type: "select",
+        type: "select", //query type is select
         args: {
-            table: "rating",
-            "columns": ["*"]
+            table: "rating", //the rating table
+            "columns": ["*"] // get all the coloumns
          /*  , "where": {user_id: {_eq: global.user_id}} */
         }
     };
@@ -40,7 +40,7 @@ export const getAllProductAPI = async (data) => {
 
 
 
-    requestOptions.body = JSON.stringify(body);
+    requestOptions.body = JSON.stringify(body); //prepared that body to more friendly object that hasura can read
     console.log("Body ddd: " + requestOptions.body);
 
     try {

@@ -57,7 +57,7 @@ export default class RatingsScreen extends React.Component {
     console.log("sdfsdfsdfsdfsdfjjjjj");
     for (const key in resultProducts) {
       console.log("Pushing an item")
-      if(this.allProducts.findIndex( x => x.id == resultProducts[key].id) == -1)
+      if(this.allProducts.findIndex( x => x.id == resultProducts[key].id) == -1)//Not insert duplicates
       {
       this.allProducts.push({
         id: resultProducts[key].id,
@@ -65,9 +65,11 @@ export default class RatingsScreen extends React.Component {
       });
     }
     }
-    this.forceUpdate();
+    this.forceUpdate();//Force the page to rerender with the changes
   }
 
+
+  /**Loads the ratings on the top of the rating screen */
   async loadRatings() {
        if(Array.isArray(this.allProducts) && this.allProducts.length  )
      {
@@ -98,7 +100,7 @@ export default class RatingsScreen extends React.Component {
         ratingDescription: resultResponseGetRating[key].ratingDescription
       });
     }
-    this.forceUpdate();
+    this.forceUpdate(); //Force the page to rerender with the changes
   }
 
   // Handling change when user enters text
@@ -118,21 +120,27 @@ export default class RatingsScreen extends React.Component {
     this.setState({product_id: itemValue});
   };
 
+
+  /*when the user presses submit*/
   handleRatingSubmit = async (userInfo) => {
     console.log("Trying to Submit User");
-    let RatingResponse = await setRatingAPI(this.state);
+    let RatingResponse = await setRatingAPI(this.state);//Sends the inputed information to the hasura api
     const resultUserResponse = await RatingResponse.json();
     console.log("Response number was: " + RatingResponse.status);
-
+    //Clears out all the inputed information so that another rating can be entered
     this.state.ratingLevel = "";
     this.state.ratingDescription = "";
     this.state.product_id = 0;
     this.state.id = 0;
+    //Reload the list to get the list with the added information
     this.loadRatings();
     this.loadAllProducts();
-    this.forceUpdate();
+    this.forceUpdate();//Force the page to rerender with the changes
   };
 
+
+
+  /**Rendered the ratings called withing the main render */
   renderRatings() {
     return this.ratings.map(item => {
       return (
@@ -147,6 +155,8 @@ export default class RatingsScreen extends React.Component {
     });
   } 
 
+
+  //Render means draw on screen, this is on all screens, and is called by default.
   render() {
     console.log(this.allProducts);
     //if(this.loadAllProducts())
@@ -183,7 +193,7 @@ export default class RatingsScreen extends React.Component {
                 label="Description"
                 onChangeText={this.handleratingDescriptionChange}
               />
-              <Picker
+              <Picker 
               label="Rating" 
               mode="dropdown"
               prompt="dialog"

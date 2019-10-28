@@ -24,11 +24,11 @@ export const getAllProductsAPI = async (data) => {
           global.user_id = resultResponseGetFullUser[0].id;
     }*/
     //console.log("Global UserID: "+global.user_id);
-    let body = {  
-        type: "select",
+    let body = {  //Set up what we need to send to hasura
+        type: "select",   //The query is going to be select
         args: {
-            table: "product",
-            "columns": ["*"],
+            table: "product", //Selct form the products
+            "columns": ["*"],  //* - mean select all fields
            /* "where": {user_id: {_eq: global.user_id}} */
         }
     };
@@ -38,7 +38,7 @@ export const getAllProductsAPI = async (data) => {
 
 
 
-    requestOptions.body = JSON.stringify(body);
+    requestOptions.body = JSON.stringify(body); //prepared that body to more friendly object that hasura can read
     console.log("Body: " + requestOptions.body);
 
     try {
