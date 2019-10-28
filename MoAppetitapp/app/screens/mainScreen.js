@@ -3,12 +3,16 @@ import { StyleSheet, View, ImageBackground, KeyboardAvoidingView, Image, Text} f
 import {AsyncStorage} from 'react-native';
 import {Button} from 'react-native-material-ui';
 import styles from '../screens/styles';
-import { Icon } from 'native-base';
+import { Icon, Container } from 'native-base';
 import { Header } from 'react-native-elements';
 import { client } from '../hasuraAPI/shopifyAPI';
-import Prod from '../components/Product'
+import Prod from '../components/Product';
+
+import { Card} from 'react-native-elements';
 
 
+import { createBottomTabNavigator, createAppContainer } from 'react-navigation';  
+ 
 // Added by Mamadou Store Token
 // Rendering to the UI the post Registration screen with the login button and informing the user that they need to validate their email
 export default class MainScreen extends React.Component {
@@ -19,6 +23,7 @@ export default class MainScreen extends React.Component {
         products: [],
       };
     }
+    
     componentWillMount(){
       client.product.fetchAll().then((res) => {
         this.setState({
@@ -53,14 +58,32 @@ switchToAboutUs = async() =>
     
       return (
 
-        
-        <ImageBackground source={require('../assets/OpeningPageBackground.jpg')} resizeMode='cover'style={styles.backgroundImage}>
+        <Container>
+
                 <Header transparent
                     leftComponent={<Icon name="menu" onPress={() => this.props.navigation.openDrawer()} />}
                     rightComponent={<Icon name="md-cart" onPress={() => this.props.navigation.navigate('cart')} />}
                    />
+                     <View style={styles.container}>
+   
+                <Card>
+          <Image 
+          Header transparent
+          leftComponent={<Icon name="menu" onPress={() => this.props.navigation.openDrawer()} />}
+          rightComponent={<Icon name="md-cart" onPress={() => this.props.navigation.navigate('cart')} />}
+
+          source={require('../assets/HeaderImage.png')}
+          style={{
+            height: 195,
+            width: 400,
+        
+          }}
+        />
+          
+        </Card>
+        </View>
               <Prod products = {this.state.products} client = {client} navigation = {this.props.navigation} />
-           </ImageBackground>
+           </Container>
       );
   }
 }

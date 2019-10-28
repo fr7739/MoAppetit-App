@@ -33,10 +33,12 @@ class Prod extends Component {
                         <Image source={{uri: product.images[0].src}} style = {styles.buttonStyle6} />
                         </TouchableOpacity>
                     </View>
-                    <View style = {{flex: 1, flexDirection: 'row', justifyContent: 'center'}}>
+                    
+                    <View style = {{flex: 1, flexDirection: 'row', justifyContent: 'flex-start'}}>
                         <Text>{product.title}</Text>
                     </View>
-                    <View style = {{flex: 1, flexDirection: 'row', justifyContent: 'center'}}>
+                    
+                    <View style = {{flex: 1, flexDirection: 'row', justifyContent: 'flex-start'}}>
                         <Text>Price: {product.variants[0].price}</Text>
                     </View>
                 </View>
@@ -44,7 +46,7 @@ class Prod extends Component {
             )
         })
         return(
-            <View style = {{flex: 2, flexDirection: 'row'}}>
+            <View style = {{flex: 2, flexDirection: 'row', justifyContent: 'flex-start'}}>
             <ScrollView>
             {products}
             </ScrollView>

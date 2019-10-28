@@ -1,12 +1,12 @@
 import React from 'react';
-import { StyleSheet, View,  FlatList, Text, ScrollView, Image, ImageBackground} from 'react-native';
+import { View, Text, ScrollView, TextInput, TouchableOpacity, ImageBackground} from 'react-native';
 import { TextField } from 'react-native-materialui-textfield';
-import {AsyncStorage} from 'react-native';
+//import {AsyncStorage} from 'react-native';
 import {Button} from 'react-native-material-ui';
 import styles from './styles.js';
 import getAddressAPI from '../hasuraAPI/getAddressAPI';
 import setAddressAPI from '../hasuraAPI/setAddressAPI';
-import setUserAPI from '../hasuraAPI/setUserAPI';
+//import setUserAPI from '../hasuraAPI/setUserAPI';
 import getFullUserAPI from "../hasuraAPI/getFullUserAPI"
 import setUseFullInfoAPI from '../hasuraAPI/setUserFullInfoAPI.js';
 
@@ -20,7 +20,7 @@ export default class UserScreen extends React.Component {
       hasura_id: global.hasura_id,  //USer section
       name: "",  //USer section
       config: null,  //USer section
-      phone: null,  //USer section
+      phone: "",  //USer section
       addressline1: '',
       addressline2: '',
       addressline3: '',
@@ -80,7 +80,7 @@ export default class UserScreen extends React.Component {
       // Calling the getAddressAPI API
       let getAddressResponse = await getAddressAPI(addressInfo);
       const resultResponseGetAddress = await getAddressResponse.json();
-      console.log("AAAAAAAAPPPPPP: " + JSON.stringify(resultResponseGetAddress));
+      //console.log("AAAAAAAAPPPPPP: " + JSON.stringify(resultResponseGetAddress));
       for (const key in resultResponseGetAddress) {
          
           //console.log("ooo: "+ JSON.stringify(resultResponseGetAddress[key]));
@@ -327,22 +327,24 @@ handleUserSubmit = async(userInfo) =>{
 
 
 renderf(){
-  return ( <Text style={styles.subPageHeadStyle}> sdfsdfsdfsdfsdf</Text>
+  return ( <Text style={styles.subPageHeadStyle}></Text>
       );
   };
 
 
   render() {
     //this.loadAddresses();
-console.log("Mark!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-console.log("Count of addresses: " + this.addresses.length);
+//console.log("Mark!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+//console.log("Count of addresses: " + this.addresses.length);
       return (
 
+        <ImageBackground source={require('../assets/OpeningPageBackground.jpg')} resizeMode='cover'style={styles.backgroundImage}>
 
-        <ImageBackground source={require('../assets/OpeningPageBackground.jpg')} resizeMode='cover' style={styles.backgroundImage}>
+        <ScrollView>
 
           <ScrollView>
-          <View style={styles.container}>
+          <View 
+          style={styles.container}>
              {this.renderAddresses()}
              {this.renderf()}
              </View>
@@ -350,84 +352,139 @@ console.log("Count of addresses: " + this.addresses.length);
 
 
         <ScrollView>
-          <View style={styles.container}>
-              <View><Text style={styles.subPageHeadStyle}>User Info</Text></View>
-              <View style={styles.fieldsArea2}>
+        <View style={styles.inputContainer4}>
              
-    
-              <TextField tintColor='rgba(12, 57, 14, 0.85)'
-                              required
-                              value= {this.userState["name"]}
-                              label="Name"
-                              
-                    onChangeText={this.handleNameChange}
-                              />
-              
-              <TextField tintColor='rgba(12, 57, 14, 0.85)'
-                              required
-                              value= {this.userState["phone"]}
-                              label="Phone"
-                            
-                    onChangeText={this.handlePhoneChange}
-                              />
-
-
-              <View>
-              <Button style={{ container: styles.buttonStyle2}} onPress={this.handleUserSubmit} text="Edit Info" raised={true} primary={true} />
-              </View>
-                </View>
-
-              <View><Text style={styles.subPageHeadStyle}>Add Address</Text></View>
-               <View style={styles.fieldsArea2}>
-                    <TextField tintColor='rgba(12, 57, 14, 0.85)'
-                    required
-                    value= {this.state.addressline1}
-                    onChangeText={this.handleaddressline1Change}
-                    label="Address Line 1"
-                    />
-                    <TextField tintColor='rgba(12, 57, 14, 0.85)'
-                    required
-                    secureTextEntry={false}
-                    value= {this.state.addressline2}
-                    onChangeText={this.handleaddressline2Change}
-                    label="Address Line 2"
-                    />
-                    
-                    <TextField tintColor='rgba(12, 57, 14, 0.85)'
-                    required
-                    secureTextEntry={false}
-                    value= {this.state.addressline3}
-                    onChangeText={this.handleaddressline3Change}
-                    label="Address Line 3"
-                    />      
-                    <TextField tintColor='rgba(12, 57, 14, 0.85)'
-                    required
-                    secureTextEntry={false}
-                    onChangeText={this.handlecityChange}
-                    value= {this.state.city}
-                    label="City"
-                    />   
-                    <TextField tintColor='rgba(12, 57, 14, 0.85)'
-                    required
-                    secureTextEntry={false}
-                    value= {this.state.state} 
-                    onChangeText={this.handlestateChange}
-                    label="State"
-                    />
-                    <TextField tintColor='rgba(12, 57, 14, 0.85)'
-                    required
-                    secureTextEntry={false} 
-                    onChangeText={this.handlezipChange}
-                    value= {this.state.zip}
-                    label="Zip"
-                    />
+        <Text style={styles.welcome}>
+            User Info
+            </Text>
             </View>
-            <View>
-              <Button style={{ container: styles.buttonStyle2}} onPress={this.handleSubmit} text="Add Addresss" raised={true} primary={true} />
-              </View>
+
+            {/* <View style={styles.container}>
+             {this.renderAddresses()}
+             {this.renderf()}
+             </View> */}
+          </ScrollView>
+
+
+        <ScrollView>
+        <View style={styles.rectangle7}>
+        <View style={styles.RatingsfieldsArea}>       
+        <TextField 
+        required
+        label = ''
+        tintColor="rgba(12, 57, 14, 0.85)"
+        value= {this.userState["name"]}
+        placeholder="Name"
+        //keyboardType="default"                              
+        onChangeText={this.handleNameChange}
+        />
+              
+        <TextField
+        required
+        label = ''
+        tintColor="rgba(12, 57, 14, 0.85)"
+        value= {this.userState["phone"]}
+        placeholder="Phone"
+        //keyboardType="Phone"                 
+        onChangeText={this.handlePhoneChange}
+        />
         </View>
+              
+        <View>
+          <TouchableOpacity style={[styles.buttonContainer6]}></TouchableOpacity>
+          <Button style={{ container: styles.buttonContainer6}} onPress={this.handleUserSubmit} text="Edit Info" raised={true} primary={true} />
+          </View>
+          </View>
+
+          <View style={styles.inputContainer4}>
+          <Text style={styles.welcome}>
+            Add Address
+            </Text>
+            </View>
+              
+          <View style={styles.rectangle6}>
+          <View style={styles.inputContainer}>
+          <TextInput style={styles.inputs} 
+            required
+            value= {this.state.addressline1}            
+            onChangeText={this.handleaddressline1Change}
+            placeholder="Address Line 1"
+            keyboardType="default"
+            underlineColorAndroid='transparent'/>
+            </View>
+
+
+            <View style={styles.inputContainer}>      
+            <TextInput style={styles.inputs} 
+            required
+            value= {this.state.addressline2}            
+            onChangeText={this.handleaddressline2Change}
+            placeholder="Address Line 2"
+            keyboardType="default"
+            underlineColorAndroid='transparent'/>
+            </View>
+
+
+             <View style={styles.inputContainer}>        
+            <TextInput style={styles.inputs} 
+            required
+            value= {this.state.addressline3}            
+            onChangeText={this.handleaddressline3Change}
+            placeholder="Address Line 3"
+            keyboardType="default"
+            underlineColorAndroid='transparent'/>
+            </View>     
+                    
+                    
+            <View style={styles.inputContainer}>        
+            <TextInput style={styles.inputs} 
+            required
+            secureTextEntry={false}
+            onChangeText={this.handlecityChange}
+            value= {this.state.city}
+            placeholder="City"
+            keyboardType="default"
+            underlineColorAndroid='transparent'/>
+            </View> 
+            
+                      
+
+            <View style={styles.inputContainer}>        
+            <TextInput style={styles.inputs} 
+            required
+            secureTextEntry={false}
+            value= {this.state.state} 
+            onChangeText={this.handlestateChange}
+            placeholder="State"
+            keyboardType="default"
+            underlineColorAndroid='transparent'/>
+            </View>
+
+
+
+            <View style={styles.inputContainer}>        
+            <TextInput style={styles.inputs} 
+            required
+            secureTextEntry={false}
+            value= {this.state.zip} 
+            onChangeText={this.handlezipChange}
+            placeholder="Zip"
+            keyboardType="default"
+            underlineColorAndroid='transparent'/>
+            </View>
+            
+            <View>
+            <TouchableOpacity style={[styles.buttonContainer5]}>
+              <Button style={{ container: styles.buttonContainer5}} onPress={this.handleSubmit} text="Submit" raised={true} primary={true} />
+              </TouchableOpacity>
+              </View>
+              
+              </View>
+               
+        </ScrollView>
         </ScrollView>
         </ImageBackground>
+
       );
   }
 }
