@@ -7,8 +7,9 @@ import { Icon } from 'native-base';
 import { Header } from 'react-native-elements';
 import { client } from '../hasuraAPI/shopifyAPI';
 import Prod from '../components/Product'
-
-
+import Search from '../components/Search';
+import { SearchBar } from 'react-native-elements';
+ 
 
 let prod = 
 
@@ -53,8 +54,10 @@ export default class MainScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+        showSearch: false,
         auth: '',
         products: [],
+        search: []
       };
     }
     componentWillMount(){
@@ -85,6 +88,24 @@ switchToAboutUs = async() =>
         console.log("error")
     }
   }
+
+
+  showSearch = x =>
+  {
+    this.setState({showSearch: true});
+    this.forceUpdate();
+  }
+
+  renderSearch = () => {
+    if (this.state.showSearch) { 
+      return (
+      <View>
+      <Search search = {this.state.search} client={client} ></Search>
+      </View>
+      )
+    }
+
+  }
 //Store Token End 
 
   render() {
@@ -92,11 +113,14 @@ switchToAboutUs = async() =>
       return (
 
         
-        <ImageBackground source={require('../assets/OpeningPageBackground.jpg')} resizeMode='cover'style={styles.backgroundImage}>
+        <ImageBackground source={require('../assets/OpeningPageBackground.jpg')} resizeMode='cover' style={styles.backgroundImage}>
                 <Header transparent
                     leftComponent={<Icon name="menu" onPress={() => this.props.navigation.openDrawer()} />}
+                    centerComponent={<Icon name="search" onPress={this.showSearch}  />}
                     rightComponent={<Icon name="md-cart" onPress={() => this.props.navigation.navigate('cart')} />}
                    />
+                  {this.renderSearch()}
+
               <Prod products = {this.state.products} client = {client} />
            </ImageBackground>
       );

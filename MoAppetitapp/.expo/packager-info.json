@@ -2,8 +2,8 @@
   "devToolsPort": 19002,
   "expoServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 16024,
-  "expoServerNgrokUrl": "https://sc-dmc.anonymous.moappetitapp.exp.direct",
-  "packagerNgrokUrl": "https://packager.sc-dmc.anonymous.moappetitapp.exp.direct",
-  "ngrokPid": 25540
+  "packagerPid": 19200,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null
 }
