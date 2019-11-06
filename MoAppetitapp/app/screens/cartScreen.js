@@ -4,6 +4,9 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Text, Image, ScrollView, TouchableOpacity, Animated, Platform } from 'react-native';
 
 import {Button} from 'react-native-material-ui';
+import { Header } from 'react-native-elements';
+import { Icon } from 'native-base';
+
 
 
 export default class CartScreen extends React.Component {
@@ -51,6 +54,10 @@ export default class CartScreen extends React.Component {
  
     render()
     {
+        <Header transparent
+          leftComponent={<Icon name="menu" onPress={() => this.props.navigation.openDrawer()} />}
+          rightComponent={<Icon name="md-cart" onPress={() => this.props.navigation.navigate('cart')} />}
+         />
         const AnimationValue = this.animatedValue.interpolate(
         {
             inputRange: [ 0, 1 ],
@@ -88,8 +95,12 @@ export default class CartScreen extends React.Component {
         });
  
         return(
+            
             <View style = { styles.MainContainer }>
- 
+                <Header transparent
+          leftComponent={<Icon name="menu" onPress={() => this.props.navigation.openDrawer()} />}
+          rightComponent={<Icon name="md-cart" onPress={() => this.props.navigation.navigate('cart')} />}
+         />
                 <ScrollView>
  
                     <View style = {{ flex: 1, padding: 2 }}>

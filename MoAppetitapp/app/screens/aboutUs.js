@@ -4,6 +4,8 @@ import { StyleSheet, View, Text, ScrollView, Image, ImageBackground} from 'react
 import {AsyncStorage} from 'react-native';
 import {Button} from 'react-native-material-ui';
 import styles from './styles.js';
+import { Header } from 'react-native-elements';
+import { Icon } from 'native-base';
 
 import { Card} from 'react-native-elements';
 
@@ -19,7 +21,10 @@ export default class AboutUsScreen extends React.Component {
   render() {
       return (
         <ImageBackground source={require('../assets/OpeningPageBackground.jpg')} resizeMode='cover'style={styles.backgroundImage}>
-
+          <Header transparent
+          leftComponent={<Icon name="menu" onPress={() => this.props.navigation.openDrawer()} />}
+          rightComponent={<Icon name="md-cart" onPress={() => this.props.navigation.navigate('cart')} />}
+         />
         {/* <ScrollView> */}
 
         

@@ -121,10 +121,8 @@ export default StyleSheet.create({
 
     buttonStyle6:
     {
-    width: 150,
+    width: 350,
     height: 150,
-    borderWidth: 3,
-    borderColor: 'black',
     justifyContent: 'center',
     },
 

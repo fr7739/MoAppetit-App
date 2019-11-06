@@ -7,6 +7,10 @@ import styles from "./styles.js";
 import getRatingAPI from "../hasuraAPI/getRatingAPI";
 import setRatingAPI from "../hasuraAPI/setRatingAPI";
 import getAllProductsAPI from "../hasuraAPI/getAllProductAPI";
+import { Header } from 'react-native-elements';
+import { Icon } from 'native-base';
+import { Card } from 'react-native-elements'
+
 
 
 export default class RatingsScreen extends React.Component {
@@ -150,18 +154,29 @@ export default class RatingsScreen extends React.Component {
 
   /**Rendered the ratings called withing the main render */
   renderRatings() {
+    var i = 0;
     return this.ratings.map(item => {
       return (
-        <View key={item.id} style={styles.container}>
-          <Text style={styles.subRatingStyle}>Product {item.productName}</Text>
-          <Text style={styles.subRatingStyle}>Rating: {item.ratingLevel}</Text>
-          <Text style={styles.subRatingStyle}>
-            Description: {item.ratingDescription}
-          </Text>
+        <Card title={item.productName}>
+        {
+        <View key={item.id} style={styles.user}>
+          <Text>{"Rating: " +item.ratingLevel}</Text>
+          <Text>{"Review: " +item.ratingDescription}</Text>
         </View>
-      );
-    });
-  }
+        }
+        </Card>
+      //   <View key={item.id} style={styles.container}>
+      //     <Text style={styles.subRatingStyle}>Product {item.productName}</Text>
+      //     <Text style={styles.subRatingStyle}>Rating: {item.ratingLevel}</Text>
+      //     <Text style={styles.subRatingStyle}>
+      //       Description: {item.ratingDescription}
+      //     </Text>
+      //   </View>
+      // );
+    )
+      })
+      i = i+1
+}
 
   //Render means draw on screen, this is on all screens, and is called by default.
   render() {
@@ -174,11 +189,15 @@ export default class RatingsScreen extends React.Component {
         resizeMode="cover"
         style={styles.backgroundImage}
       >
+       <Header transparent
+          leftComponent={<Icon name="menu" onPress={() => this.props.navigation.openDrawer()} />}
+          rightComponent={<Icon name="md-cart" onPress={() => this.props.navigation.navigate('cart')} />}
+         />
         <ScrollView>
           <View style={styles.existingRatingContainer}>
             <Text style={styles.subPageHeadStyle}>Existing Ratings</Text>
           </View>
-          <View style={styles.container}>{this.renderRatings()}</View> */}
+          <View style={styles.container}>{this.renderRatings()}</View> 
 
           <View style={styles.inputContainer6}>
              
@@ -191,6 +210,7 @@ export default class RatingsScreen extends React.Component {
               <TextField
                 tintColor="rgba(12, 57, 14, 0.85)"
                 required
+                label = "desc"
                 value={this.state["ratingDescription"]}
                 placeholder="Description"
                 keyboardType="default"
@@ -220,7 +240,7 @@ export default class RatingsScreen extends React.Component {
                 style={styles.RatingsfieldsAreaPicker}
                 onValueChange={this.handleproduct_idChange}
               >
-                <Picker.Item label="None" value="0" />
+                <Picker.Item label="Picker" value="0" />
                 {productItems}
               </Picker>
             </View>
