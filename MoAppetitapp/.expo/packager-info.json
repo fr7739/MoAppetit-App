@@ -1,9 +1,9 @@
 {
-  "devToolsPort": 19002,
-  "expoServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 20672,
-  "expoServerNgrokUrl": "https://sc-dmc.anonymous.moappetitapp.exp.direct",
-  "packagerNgrokUrl": "https://packager.sc-dmc.anonymous.moappetitapp.exp.direct",
-  "ngrokPid": 14832
+  "packagerPid": 16380,
+  "expoServerPort": 19000,
+  "devToolsPort": 19002,
+  "expoServerNgrokUrl": "https://wy-bcd.anonymous.moappetitapp.exp.direct",
+  "packagerNgrokUrl": "https://packager.wy-bcd.anonymous.moappetitapp.exp.direct",
+  "ngrokPid": 4020
 }
