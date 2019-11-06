@@ -51,8 +51,6 @@ export default class UserScreen extends React.Component {
     }
 
     let getFullUserResponse = await getFullUserAPI(passInUserObject);
-   // console.log("ab1212");
-    //console.log("After ab: " + JSON.stringify(getFullUserResponse));
     const resultResponseGetFullUser = await getFullUserResponse.json();
     
     console.log("AAAAAAAAPPPPPP: " + JSON.stringify(resultResponseGetFullUser));

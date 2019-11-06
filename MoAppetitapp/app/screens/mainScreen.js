@@ -6,7 +6,7 @@ import styles from '../screens/styles';
 import { Icon } from 'native-base';
 import { Header } from 'react-native-elements';
 import { client } from '../hasuraAPI/shopifyAPI';
-import Prod from '../components/Product'
+import Prod from '../components/Product';
 import Search from '../components/Search';
 import { SearchBar } from 'react-native-elements';
  
@@ -92,8 +92,10 @@ switchToAboutUs = async() =>
 
   showSearch = x =>
   {
-    this.setState({showSearch: true});
-    this.forceUpdate();
+    this.setState({showSearch: !this.state.showSearch}, () =>
+    {
+      this.forceUpdate();
+    });
   }
 
   renderSearch = () => {
@@ -104,8 +106,18 @@ switchToAboutUs = async() =>
       </View>
       )
     }
-
   }
+
+
+  renderAll = () => {
+    if (!this.state.showSearch) { 
+      return (
+        <Prod products = {this.state.products} client = {client} />
+      )
+    }
+  }
+
+
 //Store Token End 
 
   render() {
@@ -120,8 +132,7 @@ switchToAboutUs = async() =>
                     rightComponent={<Icon name="md-cart" onPress={() => this.props.navigation.navigate('cart')} />}
                    />
                   {this.renderSearch()}
-
-              <Prod products = {this.state.products} client = {client} />
+                  {this.renderAll()}
            </ImageBackground>
       );
   }
