@@ -112,7 +112,7 @@ switchToAboutUs = async() =>
   renderAll = () => {
     if (!this.state.showSearch) { 
       return (
-        <Prod products = {this.state.products} client = {client} />
+        <Prod products = {this.state.products} client = {client} navigation = {this.props.navigation} />
       )
     }
   }

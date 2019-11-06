@@ -76,14 +76,16 @@ export default StyleSheet.create({
       width: '100%',//
      height: '100%', //
     }, //
+
     container: {
      flex: 1,
-      paddingTop: 50,
+      //paddingTop: 1,
       alignItems: 'center',
       justifyContent: 'center',
       paddingLeft: 20,
       paddingRight: 20,
-      borderRadius:100,
+      borderRadius:200,
+      marginTop:0
 
     },
     buttonStyle2:
@@ -161,7 +163,7 @@ export default StyleSheet.create({
     },
     subPageHeadStyle:
     {
-      fontSize:22,
+      fontSize:16,
       backgroundColor: 'rgba(12, 57, 14, 0.85)',
       justifyContent: "center",
       color:"white"
@@ -412,8 +414,15 @@ marginBottom:20,
 
     // style for password
   welcome2: {
-    fontSize: 15,
+    fontSize: 14,
     textAlign: 'center',
+    margin: 10,
+  },
+
+   // style for About Page
+   welcome3: {
+    fontSize: 16,
+    textAlign: 'justify',
     margin: 10,
   },
   
@@ -426,7 +435,7 @@ marginBottom:20,
     marginBottom:20,
     width:250,
     borderRadius:30,
-    left:15,
+    left:18,
     marginTop:15, 
   },
 
@@ -439,7 +448,7 @@ buttonContainer4: {
   marginBottom:-15,
   width:250,
   borderRadius:30,
-  left:15,
+  left:18,
 },
 
 
@@ -516,11 +525,10 @@ CircleMoAppetit2:
     RatingsfieldsArea: 
     {
         flex: 4,
-        borderWidth: 3,
-        marginBottom: 0,
+        marginBottom: 3,
         paddingBottom: 0,
         backgroundColor: "white",
-        width: "60%"
+        width: 325,
     },
 
     subRatingStyle:
@@ -534,7 +542,189 @@ CircleMoAppetit2:
     RatingsfieldsAreaPicker:
     {
       
-    }
+    },
+
+    //rectangle Container for Registerform
+    rectangle4: {
+      height: 370,
+      width: 225,
+      backgroundColor: 'rgba(12, 57, 14, 0.85)',
+      borderWidth: 2,
+      borderRadius: 40,
+      //overflow: "hidden",
+      right: 500,
+      marginBottom:50,
+  },
+
+  //rectangle Container for Userscreen User
+  rectangle5: {
+    height: 300,
+    width: 325,
+    backgroundColor: 'rgba(12, 57, 14, 0.85)',
+    borderWidth: 2,
+    borderRadius: 40,
+    overflow: "hidden",
+    left: 45,
+    marginBottom:70,
+},
+
+//rectangle Container for UserScreen Address
+rectangle6: {
+  height: 450,
+  width: 325,
+  backgroundColor: 'rgba(12, 57, 14, 0.85)',
+  borderWidth: 2,
+  borderRadius: 40,
+  overflow: "hidden",
+  left: 0,
+  marginBottom:70,
+},
+
+rectangle9: {
+  height: 500,
+  width: 325,
+  backgroundColor: 'rgba(12, 57, 14, 0.85)',
+  borderWidth: 2,
+  borderRadius: 40,
+  overflow: "hidden",
+  left: 45,
+  marginBottom:70,
+},
+
+ //buttonContainer for userscreen address
+ buttonContainer5: {
+  height:45,
+  flexDirection: 'row',
+  justifyContent: 'center',
+  alignItems: 'center',
+  marginBottom:-20,
+  width:250,
+  borderRadius:30,
+  left:18,
+},
+
+ //buttonContainer for userscreen address
+ buttonContainer6: {
+  height:40,
+  flexDirection: 'row',
+  justifyContent: 'center',
+  alignItems: 'center',
+  marginBottom:17,
+  width:250,
+  borderRadius:30,
+  left:35,
+  //marginTop:-15,
+},
+
+// InputContainer for Password
+inputContainer3: {
+  borderBottomColor: '#F5FCFF',
+  backgroundColor: '#FFFFFF',
+  borderWidth: 2,
+  borderRadius: 40,
+  overflow: "hidden",
+  width:400,
+  height:450,
+  marginBottom:160,
+  flexDirection: 'row',
+  alignItems:'center',
+  left: 5,
+  //marginTop:200,
+},
+
+//buttonContainer for rating
+buttonContainer7: {
+  height:40,
+  flexDirection: 'row',
+  justifyContent: 'center',
+  alignItems: 'center',
+  marginBottom:50,
+  width:250,
+  borderRadius:30,
+  left:35,
+},
+
+//rectangle Container for usercreen
+rectangle7: {
+  height: 280,
+  width: 325,
+  backgroundColor: 'rgba(12, 57, 14, 0.85)',
+  borderWidth: 2,
+  borderRadius: 40,
+  overflow: "hidden",
+  left: 45,
+  marginBottom:80,
+},
+
+// InputContainer for user Page
+inputContainer4: {
+  borderWidth: 2,
+  borderRadius: 40,
+  overflow: "hidden",
+  width:325,
+  height:50,
+  marginBottom:5,
+  flexDirection: 'row',
+  alignItems:'center',
+  left: 45,
+  marginBottom:10,
+  backgroundColor: '#3498db',
+},
+
+// style for Initialscreen
+inputContainer5: {
+  backgroundColor: '#3498db',
+  width:400,
+  overflow: "hidden",
+  marginBottom:50,
+  marginTop: 50,
+  height: 50,
+  borderWidth: 2,
+  borderRadius: 40,
+  left: 5
+},
+
+//rectangle Container for userscreen
+rectangle8: {
+  height: 260,
+  width: 325,
+  backgroundColor: 'rgba(12, 57, 14, 0.85)',
+  borderWidth: 2,
+  borderRadius: 40,
+  overflow: "hidden",
+  left: 45,
+  marginBottom:50,
+  marginTop:0,
+},
+
+// style for Ratingscreen
+inputContainer6: {
+  borderWidth: 2,
+  borderRadius: 40,
+  overflow: "hidden",
+  width:325,
+  height:50,
+  marginBottom:50,
+  flexDirection: 'row',
+  alignItems:'center',
+  left: 45,
+  marginTop:270,
+  backgroundColor: '#3498db',
+},
+
+//rectangle Container for RatingScreen
+rectangle8: {
+  height: 280,
+  width: 325,
+  backgroundColor: 'rgba(12, 57, 14, 0.85)',
+  borderWidth: 2,
+  borderRadius: 40,
+  overflow: "hidden",
+  left: 45,
+  marginBottom:80,
+  marginTop:-30
+},
+
   });
 
   

@@ -266,6 +266,7 @@ export default class UserScreen extends React.Component {
                 onChangeText={this.handlePhoneChange}
               />
             </View>
+            
             <View>
               <Button
                 style={{ container: styles.buttonStyle2 }}

@@ -14,17 +14,16 @@ export default class RatingsScreen extends React.Component {
     super(props);
 
     this.state = {
-      user_id: 0,
+      user_id: "",
       hasura_id: global.hasura_id,
-      ratingLevel: 0,
+      ratingLevel: "",
       ratingDescription: "",
-      product_id: 0
+      product_id: ""
     };
     this.allProducts = [];
     this.ratings = [];
 
     if (this.loadRatings()) {
-      console.log("Ratings Loaded");
     }
     if (this.loadAllProducts()) {
       console.log("Products Loaded");
@@ -179,20 +178,22 @@ export default class RatingsScreen extends React.Component {
           <View style={styles.existingRatingContainer}>
             <Text style={styles.subPageHeadStyle}>Existing Ratings</Text>
           </View>
-          <View style={styles.container}>{this.renderRatings()}</View>
-        </ScrollView>
+          <View style={styles.container}>{this.renderRatings()}</View> */}
 
-        <ScrollView>
-          <View style={styles.editRatingContainer}>
-            <View>
-              <Text style={styles.subPageHeadStyle}>New Rating</Text>
+          <View style={styles.inputContainer6}>
+             
+        <Text style={styles.welcome}>
+            New Rating
+            </Text>
             </View>
+          <View style={styles.rectangle8}>
             <View style={styles.RatingsfieldsArea}>
               <TextField
                 tintColor="rgba(12, 57, 14, 0.85)"
                 required
                 value={this.state["ratingDescription"]}
-                label="Description"
+                placeholder="Description"
+                keyboardType="default"
                 onChangeText={this.handleratingDescriptionChange}
               />
               <Picker
@@ -232,7 +233,7 @@ export default class RatingsScreen extends React.Component {
             />
           </View>
         </ScrollView>
-      </ImageBackground>
+        </ImageBackground>
     );
   }
 }

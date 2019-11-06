@@ -133,21 +133,10 @@ export default class Contact extends Component {
             {this.state.isSubmited ? (
               <View>
                 <CardItem>
-                  <Item>
-                    <Icon
-                      active
-                      name="ios-checkmark-circle"
-                      style={{
-                        fontSize: 30,
-                        color: "#4CAF50",
-                        marginLeft: 5,
-                        marginRight: 10
-                      }}
-                    />
-                    <Text style={{ flex: 1 }}>
-                      Thanks. We will get in touch with you as soon as possible
-                    </Text>
-                  </Item>
+                    <Item>
+                      <Icon active name=" " style={{fontSize: 30, color: '#4CAF50', marginLeft:5, marginRight:10}} />
+                       <Text style = {{flex:1}}>Thanks. We will get in touch with you as soon as possible</Text>
+                    </Item>
                 </CardItem>
                 <CardItem>
                   <Left></Left>
