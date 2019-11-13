@@ -4,7 +4,8 @@ import styles from '../screens/styles'
 import {AsyncStorage} from 'react-native';
 import { Card, ListItem, Button } from 'react-native-elements'
 import { Icon, Container } from 'native-base';
-export default class productPage extends Component {
+import {connect} from 'react-redux'
+class productPage extends Component {
 constructor(props){
     super(props)
 
@@ -15,8 +16,7 @@ constructor(props){
 }
 
 componentWillUpdate(newProps, newState){
-    console.log("new props: " +newProps)
-    console.log("new State: " +newState)
+    console.log("Cart: " +this.props.cartItems)
   }
 
 handleRefresh = () =>{
@@ -44,8 +44,9 @@ handleRefresh = () =>{
                         {this.props.product.description}
                     </Text>
                         <Button
+                            onPress = {this.props.addItemToCart}
                             icon={<Icon name='md-cart' color='#ffffff' style = {{padding: 1}} />}
-                            buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
+                            buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0, backgroundColor: '#086522'}}
                         title='ADD TO CART' />
                 </Card> 
 
@@ -56,3 +57,15 @@ handleRefresh = () =>{
             
         }
     }
+    const mapDispatchToProps = (dispatch) =>{
+        return{
+          addItemToCart: (product) => dispatch({type: 'ADD_TO_CART', payload: product})
+        }
+      }
+      const mapStateToProps = (state) => {
+        return {
+            cartItems: state
+        }
+    }
+    
+    export default connect(mapStateToProps, mapDispatchToProps)(productPage)

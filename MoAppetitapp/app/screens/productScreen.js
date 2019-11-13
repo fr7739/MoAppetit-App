@@ -1,4 +1,6 @@
 import React from 'react';
+import {Provider} from 'react-redux'
+import store from '../redux/index'
 import { StyleSheet, View, ImageBackground, KeyboardAvoidingView, Image, Text} from 'react-native';
 import {AsyncStorage} from 'react-native';
 import {Button} from 'react-native-material-ui';
@@ -9,6 +11,7 @@ import { Header } from 'react-native-elements';
 import { client } from '../hasuraAPI/shopifyAPI';
 import ProductPage from '../components/productPage'
 import { string } from 'prop-types';
+import CartIcon from '../containers/cartIcon';
 
 export default class productScreen extends React.Component{
 constructor(props){
@@ -88,14 +91,16 @@ this.forceUpdate()
 
       render(){
         return(
+           <Provider store = {store}>
           <Container>
           <Header transparent
+          backgroundColor = "#086522"
           leftComponent={<Icon name="md-arrow-back" onPress={() => this.props.navigation.goBack()} />}
-          rightComponent={<Icon name="md-cart" onPress={() => this.props.navigation.navigate('cart')} />}
-         />
+          rightComponent={<CartIcon />} />
         <ProductPage product = {this.state.product} client = {client} image = {this.state.productIMG} />
         
         </Container>
+        </Provider> 
         )
       }
 }

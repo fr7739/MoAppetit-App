@@ -121,8 +121,12 @@ export default StyleSheet.create({
 
     buttonStyle6:
     {
-    width: 350,
-    height: 150,
+    width: '100%',
+    height: 100,
+    marginLeft: 0,
+    marginRight: 0,
+    marginTop: 0,
+    marginBottom: 0,
     justifyContent: 'center',
     },
 

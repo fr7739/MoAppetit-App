@@ -245,6 +245,10 @@ export default class UserScreen extends React.Component {
         resizeMode="cover"
         style={styles.backgroundImage}
       >
+        <Header transparent
+          backgroundColor = "#086522"
+          leftComponent={<Icon name="menu" onPress={() => this.props.navigation.openDrawer()} />}
+         />
         <ScrollView>
           <View style={styles.container}>{this.renderAddresses()}</View>
         </ScrollView>
