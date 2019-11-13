@@ -7,6 +7,9 @@ import getAddressAPI from "../hasuraAPI/getAddressAPI";
 import setAddressAPI from "../hasuraAPI/setAddressAPI";
 import getFullUserAPI from "../hasuraAPI/getFullUserAPI";
 import setUseFullInfoAPI from "../hasuraAPI/setUserFullInfoAPI.js";
+import { Header } from 'react-native-elements';
+import { Icon } from 'native-base';
+
 
 export default class UserScreen extends React.Component {
   constructor(props) {

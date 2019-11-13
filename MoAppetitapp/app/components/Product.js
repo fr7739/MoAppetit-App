@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView } from 'react-native';
 import styles from '../screens/styles'
 import {AsyncStorage} from 'react-native';
-
+import { Card, ListItem, Button } from 'react-native-elements'
+import { Icon, Container } from 'native-base';
 
 class Prod extends Component {
     constructor(props){
@@ -31,36 +32,22 @@ class Prod extends Component {
           return false;
         }
       }
-    handleProductPage(key, data, key2, data2){
-        this.removeItemValue(key)
-        this.removeItemValue(key2)
-        
-        this.setValue(key, data)
-        this.setValue(key2, data2)
-       
-
-        this.props.navigation.navigate('Product');
-    }
 
     render() {
         let products = this.props.products.map((product) => {
 
             return(
-                <View key = {product.id.toString()} style = {{borderWidth: 2, backgroundColor: 'white'}}>
-                    <View style = {{flex: 1, flexDirection: 'row', justifyContent: 'center'}}>
-                        <TouchableOpacity onPress = { () => this.handleProductPage('productID', product.id.toString(), 'productImage', product.images[0].src)}>
-                        <Image source={{uri: product.images[0].src}} style = {styles.buttonStyle6} />
-                        </TouchableOpacity>
-                    </View>
-                    
-                    <View style = {{flex: 1, flexDirection: 'row', justifyContent: 'center'}}>
-                        <Text>{product.title}</Text>
-                    </View>
-                    
-                    <View style = {{flex: 1, flexDirection: 'row', justifyContent: 'center'}}>
-                        <Text>Price: {product.variants[0].price}</Text>
-                    </View>
-                </View>
+
+                <Card key = {product.id.toString()}
+                    title={product.title}>
+                    <TouchableOpacity onPress = { () => this.props.navigation.navigate('Product', {IMG: product.images[0].src, title: product.title, desc: product.description, ID: product.id})}>
+                    <Image source={{uri: product.images[0].src}} style = {styles.buttonStyle6} />
+                    </TouchableOpacity>
+                        <Button
+                            icon={<Icon name='md-cart' color='#ffffff' style = {{padding: 1}} />}
+                            buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0, marginTop: 10}}
+                        title={product.variants[0].price} />
+                </Card>
 
             )
         })

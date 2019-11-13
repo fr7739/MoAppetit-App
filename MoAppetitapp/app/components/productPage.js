@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView } from 'react-native';
-import {Button} from 'react-native-material-ui';
 import styles from '../screens/styles'
 import {AsyncStorage} from 'react-native';
-
+import { Card, ListItem, Button } from 'react-native-elements'
+import { Icon, Container } from 'native-base';
 export default class productPage extends Component {
 constructor(props){
     super(props)
@@ -36,16 +36,18 @@ handleRefresh = () =>{
     render(){
 
             return(
-                <View style = {{flex: 1, borderWidth: 10, backgroundColor: 'white'}}>
-                    <View style = {{ flexDirection: 'column'}}>
-                        <Text style = {{justifyContent: 'center'}}>{this.props.product.title}</Text>
-                        <Image source={this.state.image ? {uri: this.state.image } : null} />
-                        <Text>{this.props.product.description}</Text>
-                    </View>
 
-                    <View style = {{ flexDirection: 'row', justifyContent: 'center'}}>
-                    </View>
-                </View>
+                <Card
+                    title={this.props.product.title}
+                    image={{uri: this.state.prodIMG}}>
+                    <Text style={{marginBottom: 10}}>
+                        {this.props.product.description}
+                    </Text>
+                        <Button
+                            icon={<Icon name='md-cart' color='#ffffff' style = {{padding: 1}} />}
+                            buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
+                        title='ADD TO CART' />
+                </Card> 
 
             )
         }

@@ -17,7 +17,7 @@ constructor(props){
     this.state ={
         productID: string,
         product: '',
-        productIMG: '',
+        productIMG: this.props.navigation.getParam('IMG'),
         updated: false,
     }
 }
@@ -25,7 +25,7 @@ constructor(props){
 async getProdID(){
     let prodID = '';
     try {
-        prodID = await AsyncStorage.getItem('productID') || 'none';
+        prodID = this.props.navigation.getParam('ID')
         console.log("Prod ID: " +prodID)
         this.setState({
             productID: prodID
@@ -62,12 +62,7 @@ this.getProdID().then(() => {
             })
             console.log(this.state.productID)
           })
-      })
-      this.getProdIMG().then(() =>{
-        console.log("prodscreen: " +this.state.productIMG)
-      })
-
-     
+      })  
 }
 
 handleRefresh = () =>{
@@ -95,7 +90,7 @@ this.forceUpdate()
         return(
           <Container>
           <Header transparent
-          leftComponent={<Icon name="menu" onPress={() => this.props.navigation.openDrawer()} />}
+          leftComponent={<Icon name="md-arrow-back" onPress={() => this.props.navigation.goBack()} />}
           rightComponent={<Icon name="md-cart" onPress={() => this.props.navigation.navigate('cart')} />}
          />
         <ProductPage product = {this.state.product} client = {client} image = {this.state.productIMG} />
