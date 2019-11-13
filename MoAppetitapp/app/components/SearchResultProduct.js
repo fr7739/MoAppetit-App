@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import { Text, View, Image, ScrollView } from "react-native";
 import styles from "../screens/styles";
+import { Card, ListItem, Button } from 'react-native-elements'
+import {connect} from 'react-redux'
+import { Icon, Container } from 'native-base';
+
 
 /**This component represent a collection of items(product) that is found in the Search component’s state’s searchResultProducts 
  *  variable. */
@@ -24,23 +28,18 @@ class SearchResultProduct extends Component {
    // const { currentProduct } = this.state.currentProduct;
     if (currentProduct != null) { 
      return (
-        <View style={{ borderWidth: 2, backgroundColor: "white", flex: 6}}>
-
-          <View
-            style={{ flex: 1, flexDirection: "row", justifyContent: "center" }}
-          >
-            <Text style={{fontSize: 20}}>{currentProduct.title}</Text>
-          </View>
-          <Text>Price: {currentProduct.variants[0].price}</Text>
-          <View
-            style={{ flex: 1, flexDirection: "row", justifyContent: "center" }}
-          >
-            <Image
-              source={{ uri: currentProduct.images[0].src }}
-              style={styles.buttonStyle6}
-            />
-          </View>
-        </View>
+      <Card
+      title={currentProduct.title}
+      image={{uri: currentProduct.images[0].src}}>
+      <Text style={{marginBottom: 10}}>
+          {currentProduct.description}
+      </Text>
+          <Button
+              onPress = {this.props.addItemToCart}
+              icon={<Icon name='md-cart' color='#ffffff' style = {{padding: 1}} />}
+              buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0, backgroundColor: '#086522'}}
+          title='ADD TO CART' />
+  </Card> 
       );
     } else {//if we are not ready to see current product
       return <View></View>;
@@ -91,4 +90,9 @@ class SearchResultProduct extends Component {
     );
   }
 }
-export default SearchResultProduct;
+const mapDispatchToProps = (dispatch) =>{
+  return{
+    addItemToCart: (product) => dispatch({type: 'ADD_TO_CART', payload: product})
+  }
+}
+export default connect(null, mapDispatchToProps)(SearchResultProduct)
