@@ -10,6 +10,7 @@ import getAllProductsAPI from "../hasuraAPI/getAllProductAPI";
 import { Header } from 'react-native-elements';
 import { Icon } from 'native-base';
 import { Card } from 'react-native-elements'
+import CartIcon from '../containers/cartIcon'
 
 
 
@@ -157,9 +158,9 @@ export default class RatingsScreen extends React.Component {
     var i = 0;
     return this.ratings.map(item => {
       return (
-        <Card title={item.productName}>
+        <Card key={item.id} title={item.productName}>
         {
-        <View key={item.id} style={styles.user}>
+        <View style={styles.user}>
           <Text>{"Rating: " +item.ratingLevel}</Text>
           <Text>{"Review: " +item.ratingDescription}</Text>
         </View>
@@ -190,8 +191,9 @@ export default class RatingsScreen extends React.Component {
         style={styles.backgroundImage}
       >
        <Header transparent
+          centerComponent = {<Text style = {{color: 'white', fontWeight: 'bold', fontSize: 18}}>Ratings</Text>}
+          backgroundColor = "#086522"
           leftComponent={<Icon name="menu" onPress={() => this.props.navigation.openDrawer()} />}
-          rightComponent={<Icon name="md-cart" onPress={() => this.props.navigation.navigate('cart')} />}
          />
         <ScrollView>
           <View style={styles.existingRatingContainer}>

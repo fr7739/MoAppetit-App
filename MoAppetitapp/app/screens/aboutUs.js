@@ -22,35 +22,15 @@ export default class AboutUsScreen extends React.Component {
       return (
         <ImageBackground source={require('../assets/OpeningPageBackground.jpg')} resizeMode='cover'style={styles.backgroundImage}>
           <Header transparent
+          centerComponent = {<Text style = {{color: 'white', fontWeight: 'bold', fontSize: 18}}>About Us</Text>}
+          backgroundColor = "#086522"
           leftComponent={<Icon name="menu" onPress={() => this.props.navigation.openDrawer()} />}
-          rightComponent={<Icon name="md-cart" onPress={() => this.props.navigation.navigate('cart')} />}
          />
-        {/* <ScrollView> */}
-
-        
-        {/* <View style={styles.container}>
         
 
         
 
-<Card>
-  <Image 
-  source={require('../assets/HeaderImage.png')}
-  style={{
-    height: 195,
-    width: 400,
 
-  }}
-/>
-  
-</Card> */}
-
-<View style={styles.inputContainer5}>
-             
-        <Text style={styles.welcome}>
-            About Us
-            </Text>
-            </View>
  <View style={styles.inputContainer3}>
          
  <Text style={styles.welcome3}>

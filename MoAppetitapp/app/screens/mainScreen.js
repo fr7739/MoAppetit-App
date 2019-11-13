@@ -1,5 +1,7 @@
 import React from 'react';
-import { StyleSheet, View, ImageBackground, KeyboardAvoidingView, Image, Text} from 'react-native';
+import {Provider} from 'react-redux'
+import store from '../redux/index'
+import { StyleSheet, View, ImageBackground, KeyboardAvoidingView, Image, Text, ScrollView} from 'react-native';
 import {AsyncStorage} from 'react-native';
 import {Button} from 'react-native-material-ui';
 import styles from '../screens/styles';
@@ -9,45 +11,8 @@ import { client } from '../hasuraAPI/shopifyAPI';
 import Prod from '../components/Product';
 import Search from '../components/Search';
 import { SearchBar } from 'react-native-elements';
+import CartIcon from '../containers/cartIcon'
  
-
-let prod = 
-
-    client.product.fetchAll().then( products => {
-    // Do something with the product
-    console.log(products[0]);
-    console.log("This is hopefully a product name: " +products[0].title+ " and description: " +products[0].description)
-    return products[0].title;
-  }).catch(e => {
-      console.log('Caught error: ' +e)
-  });  
-
-  let prod2 = 
-
-    client.product.fetchAll().then( products => {
-    // Do something with the product
-    return products[0].description;
-  }).catch(e => {
-      console.log('Caught error: ' +e)
-  });  
-
-  let prod3 = 
-
-    client.product.fetchAll().then( products => {
-    // Do something with the product
-    return products[1].title;
-  }).catch(e => {
-      console.log('Caught error: ' +e)
-  });  
-
-  let prod4 = 
-
-    client.product.fetchAll().then( products => {
-    // Do something with the product
-    return products[1].description;
-  }).catch(e => {
-      console.log('Caught error: ' +e)
-  });  
 // Added by Mamadou Store Token
 // Rendering to the UI the post Registration screen with the login button and informing the user that they need to validate their email
 export default class MainScreen extends React.Component {
@@ -112,7 +77,11 @@ switchToAboutUs = async() =>
   renderAll = () => {
     if (!this.state.showSearch) { 
       return (
+        
+        <ScrollView>
         <Prod products = {this.state.products} client = {client} navigation = {this.props.navigation} />
+        </ScrollView>
+  
       )
     }
   }
@@ -124,34 +93,23 @@ switchToAboutUs = async() =>
     
       return (
 
-        
+        <Provider store = {store}>
         <ImageBackground source={require('../assets/OpeningPageBackground.jpg')} resizeMode='cover' style={styles.backgroundImage}>
-                <Header transparent
+                <Header 
+                    backgroundColor = "#086522"
                     leftComponent={<Icon name="menu" onPress={() => this.props.navigation.openDrawer()} />}
                     centerComponent={<Icon name="search" onPress={this.showSearch}  />}
-                    rightComponent={<Icon name="md-cart" onPress={() => this.props.navigation.navigate('cart')} />}
+                    rightComponent={<CartIcon />}
                    />
                   {this.renderSearch()}
                   {this.renderAll()}
            </ImageBackground>
+           </Provider>
       );
   }
 }
 
-// Style Container
-/* const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    paddingTop: 50,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  textStyle: {
-      color: 'rgba(12, 57, 14, 0.85)',
-      alignItems: 'center',
-      textAlign: 'center',
-  }
-}); */
+
+
 
 // END: Added by Mamadou

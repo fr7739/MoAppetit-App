@@ -18,6 +18,7 @@ import PasswordScreen from './passwordForm';
 import CartScreen from './cartScreen';
 import initialScreen from './initialScreen';
 import productScreen from './productScreen'
+import cartIcon from '../containers/cartIcon'
 
 
 
@@ -46,7 +47,7 @@ const drawNav = createDrawerNavigator({
   screen: UserScreen
   },
   'About Us': {
-    screen: AboutScreen
+    screen: AboutUs
   },
   cart: {
     screen: CartScreen
@@ -56,22 +57,12 @@ const drawNav = createDrawerNavigator({
 const AppNavigator = createStackNavigator({
 
 drawNavigator: drawNav,
-Main: {
-  screen: MainScreen,
-},
-Ratings:{
-  screen: RatingsScreen
-},
+Main: MainScreen,
+Ratings: RatingsScreen,
 Product: productScreen,
-'User Info':{
-screen: UserScreen
-},
-'About Us': {
-  screen: AboutScreen
-},
-cart: {
-  screen: CartScreen
-},
+'User Info': UserScreen,
+'About Us':AboutScreen,
+cart: CartScreen,
   },
   {
     headerMode: 'none',
@@ -84,10 +75,6 @@ cart: {
 
     Initial: {
       screen: initialScreen,
-      headerMode: 'none',
-      navigationOptions:{
-      headerVisible: false,
-  }
     },
     Register:{
       screen: RegisterScreen

@@ -4,6 +4,7 @@ import styles from '../screens/styles'
 import {AsyncStorage} from 'react-native';
 import { Card, ListItem, Button } from 'react-native-elements'
 import { Icon, Container } from 'native-base';
+import {connect} from 'react-redux'
 
 class Prod extends Component {
     constructor(props){
@@ -37,29 +38,31 @@ class Prod extends Component {
         let products = this.props.products.map((product) => {
 
             return(
-
-                <Card key = {product.id.toString()}
-                    title={product.title}>
+                 <Card key = {product.id}
+                    containerStyle = {{height: 175, width: 175, justifyContent: 'center'}}
+                 >
                     <TouchableOpacity onPress = { () => this.props.navigation.navigate('Product', {IMG: product.images[0].src, title: product.title, desc: product.description, ID: product.id})}>
                     <Image source={{uri: product.images[0].src}} style = {styles.buttonStyle6} />
                     </TouchableOpacity>
                         <Button
-                            icon={<Icon name='md-cart' color='#ffffff' style = {{padding: 1}} />}
-                            buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0, marginTop: 10}}
-                        title={product.variants[0].price} />
-                </Card>
-
+                        onPress = {this.props.addItemToCart}
+                        buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0, marginTop: 1, width: 143, height: 45, backgroundColor: '#086522'}}
+                        title={product.variants[0].price + "$"} />
+                </Card> 
+                
             )
         })
         return(
-            <View style = {{flex: 2, flexDirection: 'row', justifyContent: 'flex-start'}}>
-            <ScrollView>
+            <View style = {{flex: 1, alignContent:"space-between", justifyContent: 'flex-start', flexDirection: "row", flexWrap: "wrap"}}>
             {products}
-            </ScrollView>
             </View>
         )
     }
 }
+const mapDispatchToProps = (dispatch) =>{
+    return{
+      addItemToCart: (product) => dispatch({type: 'ADD_TO_CART', payload: product})
+    }
+  }
 
-
-export default Prod
+export default connect(null, mapDispatchToProps)(Prod)
