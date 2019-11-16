@@ -99,7 +99,7 @@ switchToAboutUs = async() =>
                     backgroundColor = "#086522"
                     leftComponent={<Icon name="menu" onPress={() => this.props.navigation.openDrawer()} />}
                     centerComponent={<Icon name="search" onPress={this.showSearch}  />}
-                    rightComponent={<CartIcon />}
+                    rightComponent={<CartIcon navigation = {this.props.navigation} />}
                    />
                   {this.renderSearch()}
                   {this.renderAll()}

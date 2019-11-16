@@ -41,11 +41,11 @@ class Prod extends Component {
                  <Card key = {product.id}
                     containerStyle = {{height: 175, width: 175, justifyContent: 'center'}}
                  >
-                    <TouchableOpacity onPress = { () => this.props.navigation.navigate('Product', {IMG: product.images[0].src, title: product.title, desc: product.description, ID: product.id})}>
+                    <TouchableOpacity onPress = { () => this.props.navigation.navigate('Product', {Product: product})}>
                     <Image source={{uri: product.images[0].src}} style = {styles.buttonStyle6} />
                     </TouchableOpacity>
                         <Button
-                        onPress = {this.props.addItemToCart}
+                        onPress = {() => this.props.addItemToCart(product)}
                         buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0, marginTop: 1, width: 143, height: 45, backgroundColor: '#086522'}}
                         title={product.variants[0].price + "$"} />
                 </Card> 
