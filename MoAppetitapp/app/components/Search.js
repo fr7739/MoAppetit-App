@@ -44,8 +44,7 @@ class Search extends Component {
       <View>
         <SearchResultProduct
           products={this.state.searchResultProducts}
-          client={client}
-        />
+          client={client}        />
       </View>
     );
   }
