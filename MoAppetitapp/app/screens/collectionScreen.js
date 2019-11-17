@@ -8,7 +8,8 @@ import { client } from '../hasuraAPI/shopifyAPI';
 import { string } from 'prop-types';
 import CollectionPage from '../components/collectionPage';
 import CartIcon from '../containers/cartIcon';
-
+import {Provider} from 'react-redux'
+import store from '../redux/index'
 
 
 
@@ -18,19 +19,21 @@ constructor(props){
 
     this.state ={
         collection: this.props.navigation.getParam('Collection'),
-        updated: false,
+        collectionID: string,
     }
 }
       render(){
         return(
+            <Provider store = {store}>
             <Container>
             <Header transparent
             backgroundColor = "#086522"
             leftComponent={<Icon name="md-arrow-back" onPress={() => this.props.navigation.goBack()} />}
             rightComponent={<CartIcon />} />
-        <CollectionPage collection = {this.state.collection} client = {client} navigation = {this.props.navigation} />
+        <CollectionPage collections = {this.state.collections} client = {client} navigation = {this.props.navigation} />
         
         </Container>
+        </Provider>
         )
       }
 }

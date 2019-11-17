@@ -2,9 +2,11 @@ import React, {Component} from 'react';
 import { Card, Button } from 'react-native-elements';
 import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView, Icon, Container } from 'react-native';
 import styles from '../screens/styles';
+import {connect} from 'react-redux'
 
 
-export default class collectionPage extends Component {
+
+class collectionPage extends Component {
 constructor(props){
     super(props)
 
@@ -12,32 +14,14 @@ constructor(props){
     }
 }
 
-componentWillUpdate(newProps, newState){
-    console.log("new props: " +newProps)
-    console.log("new State: " +newState)
-  }
 
-handleRefresh = () =>{
-    if(this.state.updated === true){
-      this.setState({
-          updated: false
-      })
-      console.log(this.state.updated)
-  }
-  else{
-      this.setState({
-          updated: true
-      })
-      console.log(this.state.updated)
-  }
-}
     render(){
         let colProd = this.props.collection.products.map((product) => {
             return(
                 <Card key = {product.id}
                    containerStyle = {{height: 175, width: 175, justifyContent: 'center'}}
                 >
-                   <TouchableOpacity onPress = { () => this.props.navigation.navigate('Product', {Product: product})}>
+                   <TouchableOpacity onPress = { () => this.props.navigation.navigate('Collection', {Collection: collection})}>
                    <Image source={{uri: product.images[0].src}} style = {styles.buttonStyle6} />
                    </TouchableOpacity>
                        <Button
@@ -48,12 +32,28 @@ handleRefresh = () =>{
             )
         })
             return(
-       <ScrollView>
+            <ScrollView>
             {colProd}
             </ScrollView>
 
             )
         }
 
+        componentDidUpdate(prevProps, prevState, snapshot){
             
         }
+    }
+    const mapDispatchToProps = (dispatch) =>{
+        return{
+          addItemToCart: (product) => dispatch({type: 'ADD_TO_CART', payload: product})
+        }
+      }
+      const mapStateToProps = (state) => {
+        return {
+            cartItems: state
+        }
+    }
+    
+    export default connect(mapStateToProps, mapDispatchToProps)(collectionPage)        
+    
+        

@@ -19,14 +19,20 @@ import CartScreen from './cartScreen';
 import initialScreen from './initialScreen';
 import productScreen from './productScreen'
 import cartIcon from '../containers/cartIcon';
+import collectionScreen from './collectionScreen';
 
-import Col from '../components/collection';
+
+import SplashScreen from '../screens/SplashScreen';
+import collectionPage from '../components/collectionPage'
+
+
 
 
 
 
 
 import { createStackNavigator, StackNavigator } from 'react-navigation-stack';
+//import { SplashScreen } from 'expo';
 
 
 export default class navigation extends React.Component {
@@ -95,7 +101,6 @@ const drawNav = createDrawerNavigator({
 
   cart: {
     screen: CartScreen,
-    screen: AboutUs,
     navigationOptions: {
       drawerIcon: () => (
         <Image
@@ -107,7 +112,18 @@ const drawNav = createDrawerNavigator({
     }
   },
 
-  Col,
+  Collection: {
+    screen: SplashScreen,
+    navigationOptions: {
+      drawerIcon: () => (
+        <Image
+          source={require('../assets/icon-cart.png')}
+          resizeMode="contain"
+          style={{ width: 20, height: 20 }}
+        />
+      )
+    }
+  },
   
   
 })
@@ -118,6 +134,8 @@ drawNavigator: drawNav,
 Main: MainScreen,
 Ratings: RatingsScreen,
 Product: productScreen,
+Collection: collectionScreen,
+Collection: collectionPage,
 'User Info': UserScreen,
 'About Us':AboutScreen,
 cart: CartScreen,
