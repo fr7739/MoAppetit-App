@@ -19,75 +19,9 @@ constructor(props){
 
     this.state ={
         productID: string,
-        product: '',
-        productIMG: this.props.navigation.getParam('IMG'),
-        updated: false,
+        product: this.props.navigation.getParam('Product'),
     }
 }
-
-async getProdID(){
-    let prodID = '';
-    try {
-        prodID = this.props.navigation.getParam('ID')
-        console.log("Prod ID: " +prodID)
-        this.setState({
-            productID: prodID
-        })
-    }
-    catch (error) {
-        console.log("error")
-    }
-    return prodID
-  }
-
-  async getProdIMG(){
-    let prodIMG = '';
-    try {
-        prodIMG = await AsyncStorage.getItem('productImage') || 'none';
-        console.log("Prod IMG: " +prodIMG)
-        this.setState({
-            productIMG: prodIMG
-        })
-    }
-    catch (error) {
-        console.log("error")
-    }
-    return prodIMG
-  }
-
-componentDidMount(){
-
-
-this.getProdID().then(() => {
-        client.product.fetch(this.state.productID).then((res) => {
-            this.setState({
-              product: res,
-            })
-            console.log(this.state.productID)
-          })
-      })  
-}
-
-handleRefresh = () =>{
-  if(this.state.updated === true){
-    this.setState({
-        updated: false
-    })
-    console.log(this.state.updated)
-}
-else{
-    this.setState({
-        updated: true
-    })
-    console.log(this.state.updated)
-}
-this.forceUpdate()
-}
-
-
-
-
-
 
       render(){
         return(
@@ -97,7 +31,7 @@ this.forceUpdate()
           backgroundColor = "#086522"
           leftComponent={<Icon name="md-arrow-back" onPress={() => this.props.navigation.goBack()} />}
           rightComponent={<CartIcon />} />
-        <ProductPage product = {this.state.product} client = {client} image = {this.state.productIMG} />
+        <ProductPage product = {this.state.product} client = {client} navigation = {this.props.navigation}/>
         
         </Container>
         </Provider> 

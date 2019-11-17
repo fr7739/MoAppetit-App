@@ -41,7 +41,7 @@ class Prod extends Component {
                  <Card key = {product.id}
                     containerStyle = {{height: 175, width: 175, justifyContent: 'center'}}
                  >
-                    <TouchableOpacity onPress = { () => this.props.navigation.navigate('Product', {IMG: product.images[0].src, title: product.title, desc: product.description, ID: product.id})}>
+                    <TouchableOpacity onPress = { () => this.props.navigation.navigate('Product', {Product: product})}>
                     <Image source={{uri: product.images[0].src}} style = {styles.buttonStyle6} />
                     </TouchableOpacity>
                         <Button

@@ -11,7 +11,8 @@ import { client } from '../hasuraAPI/shopifyAPI';
 import Prod from '../components/Product';
 import Search from '../components/Search';
 import { SearchBar } from 'react-native-elements';
-import CartIcon from '../containers/cartIcon'
+import CartIcon from '../containers/cartIcon';
+
  
 // Added by Mamadou Store Token
 // Rendering to the UI the post Registration screen with the login button and informing the user that they need to validate their email
@@ -22,7 +23,7 @@ export default class MainScreen extends React.Component {
         showSearch: false,
         auth: '',
         products: [],
-        search: []
+        search: [],
       };
     }
     componentWillMount(){
@@ -32,17 +33,6 @@ export default class MainScreen extends React.Component {
         })
       })
       }
-
-switchToContactUs = async() =>
-{
-   this.props.navigation.navigate('ContactUs');
-}
-
-
-switchToAboutUs = async() =>
-{
-  this.props.navigation.navigate('AboutUs');
-}
 
   getValue = async () => {
     try {
@@ -85,7 +75,6 @@ switchToAboutUs = async() =>
       )
     }
   }
-
 
 //Store Token End 
 

@@ -18,7 +18,11 @@ import PasswordScreen from './passwordForm';
 import CartScreen from './cartScreen';
 import initialScreen from './initialScreen';
 import productScreen from './productScreen'
-import cartIcon from '../containers/cartIcon'
+import cartIcon from '../containers/cartIcon';
+
+import Col from '../components/collection';
+
+
 
 
 
@@ -52,6 +56,10 @@ const drawNav = createDrawerNavigator({
   cart: {
     screen: CartScreen
   },
+
+  Col,
+  
+  
 })
 
 const AppNavigator = createStackNavigator({

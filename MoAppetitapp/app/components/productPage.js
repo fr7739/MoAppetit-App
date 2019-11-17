@@ -10,36 +10,16 @@ constructor(props){
     super(props)
 
     this.state ={
-    prodIMG: this.props.image,
-    updated: false
     }
 }
 
-componentWillUpdate(newProps, newState){
-    console.log("Cart: " +this.props.cartItems)
-  }
-
-handleRefresh = () =>{
-    if(this.state.updated === true){
-      this.setState({
-          updated: false
-      })
-      console.log(this.state.updated)
-  }
-  else{
-      this.setState({
-          updated: true
-      })
-      console.log(this.state.updated)
-  }
-}
     render(){
 
             return(
 
                 <Card
                     title={this.props.product.title}
-                    image={{uri: this.state.prodIMG}}>
+                    image={{uri: this.props.product.images[0].src}}>
                     <Text style={{marginBottom: 10}}>
                         {this.props.product.description}
                     </Text>
