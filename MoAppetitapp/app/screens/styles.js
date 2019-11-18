@@ -77,6 +77,32 @@ export default StyleSheet.create({
      height: '100%', //
     }, //
 
+    addressLine:
+    {
+      fontSize:16,
+      justifyContent: "flex-start",
+      color:"black",
+      backgroundColor: "white"
+    },
+    AddressBox: {
+      flex: 1,
+       //paddingTop: 1,
+       alignItems: 'center',
+       justifyContent: 'center',
+       paddingLeft: 20,
+       paddingRight: 20,
+       borderRadius:3,
+       borderColor: "black",
+       borderBottomWidth: 3,
+       marginTop:0,
+       backgroundColor: 'white',
+        borderWidth: 3,
+        marginBottom: 0,
+        paddingBottom: 0,
+        width: "80%"
+ 
+     },
+
     container: {
      flex: 1,
       //paddingTop: 1,
@@ -121,11 +147,12 @@ export default StyleSheet.create({
 
     buttonStyle6:
     {
-    width: '100%',
+    width: 150,
     height: 100,
     marginLeft: 0,
-    marginRight: 0,
-    marginTop: 0,
+    marginRight: 3,
+    marginTop: 10,
+    paddingTop:5,
     marginBottom: 0,
     justifyContent: 'center',
     },

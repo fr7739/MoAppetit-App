@@ -11,10 +11,6 @@ constructor(props){
 
 }
 
-componentWillUpdate(newProps, newState){
-    console.log("Cart: " +this.props.cartItems)
-  }
-
     render(){
 
             return(
@@ -25,6 +21,14 @@ componentWillUpdate(newProps, newState){
                     <Text style={{marginBottom: 10}}>
                         {this.props.product.description}
                     </Text>
+                    <View
+                    style = {{padding: 0, margin: 0, justifyContent: 'flex-start', flexDirection: "row", flexWrap: 'wrap', backgroundColor: 'white', position: 'relative'}}
+                    >
+                    <Text style={{marginBottom: 10, marginTop: 10, fontWeight: "bold"}}>
+                        Price:   
+                    </Text>
+                    <Text style={{marginBottom: 10, marginTop: 10, marginLeft: 10}}>{this.props.product.variants[0].price}$</Text>
+                    </View>
                         <Button
                             onPress = {() => this.props.addItemToCart(this.props.product)}
                             icon={<Icon name='md-cart' color='#ffffff' style = {{padding: 1}} />}
@@ -46,7 +50,7 @@ componentWillUpdate(newProps, newState){
       }
       const mapStateToProps = (state) => {
         return {
-            cartItems: state
+            cartItems: state.cart
         }
     }
     

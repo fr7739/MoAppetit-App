@@ -31,9 +31,14 @@ export default class UserScreen extends React.Component {
       error: ""
     };
     this.addresses = [];
+
+
     this.userState = {
-      "id:": "0",
-      hasura_id: global.hasura_id,
+      "id:": "0",/////////////
+      hasura_id: global.hasura_id,///////////
+
+
+
       config: "null",
       name: "",
       phone: "0"
@@ -220,19 +225,18 @@ export default class UserScreen extends React.Component {
   renderAddresses() {
     return this.addresses.map(item => {
       return (
-        <View style={styles.container} key={item.id}>
-          <Text style={styles.subPageHeadStyle}>
-            Address Line 1: {item.addressline1}
+
+        <View style={styles.AddressBox} key={item.id}>
+          <Text style={styles.addressLine}>
+            {item.addressline1}
           </Text>
-          <Text style={styles.subPageHeadStyle}>
-            Address Line 2: {item.addressline2}
+          <Text style={styles.addressLine}>
+            {item.addressline2}
           </Text>
-          <Text style={styles.subPageHeadStyle}>
-            Address Line 3: {item.addressline3}
+          <Text style={styles.addressLine}>
+            {item.addressline3}
           </Text>
-          <Text style={styles.subPageHeadStyle}>City: {item.city}</Text>
-          <Text style={styles.subPageHeadStyle}>State: {item.state}</Text>
-          <Text style={styles.subPageHeadStyle}>Zip: {item.zip}</Text>
+          <Text style={styles.addressLine}>{item.city},  {item.state} {item.zip}</Text>
         </View>
       );
     });
