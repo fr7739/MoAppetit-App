@@ -36,8 +36,34 @@ addTotals = () => {
             <TouchableOpacity onPress = {() => this.props.removeItem(cartItem)}>
             <Image style = {{ width: 100, height: 100}} source = {{uri: cartItem.images[0].src}} /> 
             </TouchableOpacity>
-            <Text>{cartItem.title}     -    {cartItem.variants[0].price}    x   {cartItem.qty} = {(cartItem.variants[0].price * cartItem.qty).toFixed(2)} </Text>   
+            <View style= {{flexDirection: 'row', borderWidth: 0, borderTopWidth: 0}}>
+            <View style= {{flexDirection: 'column', borderWidth: 0, borderTopWidth: 0, paddingRight: 2, marginRight: 2, alignItems: 'center', justifyContent: 'center',}}>
+            <Text>Item: {cartItem.title}</Text> 
+            <Text>Price: {cartItem.variants[0].price}</Text> 
+            <Text>Subtotal: {(cartItem.variants[0].price * cartItem.qty).toFixed(2)} </Text>  
             <Text style = {{flex: 0, position:'absolute', opacity: 0}}>{total = total + (cartItem.variants[0].price * cartItem.qty)}</Text>
+            </View>
+            <View style= {{flexDirection: 'column', alignItems: 'center', justifyContent: 'center', borderWidth: 0, borderTopWidth: 0, right: 1}}>
+            <TouchableOpacity
+                        onPress = {() => this.props.addItemToCart(cartItem)}
+                        style={{borderRadius: 50, borderWidth: 2,height: 30, width: 30, backgroundColor: '#086522', justifyContent: 'center', alignItems: 'center', position: "relative", padding:4}}
+                        title={cartItem.variants[0].price + "$"}><Text style = {{fontWeight: 'bold', color: 'white', alignContent: 'center', fontSize: 20}}> + </Text></TouchableOpacity>
+            <Text>{cartItem.qty} </Text> 
+            {cartItem.qty > 1 ?
+            (<TouchableOpacity
+                        onPress = {() => this.props.decrementCart(cartItem)}
+                        style={{borderRadius: 50, borderWidth: 2,height: 30, width: 30, backgroundColor: '#086522', justifyContent: 'center', alignItems: 'center', position: "relative", padding:4}}
+            title={cartItem.variants[0].price + "$"}><Text style = {{fontWeight: 'bold', color: 'white', alignContent: 'center', fontSize: 20}}> - </Text></TouchableOpacity>) 
+            
+            : 
+            (<TouchableOpacity
+                        onPress = {() => this.props.removeItem(cartItem)}
+                        style={{borderRadius: 50, borderWidth: 2,height: 30, width: 30, backgroundColor: '#086522', justifyContent: 'center', alignItems: 'center', position: "relative", padding:4}}
+            title={cartItem.variants[0].price + "$"}><Text style = {{fontWeight: 'bold', color: 'white', alignContent: 'center', fontSize: 20}}> - </Text></TouchableOpacity>)
+            
+            }
+            </View>
+            </View>
             </View> 
             )      
             : (null)

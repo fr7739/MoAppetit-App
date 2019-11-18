@@ -21,14 +21,14 @@ class Prod extends Component {
             return(
               <View key = {product.id}>
                  <Card 
-                    containerStyle = {{height: 300, width: 200, justifyContent: 'center', margin: 0, borderWidth: 0,}}
+                    containerStyle = {{height: 250, width: 200, justifyContent: 'center', margin: 0, borderWidth: 0,}}
                  >
                     <TouchableOpacity onPress = { () => this.props.navigation.navigate('Product', {Product: product})}>
                     <Image source={{uri: product.images[0].src}} style = {styles.buttonStyle6} />
                     </TouchableOpacity>
                         <TouchableOpacity
                         onPress = {() => this.props.addItemToCart(product)}
-                        style={{borderRadius: 50, borderWidth: 2,height: 40, width: 40, backgroundColor: '#086522', justifyContent: 'center', alignItems: 'center', position: "absolute", padding:4, right: .5, top: 1}}
+                        style={{borderRadius: 50, borderWidth: 2,height: 35, width: 35, backgroundColor: '#086522', justifyContent: 'center', alignItems: 'center', position: "absolute", padding:4, right: .5, top: 1}}
                         title={product.variants[0].price + "$"}><Text style = {{fontWeight: 'bold', color: 'white', alignContent: 'center', fontSize: 20}}> + </Text></TouchableOpacity>
                         <Text>{product.title}</Text>
                         <Text numberOfLines = {2} style = {{fontSize: 8}}>{product.description}</Text>
