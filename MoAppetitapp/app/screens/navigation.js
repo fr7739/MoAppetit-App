@@ -49,7 +49,7 @@ const drawNav = createDrawerNavigator({
   'About Us': {
     screen: AboutUs
   },
-  cart: {
+  Cart: {
     screen: CartScreen
   },
 })
@@ -62,7 +62,7 @@ Ratings: RatingsScreen,
 Product: productScreen,
 'User Info': UserScreen,
 'About Us':AboutScreen,
-cart: CartScreen,
+Cart: CartScreen,
   },
   {
     headerMode: 'none',

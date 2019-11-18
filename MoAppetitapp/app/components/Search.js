@@ -5,6 +5,12 @@ import { client } from "../hasuraAPI/shopifyAPI";
 import SearchResultProduct from "./SearchResultProduct";
 
 class Search extends Component {
+
+  constructor(props)
+  {
+    super(props);
+   // this.SearchResultProductsElement = React.createRef();
+  }
   state = {
     search: "", //What is being searched
     showingResult: false, //Is we should show nothing or results
@@ -32,10 +38,26 @@ class Search extends Component {
       //Set State is Async, so need to do things in callback function
       this.state.showingResult = true;
       this.PullSearchResults();
+      
     });
+  /*  if(this.SearchResultProductsElement.current !== null)
+    {
+    this.SearchResultProductsElement.current.clearProduct()
+    }
+    else
+    {
+      console.log("its null right now");
+    }*/
+  };
+
+  clearSearch()  {
+    this.setState({ search : ""  });
+    this.setState({searchResultProducts: []});
   };
 
 
+
+  
   /**Renders a single SearchResultProduct Component with the Search component’s search results  state variable attached. This allows
    *  the data fetched in the Search component when the PullSearchResults function is called to update the data in the 
    * SearchResultProduct component. */
@@ -45,6 +67,8 @@ class Search extends Component {
         <SearchResultProduct
           products={this.state.searchResultProducts}
           client={client}
+          searchText = {this.state.search}
+          clearSearch = {this.clearSearch.bind(this)}
         />
       </View>
     );

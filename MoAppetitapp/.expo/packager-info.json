@@ -2,8 +2,8 @@
   "devToolsPort": 19002,
   "expoServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 14800,
-  "expoServerNgrokUrl": "https://8v-ric.anonymous.moappetitapp.exp.direct",
-  "packagerNgrokUrl": "https://packager.8v-ric.anonymous.moappetitapp.exp.direct",
-  "ngrokPid": 85820
+  "packagerPid": 6920,
+  "expoServerNgrokUrl": "https://8v-ric.essono.moappetitapp.exp.direct",
+  "packagerNgrokUrl": "https://packager.8v-ric.essono.moappetitapp.exp.direct",
+  "ngrokPid": 11936
 }

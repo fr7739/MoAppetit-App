@@ -18,7 +18,21 @@ class SearchResultProduct extends Component {
 
   showProduct (product) 
   {
+    ///here
     this.setState({currentProduct: product});
+    this.props.clearSearch();
+    this.props.products = [];
+    
+    this.forceUpdate(); //Force the page to rerender with the changes
+
+  }
+
+
+  clearProduct () 
+  {
+    ///here
+    this.setState({currentProduct: null});
+    this.forceUpdate(); //Force the page to rerender with the changes
   }
 
 
@@ -26,7 +40,7 @@ class SearchResultProduct extends Component {
   {
     
    // const { currentProduct } = this.state.currentProduct;
-    if (currentProduct != null) { 
+    if (currentProduct != null && !(Array.isArray(this.props.products) && this.props.products.length) ) { 
      return (
       <Card
       title={currentProduct.title}
@@ -35,7 +49,7 @@ class SearchResultProduct extends Component {
           {currentProduct.description}
       </Text>
           <Button
-              onPress = {this.props.addItemToCart}
+              onPress = {() => this.props.addItemToCart(currentProduct)}
               icon={<Icon name='md-cart' color='#ffffff' style = {{padding: 1}} />}
               buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0, backgroundColor: '#086522'}}
           title='ADD TO CART' />
@@ -56,7 +70,7 @@ class SearchResultProduct extends Component {
       return (
         <View
           key={product.id.toString()}
-          style={{ borderWidth: 2, backgroundColor: "white" }}
+          style={{ borderWidth: 0, backgroundColor: "white" }}//asdsdad
         >
 
           <Text>{console.log(product.images[0].src)}</Text>
@@ -71,7 +85,7 @@ class SearchResultProduct extends Component {
           <View
             style={{ flex: 1, flexDirection: "row", justifyContent: "center" }}
           >
-            <Text onPress={() => this.showProduct(product)}>{product.title}</Text>
+            <Text onPress={() => this.showProduct(product)} style={{fontSize: 20, marginBottom: 15}}>{product.title}</Text>
           </View>
           <View
             style={{ flex: 1, display: "none", flexDirection: "row", justifyContent: "center" }}

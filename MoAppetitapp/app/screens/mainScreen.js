@@ -12,6 +12,7 @@ import Prod from '../components/Product';
 import Search from '../components/Search';
 import { SearchBar } from 'react-native-elements';
 import CartIcon from '../containers/cartIcon'
+import Collection from '../components/Collection'
  
 // Added by Mamadou Store Token
 // Rendering to the UI the post Registration screen with the login button and informing the user that they need to validate their email
@@ -22,6 +23,7 @@ export default class MainScreen extends React.Component {
         showSearch: false,
         auth: '',
         products: [],
+        collections: [],
         search: []
       };
     }
@@ -31,6 +33,12 @@ export default class MainScreen extends React.Component {
           products: res,
         })
       })
+
+      client.collection.fetchAllWithProducts().then((res) => {
+        this.setState({
+          collections: res,
+        })
+      });
       }
 
 switchToContactUs = async() =>
@@ -79,7 +87,7 @@ switchToAboutUs = async() =>
       return (
         
         <ScrollView>
-        <Prod products = {this.state.products} client = {client} navigation = {this.props.navigation} />
+        <Collection collections = {this.state.collections} navigation = {this.props.navigation} client = {client}/>
         </ScrollView>
   
       )
@@ -99,7 +107,7 @@ switchToAboutUs = async() =>
                     backgroundColor = "#086522"
                     leftComponent={<Icon name="menu" onPress={() => this.props.navigation.openDrawer()} />}
                     centerComponent={<Icon name="search" onPress={this.showSearch}  />}
-                    rightComponent={<CartIcon />}
+                    rightComponent={<CartIcon navigation = {this.props.navigation} />}
                    />
                   {this.renderSearch()}
                   {this.renderAll()}
