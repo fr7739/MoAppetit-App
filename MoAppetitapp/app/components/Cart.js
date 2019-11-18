@@ -31,14 +31,16 @@ addTotals = () => {
         let inCart = this.props.cartItems.cart.map((cartItem, index) => {
 
             return(
+                cartItem.qty > 0 ? (
             <View key = {index} style = {{flexDirection: 'row', borderWidth: 1, borderTopWidth: 0}}>
-            <TouchableOpacity onPress = {() => this.props.addItemToCart(cartItem)}>
+            <TouchableOpacity onPress = {() => this.props.removeItem(cartItem)}>
             <Image style = {{ width: 100, height: 100}} source = {{uri: cartItem.images[0].src}} /> 
             </TouchableOpacity>
             <Text>{cartItem.title}     -    {cartItem.variants[0].price}    x   {cartItem.qty} = {(cartItem.variants[0].price * cartItem.qty).toFixed(2)} </Text>   
             <Text style = {{flex: 0, position:'absolute', opacity: 0}}>{total = total + (cartItem.variants[0].price * cartItem.qty)}</Text>
-            </View>         
-            
+            </View> 
+            )      
+            : (null)
             )
             
         })
@@ -67,6 +69,7 @@ addTotals = () => {
 const mapDispatchToProps = (dispatch) =>{
     return{
       addItemToCart: (product) => dispatch({type: 'ADD_TO_CART', payload: product}),
+      decrementCart: (product) => dispatch({type: 'DECREMENT_FROM_CART', payload: product}),
       removeItem: (product) => dispatch({type: 'REMOVE_FROM_CART', payload: product})
     }
   }
