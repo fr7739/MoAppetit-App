@@ -17,7 +17,7 @@ class Prod extends Component {
 
     render() {
         let products = this.props.products.map((product, index) => {
-
+                console.log(product)
             return(
               <View key = {[product.id]}>
                  <Card 
