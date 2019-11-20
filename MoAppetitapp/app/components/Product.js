@@ -5,6 +5,7 @@ import {AsyncStorage} from 'react-native';
 import { Card, ListItem, Button } from 'react-native-elements'
 import { Icon, Container } from 'native-base';
 import {connect} from 'react-redux'
+import Collection from './Collection';
 
 class Prod extends Component {
     constructor(props){
@@ -16,8 +17,7 @@ class Prod extends Component {
 
 
     render() {
-        let products = this.props.products.map((product, index) => {
-                console.log(product)
+        let products = this.props.products.map((product) => {
             return(
               <View key = {[product.id]}>
                  <Card 
@@ -32,7 +32,7 @@ class Prod extends Component {
                         title={product.variants[0].price + "$"}><Text adjustsFontSizeToFit minimumFontScale= {.5} style = {{fontWeight: 'bold', color: 'white', textAlign: 'center',}}> {this.props.cartItems[this.props.cartItems.findIndex(prod => prod.id === product.id)] && this.props.cartItems[this.props.cartItems.findIndex(prod => prod.id === product.id)].id === product.id ? (this.props.cartItems[this.props.cartItems.findIndex(prod => prod.id === product.id)].qty) : ("+")}  </Text></TouchableOpacity>
                         <Text>{product.title}</Text>
                         <Text numberOfLines = {2} style = {{fontSize: 8}}>{product.description}</Text>
-                        <Text style = {{fontWeight: 'bold', alignContent: 'center',}}>${product.variants[0].price}</Text>
+                        <Text style = {{fontWeight: 'bold', alignContent: 'center',}}>${product.variants[0].price}{ this.props.collection === 'Poultry' || this.props.collection === 'Seafood' || this.props.collection === 'Lamb' || this.props.collection === 'Beef' ? ( "/lb") : (" ea")} </Text>
                 </Card> 
                 </View>
             )
