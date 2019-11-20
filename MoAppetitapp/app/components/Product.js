@@ -5,6 +5,7 @@ import {AsyncStorage} from 'react-native';
 import { Card, ListItem, Button } from 'react-native-elements'
 import { Icon, Container } from 'native-base';
 import {connect} from 'react-redux'
+import Collection from './Collection';
 
 class Prod extends Component {
     constructor(props){
@@ -17,9 +18,8 @@ class Prod extends Component {
 
     render() {
         let products = this.props.products.map((product) => {
-
             return(
-              <View key = {product.id}>
+              <View key = {[product.id]}>
                  <Card 
                     containerStyle = {{height: 250, width: 200, justifyContent: 'center', margin: 0, borderWidth: 0,}}
                  >
@@ -28,16 +28,12 @@ class Prod extends Component {
                     </TouchableOpacity>
                         <TouchableOpacity
                         onPress = {() => this.props.addItemToCart(product)}
-                        style={{borderRadius: 50, borderWidth: 2,height: 35, width: 35, backgroundColor: '#086522', justifyContent: 'center', alignItems: 'center', position: "absolute", padding:4, right: .5, top: 1}}
-                        title={product.variants[0].price + "$"}><Text style = {{fontWeight: 'bold', color: 'white', alignContent: 'center', fontSize: 20}}> + </Text></TouchableOpacity>
+                        style={{borderRadius: 50, borderWidth: 2,height: 35, width: 35, backgroundColor: '#086522', position: "absolute", padding: 4, right: 1, top: 1}}
+                        title={product.variants[0].price + "$"}><Text adjustsFontSizeToFit minimumFontScale= {.5} style = {{fontWeight: 'bold', color: 'white', textAlign: 'center',}}> {this.props.cartItems[this.props.cartItems.findIndex(prod => prod.id === product.id)] && this.props.cartItems[this.props.cartItems.findIndex(prod => prod.id === product.id)].id === product.id ? (this.props.cartItems[this.props.cartItems.findIndex(prod => prod.id === product.id)].qty) : ("+")}  </Text></TouchableOpacity>
                         <Text>{product.title}</Text>
                         <Text numberOfLines = {2} style = {{fontSize: 8}}>{product.description}</Text>
-                        <Text style = {{fontWeight: 'bold', alignContent: 'center',}}>{product.variants[0].price}</Text>
+                        <Text style = {{fontWeight: 'bold', alignContent: 'center',}}>${product.variants[0].price}{ this.props.collection === 'Poultry' || this.props.collection === 'Seafood' || this.props.collection === 'Lamb' || this.props.collection === 'Beef' ? ( "/lb") : (" ea")} </Text>
                 </Card> 
-                <TouchableOpacity
-                onPress = {() => this.props.addItemToCart(product)}
-                style={{borderRadius: 50, borderWidth: 2,height: 40, width: 40, backgroundColor: '#086522', justifyContent: 'center', alignItems: 'center', position: "absolute", padding:3, right: 1, top: 1}}
-                title={product.variants[0].price + "$"}><Text style = {{fontWeight: 'bold', color: 'white', alignContent: 'center', fontSize: 20}}> + </Text></TouchableOpacity>
                 </View>
             )
         })
@@ -54,4 +50,10 @@ const mapDispatchToProps = (dispatch) =>{
     }
   }
 
-export default connect(null, mapDispatchToProps)(Prod)
+const mapStateToProps = (state) => {
+    return {
+        cartItems: state.cart
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Prod)

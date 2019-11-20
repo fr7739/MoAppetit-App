@@ -17,7 +17,7 @@ class Collection extends Component {
 
     render() {
         let collections = this.props.collections.map((collection, index) => {
-
+                let title = collection.title
             return(
                 <View 
                     key = {index}
@@ -33,7 +33,7 @@ class Collection extends Component {
                 horizontal = {true}
                 showsHorizontalScrollIndicator = {false}
                 >
-                <Prod products = {collection.products} navigation = {this.props.navigation} client = {this.props.client} />
+                <Prod products = {collection.products} navigation = {this.props.navigation} client = {this.props.client} collection = {collection.title} />
                 </ScrollView>
                 </View>
             )
@@ -45,6 +45,7 @@ class Collection extends Component {
         )
     }
 }
+
 const mapDispatchToProps = (dispatch) =>{
     return{
       addItemToCart: (product) => dispatch({type: 'ADD_TO_CART', payload: product})
