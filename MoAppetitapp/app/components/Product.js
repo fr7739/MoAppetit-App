@@ -5,6 +5,7 @@ import {AsyncStorage} from 'react-native';
 import { Card, ListItem, Button } from 'react-native-elements'
 import { Icon, Container } from 'native-base';
 import {connect} from 'react-redux'
+import Collection from './Collection';
 
 class Prod extends Component {
     constructor(props){
@@ -14,46 +15,30 @@ class Prod extends Component {
         }
     }
 
-    setValue = async (key, data) => {
-        try {
-        await AsyncStorage.setItem(key, data);
-         console.log("Set Value:" +data)
-        } catch (e) {
-            console.log("Error e" + e)
-        }
-    }
-
-
-    async removeItemValue(key) {
-        try {
-          await AsyncStorage.removeItem(key);
-          return true;
-        }
-        catch(exception) {
-          return false;
-        }
-      }
 
     render() {
         let products = this.props.products.map((product) => {
-
             return(
-                 <Card key = {product.id}
-                    containerStyle = {{height: 175, width: 175, justifyContent: 'center'}}
+              <View key = {[product.id]}>
+                 <Card 
+                    containerStyle = {{height: 250, width: 200, justifyContent: 'center', margin: 0, borderWidth: 0,}}
                  >
-                    <TouchableOpacity onPress = { () => this.props.navigation.navigate('Product', {IMG: product.images[0].src, title: product.title, desc: product.description, ID: product.id})}>
+                    <TouchableOpacity onPress = { () => this.props.navigation.navigate('Product', {Product: product})}>
                     <Image source={{uri: product.images[0].src}} style = {styles.buttonStyle6} />
                     </TouchableOpacity>
-                        <Button
-                        onPress = {this.props.addItemToCart}
-                        buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0, marginTop: 1, width: 143, height: 45, backgroundColor: '#086522'}}
-                        title={product.variants[0].price + "$"} />
+                        <TouchableOpacity
+                        onPress = {() => this.props.addItemToCart(product)}
+                        style={{borderRadius: 50, borderWidth: 2,height: 35, width: 35, backgroundColor: '#086522', position: "absolute", padding: 4, right: 1, top: 1}}
+                        title={product.variants[0].price + "$"}><Text adjustsFontSizeToFit minimumFontScale= {.5} style = {{fontWeight: 'bold', color: 'white', textAlign: 'center',}}> {this.props.cartItems[this.props.cartItems.findIndex(prod => prod.id === product.id)] && this.props.cartItems[this.props.cartItems.findIndex(prod => prod.id === product.id)].id === product.id ? (this.props.cartItems[this.props.cartItems.findIndex(prod => prod.id === product.id)].qty) : ("+")}  </Text></TouchableOpacity>
+                        <Text>{product.title}</Text>
+                        <Text numberOfLines = {2} style = {{fontSize: 8}}>{product.description}</Text>
+                        <Text style = {{fontWeight: 'bold', alignContent: 'center',}}>${product.variants[0].price}{ this.props.collection === 'Poultry' || this.props.collection === 'Seafood' || this.props.collection === 'Lamb' || this.props.collection === 'Beef' ? ( "/lb") : (" ea")} </Text>
                 </Card> 
-                
+                </View>
             )
         })
         return(
-            <View style = {{flex: 1, alignContent:"space-between", justifyContent: 'flex-start', flexDirection: "row", flexWrap: "wrap"}}>
+            <View style = {{flex: 1, justifyContent: 'flex-start', flexDirection: "row", flexWrap: "wrap", backgroundColor: 'white', padding: 0, margin: 0, marginTop: 3, marginBottom: 3, paddingRight: 1, borderWidth: 0, minWidth: 500}}>
             {products}
             </View>
         )
@@ -65,4 +50,10 @@ const mapDispatchToProps = (dispatch) =>{
     }
   }
 
-export default connect(null, mapDispatchToProps)(Prod)
+const mapStateToProps = (state) => {
+    return {
+        cartItems: state.cart
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Prod)

@@ -49,7 +49,7 @@ class SearchResultProduct extends Component {
           {currentProduct.description}
       </Text>
           <Button
-              onPress = {this.props.addItemToCart}
+              onPress = {() => this.props.addItemToCart(currentProduct)}
               icon={<Icon name='md-cart' color='#ffffff' style = {{padding: 1}} />}
               buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0, backgroundColor: '#086522'}}
           title='ADD TO CART' />

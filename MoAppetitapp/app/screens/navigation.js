@@ -39,18 +39,67 @@ class Hidden extends React.Component {
 const drawNav = createDrawerNavigator({
   Main: {
     screen: MainScreen,
+    navigationOptions: {
+      drawerIcon: () => (
+        <Image
+          source={require('../assets/home3.png')}
+          resizeMode="contain"
+          style={{ width: 20, height: 20 }}
+        />
+      )
+    }
   },
+
   Ratings:{
-    screen: RatingsScreen
+    screen: RatingsScreen,
+    navigationOptions: {
+      drawerIcon: () => (
+        <Image
+          source={require('../assets/star-empty.png')}
+          resizeMode="contain"
+          style={{ width: 20, height: 20 }}
+        />
+      )
+    }
   },
+
   'User Info':{
-  screen: UserScreen
+  screen: UserScreen,
+  navigationOptions: {
+    drawerIcon: () => (
+      <Image
+        source={require('../assets/user.png')}
+        resizeMode="contain"
+        style={{ width: 20, height: 20 }}
+      />
+    )
+  }
   },
+
   'About Us': {
-    screen: AboutUs
+    screen: AboutUs,
+    navigationOptions: {
+      drawerIcon: () => (
+        <Image
+          source={require('../assets/newspaper.png')}
+          resizeMode="contain"
+          style={{ width: 20, height: 20 }}
+        />
+      )
+    }
   },
-  cart: {
-    screen: CartScreen
+
+  Cart: {
+    screen: CartScreen,
+    navigationOptions: {
+      drawerIcon: () => (
+        <Image
+          source={require('../../assets/icon-cart.png')}
+          resizeMode="contain"
+          style={{ width: 20, height: 20 }}
+        />
+      )
+    }
   },
 })
 
@@ -62,7 +111,7 @@ Ratings: RatingsScreen,
 Product: productScreen,
 'User Info': UserScreen,
 'About Us':AboutScreen,
-cart: CartScreen,
+Cart: CartScreen,
   },
   {
     headerMode: 'none',

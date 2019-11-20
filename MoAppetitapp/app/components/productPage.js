@@ -9,42 +9,28 @@ class productPage extends Component {
 constructor(props){
     super(props)
 
-    this.state ={
-    prodIMG: this.props.image,
-    updated: false
-    }
 }
 
-componentWillUpdate(newProps, newState){
-    console.log("Cart: " +this.props.cartItems)
-  }
-
-handleRefresh = () =>{
-    if(this.state.updated === true){
-      this.setState({
-          updated: false
-      })
-      console.log(this.state.updated)
-  }
-  else{
-      this.setState({
-          updated: true
-      })
-      console.log(this.state.updated)
-  }
-}
     render(){
 
             return(
 
                 <Card
                     title={this.props.product.title}
-                    image={{uri: this.state.prodIMG}}>
+                    image={{uri: this.props.product.images[0].src}}>
                     <Text style={{marginBottom: 10}}>
                         {this.props.product.description}
                     </Text>
+                    <View
+                    style = {{padding: 0, margin: 0, justifyContent: 'flex-start', flexDirection: "row", flexWrap: 'wrap', backgroundColor: 'white', position: 'relative'}}
+                    >
+                    <Text style={{marginBottom: 10, marginTop: 10, fontWeight: "bold"}}>
+                        Price:   
+                    </Text>
+                    <Text style={{marginBottom: 10, marginTop: 10, marginLeft: 10}}>{this.props.product.variants[0].price}$</Text>
+                    </View>
                         <Button
-                            onPress = {this.props.addItemToCart}
+                            onPress = {() => this.props.addItemToCart(this.props.product)}
                             icon={<Icon name='md-cart' color='#ffffff' style = {{padding: 1}} />}
                             buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0, backgroundColor: '#086522'}}
                         title='ADD TO CART' />
@@ -64,7 +50,7 @@ handleRefresh = () =>{
       }
       const mapStateToProps = (state) => {
         return {
-            cartItems: state
+            cartItems: state.cart
         }
     }
     

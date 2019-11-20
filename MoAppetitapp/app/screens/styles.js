@@ -146,11 +146,12 @@ export default StyleSheet.create({
 
     buttonStyle6:
     {
-    width: '100%',
+    width: 150,
     height: 100,
     marginLeft: 0,
-    marginRight: 0,
-    marginTop: 0,
+    marginRight: 3,
+    marginTop: 10,
+    paddingTop:5,
     marginBottom: 0,
     justifyContent: 'center',
     },

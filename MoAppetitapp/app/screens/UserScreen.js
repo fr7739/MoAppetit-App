@@ -90,7 +90,7 @@ export default class UserScreen extends React.Component {
     // Calling the getAddressAPI API
     let getAddressResponse = await getAddressAPI(addressInfo);
     if (getAddressResponse.status != 200) {
-      console.log(jasongetAddressResponse.json());
+      console.log(getAddressResponse.json());
       console.log("Statttttttttttus is " + getAddressResponse.status)
       this.ShowDatabaseError();
 
