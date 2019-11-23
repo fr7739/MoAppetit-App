@@ -9,10 +9,17 @@ import { Icon } from 'native-base';
 import { Header } from 'react-native-elements';
 import { client } from '../hasuraAPI/shopifyAPI';
 import Prod from '../components/Product';
-import Search from '../components/Search';
+//import Search from '../components/Search';
 import { SearchBar } from 'react-native-elements';
 import CartIcon from '../containers/cartIcon'
-import Collection from '../components/Collection'
+import Collection from '../components/Collection';
+import AnimatedHeader from 'react-native-animated-header';
+import HeaderImage from '../../assets/HeaderImage.png';
+
+import SearchResultProduct from "../components/SearchResultProduct";
+
+
+
  
 // Added by Mamadou Store Token
 // Rendering to the UI the post Registration screen with the login button and informing the user that they need to validate their email
@@ -24,7 +31,10 @@ export default class MainScreen extends React.Component {
         auth: '',
         products: [],
         collections: [],
-        search: []
+        search: [],
+        search: "", //What is being searched
+    showingResult: false, //Is we should show nothing or results
+    searchResultProducts: []
       };
     }
     componentWillMount(){
@@ -40,17 +50,6 @@ export default class MainScreen extends React.Component {
         })
       });
       }
-
-switchToContactUs = async() =>
-{
-   this.props.navigation.navigate('ContactUs');
-}
-
-
-switchToAboutUs = async() =>
-{
-  this.props.navigation.navigate('AboutUs');
-}
 
   getValue = async () => {
     try {
@@ -95,24 +94,123 @@ switchToAboutUs = async() =>
   }
 
 
+
+  PullSearchResults() {
+    const query = {
+      query: "title:*" + this.state.search + "*", //This is the filter, All titles that contain the search box text
+      sortBy: "title"
+    };
+    client.product.fetchQuery(query).then(res => { //Fetches query from Shopify API
+      this.setState({
+        searchResultProducts: res  //Sets the results recieved by the query call into the state's searchResultProducts variable
+      });
+    });
+  }
+
+  /**Updates the search variable in the Search Component’s State, and calls the PullSearchResults function to update the character.
+   *  Calling the function  every time the search is updated allows the function to update on every character press. That’s 
+   * why the search results seem instantaneous. */
+  updateSearch = search => {
+    this.setState({ search }, () => {
+      //Set State is Async, so need to do things in callback function
+      this.state.showingResult = true;
+      this.PullSearchResults();
+      
+    });
+  /*  if(this.SearchResultProductsElement.current !== null)
+    {
+    this.SearchResultProductsElement.current.clearProduct()
+    }
+    else
+    {
+      console.log("its null right now");
+    }*/
+  };
+
+  clearSearch()  {
+    this.setState({ search : ""  });
+    this.setState({searchResultProducts: []});
+  };
+
+
+
+  
+  /**Renders a single SearchResultProduct Component with the Search component’s search results  state variable attached. This allows
+   *  the data fetched in the Search component when the PullSearchResults function is called to update the data in the 
+   * SearchResultProduct component. */
+  renderSearchResults() {
+    return (
+      <View>
+        <SearchResultProduct
+          products={this.state.searchResultProducts}
+          client={client}
+          searchText = {this.state.search}
+          clearSearch = {this.clearSearch.bind(this)}
+        />
+      </View>
+    );
+  }
+
+  /** This is basically a compact holder for the search results. It checks if the state is set to show result, and depending on the check shows nothing or the results. */
+  renderResultsContainer() {
+    if (this.state.showingResult) { //if we want to see results
+      return (
+        <View>
+          <View>{this.renderSearchResults()}</View>
+        </View>
+      );
+    } else {//if we are not ready to see results
+      return <View></View>;
+    }
+  }
+
+  
+
 //Store Token End 
 
   render() {
-    
+    const { search } = this.state;
       return (
-
+        
         <Provider store = {store}>
-        <ImageBackground source={require('../assets/OpeningPageBackground.jpg')} resizeMode='cover' style={styles.backgroundImage}>
-                <Header 
-                    backgroundColor = "#086522"
-                    leftComponent={<Icon name="menu" onPress={() => this.props.navigation.openDrawer()} />}
-                    centerComponent={<Icon name="search" onPress={this.showSearch}  />}
-                    rightComponent={<CartIcon navigation = {this.props.navigation} />}
-                   />
-                  {this.renderSearch()}
-                  {this.renderAll()}
-           </ImageBackground>
-           </Provider>
+          
+        <AnimatedHeader 
+        style={{flex: 1 }}
+        renderLeft={() => (<Icon style={{left:10, marginBottom:-5}} size={80} name="menu" onPress={() => this.props.navigation.openDrawer()} />)}
+        renderRight={() => (<Icon name="search" onPress={this.showSearch} />)}
+        renderRight={() => (<CartIcon navigation = {this.props.navigation} />)}            
+        headerMaxHeight={200}
+        imageSource={HeaderImage}
+        toolbarColor='#086522'
+        disabled={false}
+        
+      >
+   
+        <ScrollView> 
+          
+        <View>
+        <KeyboardAvoidingView>
+          
+          <SearchBar
+            lightTheme
+            //leftComponent={<Icon name="search" onPress={this.showSearch}  />}
+            placeholder="Type Here..."
+            onChangeText={this.updateSearch}
+            //onPress={() => this.props.navigation.navigate('Search')}
+            value={search}
+          />
+        </KeyboardAvoidingView>
+
+        <View style={{ backgroundColor: "white" }}>
+          {this.renderResultsContainer()}
+        </View>
+      </View> 
+         
+        <Collection collections = {this.state.collections} navigation = {this.props.navigation} client = {client}/>
+        </ScrollView>
+        </AnimatedHeader>
+        </Provider>
+        
       );
   }
 }
