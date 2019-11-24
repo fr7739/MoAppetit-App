@@ -6,6 +6,7 @@ import styles from "./styles.js";
 import getAddressAPI from "../hasuraAPI/getAddressAPI";
 import setAddressAPI from "../hasuraAPI/setAddressAPI";
 import getFullUserAPI from "../hasuraAPI/getFullUserAPI";
+import deleteAddressAPI from "../hasuraAPI/deleteAddressAPI";
 import setUseFullInfoAPI from "../hasuraAPI/setUserFullInfoAPI.js";
 import { Header } from 'react-native-elements';
 import { Icon } from 'native-base';
@@ -167,6 +168,32 @@ export default class UserScreen extends React.Component {
     const resultUserResponse = await UserResponse.json();
   };
 
+
+  handleDelete = async value => {
+    console.log("Value: "+value);
+      // Calling the deleteAddressAPI API
+      let deleteAddressResponse = await deleteAddressAPI(value);//pass in value, which is just an ID
+      if (deleteAddressResponse.status != 200) {
+        this.ShowDatabaseError();
+        return;
+      }
+      this.loadAddresses();
+      this.forceUpdate();
+  }
+
+  handleEdit = async value => {
+    console.log("Value: "+value);
+    //To do for HandleEdit
+          //put the data for this record into the bottom form by updating the state
+            //to do this find the address in this.addresses
+            //update the state using this address
+            //set a flag that this address is in edit mode and not insert mode
+              //and change the text of "Add Address" to "Insert Address"
+            //Now When the user hits the button and handleSubmit is called the edit flag is evaluated
+              //if the edit flag is true call [a new file] UpdateAddressAPI.js
+          //after update, clear as it does now, but change the flag back to insert mode, and change the text back to "Add Address"
+  }
+
   /*structures the data, then send the data to the hasura API, 
   then reloads the list of address to see the new record within the list*/
   handleSubmit = async name => {
@@ -237,6 +264,17 @@ export default class UserScreen extends React.Component {
             {item.addressline3}
           </Text>
           <Text style={styles.addressLine}>{item.city},  {item.state} {item.zip}</Text>
+     
+          <View style={styles.AddressButtonContainer}>
+              <View style={styles.AddressSingleButtonContainer}>
+                  <Button onPress={() => this.handleDelete(item.id)} value={item.id} text="Delete" 
+                        style={{ container: styles.buttonStyle2Mini }}></Button>
+              </View>
+              <View style={styles.AddressSingleButtonContainer}>
+                <Button onPress={() => this.handleEdit(item.id)}  text="Edit" 
+                      style={{ container: styles.buttonStyle2Mini }}></Button>
+              </View>
+          </View>
         </View>
       );
     });
