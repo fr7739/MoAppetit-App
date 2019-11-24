@@ -271,13 +271,13 @@ inputIcon:{
 inputContainer: {
   borderBottomColor: '#F5FCFF',
   backgroundColor: '#FFFFFF',
-  borderRadius:10,
+  borderRadius:12,
   borderBottomWidth: 1,
   width:290,
   height:45,
   marginBottom:12,
-  flexDirection: 'row',
-  alignItems:'center',
+  flexDirection: 'column',
+  //alignItems:'flex-start',
   left: 15,
   marginTop:15,
 
