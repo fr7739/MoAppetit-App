@@ -25,7 +25,7 @@ class Collection extends Component {
                 >
                     <Card
                 title = {this.props.collections.title}
-                containerStyle = {{height: 45, width: 100, justifyContent: 'center', backgroundColor: "#086522", position: "absolute", marginTop: 2}}
+                containerStyle = {{height: 45, width: 100, justifyContent: 'center', backgroundColor: "#086522", position: "absolute", marginTop: 20}}
                 wrapperStyle = {{padding: 0}}
                 ><Text style = {{color: 'white', fontWeight: 'bold'}}>{collection.title}</Text></Card>
                 
