@@ -1,19 +1,19 @@
 import React from 'react';
-const PASSWORD_URL = "https://auth.moappetit.com/v1/forgot-password"
+const PASSWORD_URL = "https://auth.moappetit.com/v1/forgot-password";
 
 const passwordAPI = async (data) => {
-
-requestOptions = {
-    "method": "POST",
-    "headers": {
+  let requestOptions = {
+    method: "POST",
+    headers: {
         "Content-Type": "application/json"
     }
-};
+  };
 
 let body = {
     provider: "email",
     data: {
       email: data.email.toLowerCase(),
+      password: data.password
     }
   };
 requestOptions.body = JSON.stringify(body);
