@@ -159,7 +159,7 @@ export default class RegistrationForm extends React.Component {
             <Button 
             style={{ container: styles.buttonStyle}} 
             primary={true} 
-            text="Register" 
+            text="Sign Up" 
             raised={true} 
             onPress={() => this.props.navigation.navigate('Register')}/>
      </View>

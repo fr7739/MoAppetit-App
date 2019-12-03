@@ -168,7 +168,7 @@ export default class LoginScreen extends React.Component {
               <Button 
               style={{ container: styles.buttonStyle}} 
               primary={true} 
-              text="Register" 
+              text="Sign Up" 
               raised={true} 
               onPress={() => this.props.navigation.navigate('Register')}/>
        </View>
@@ -199,7 +199,7 @@ export default class LoginScreen extends React.Component {
         
       <TouchableOpacity onPress={ () => this.props.navigation.navigate('Password')}> 
       <View>
-      <Text style = {styles.signupButton2}> Forgot Password </Text> 
+      <Text style = {styles.signupButton2}> Forgot Password? </Text> 
       </View>
       </TouchableOpacity> 
 

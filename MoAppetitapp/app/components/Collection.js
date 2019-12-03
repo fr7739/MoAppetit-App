@@ -21,17 +21,14 @@ class Collection extends Component {
             return(
                 <View 
                     key = {index}
-                    style = {{flex: 1, padding: 0, margin: 0, justifyContent: 'flex-start', flexDirection: "row", flexWrap: 'wrap', backgroundColor: 'white', position: 'relative'}}
+                    style = {{flex: 1,  flexDirection: "row", flexWrap: 'wrap',}}
                 >
-                    <Card
-                title = {this.props.collections.title}
-                containerStyle = {{height: 45, width: 100, justifyContent: 'center', backgroundColor: "#086522", position: "absolute", marginTop: 2}}
-                wrapperStyle = {{padding: 0}}
-                ><Text style = {{color: 'white', fontWeight: 'bold'}}>{collection.title}</Text></Card>
+                    <Text style = {{color: '#086522', fontWeight: 'bold', position: 'absolute', zIndex: 2000, padding: 20}}>{collection.title}</Text>
                 
                 <ScrollView
                 horizontal = {true}
                 showsHorizontalScrollIndicator = {false}
+                style = {{padding: 5, margin: 0}}
                 >
                 <Prod products = {collection.products} navigation = {this.props.navigation} client = {this.props.client} collection = {collection.title} />
                 </ScrollView>
