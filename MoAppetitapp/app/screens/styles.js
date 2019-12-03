@@ -34,7 +34,7 @@ export default StyleSheet.create({
         marginBottom: 0,
         paddingBottom: 0,
         backgroundColor: "white",
-        width: "60%",
+        width: "80%",
         
     },
 
@@ -102,7 +102,6 @@ export default StyleSheet.create({
         width: "80%"
  
      },
-
     container: {
      flex: 1,
       //paddingTop: 1,
@@ -117,6 +116,29 @@ export default StyleSheet.create({
     buttonStyle2:
     {
     width: 375,
+    borderWidth: 3,
+    justifyContent: 'center',
+    backgroundColor: '#7a42f4',
+      padding: 10,
+      margin: 15,
+      height: 40,
+    },
+
+    AddressButtonContainer: {
+      flex: 1,
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    AddressSingleButtonContainer: {
+      flex: 1,
+    },
+
+
+
+    buttonStyle2Mini:
+    {
+    width: 120,
     borderWidth: 3,
     justifyContent: 'center',
     backgroundColor: '#7a42f4',
