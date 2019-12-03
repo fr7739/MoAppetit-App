@@ -22,12 +22,14 @@ constructor(props){
                         {this.props.product.description}
                     </Text>
                     <View
-                    style = {{padding: 0, margin: 0, justifyContent: 'flex-start', flexDirection: "row", flexWrap: 'wrap', backgroundColor: 'white', position: 'relative'}}
+                    style = {{padding: 0, margin: 0, justifyContent: 'flex-start', flexDirection: "column", flexWrap: 'wrap', backgroundColor: 'white', position: 'relative'}}
                     >
                     <Text style={{marginBottom: 10, marginTop: 10, fontWeight: "bold"}}>
-                        Price:   
+                        Number in cart: {this.props.cartItems[this.props.cartItems.findIndex(prod => prod.id === this.props.product.id)] && this.props.cartItems[this.props.cartItems.findIndex(prod => prod.id === this.props.product.id)].id === this.props.product.id ? (this.props.cartItems[this.props.cartItems.findIndex(prod => prod.id === this.props.product.id)].qty) : ("0")} 
                     </Text>
-                    <Text style={{marginBottom: 10, marginTop: 10, marginLeft: 10}}>{this.props.product.variants[0].price}$</Text>
+                    <Text style={{marginBottom: 10, marginTop: 10, fontWeight: "bold"}}>
+                    Price: {this.props.product.variants[0].price}$
+                    </Text>
                     </View>
                         <Button
                             onPress = {() => this.props.addItemToCart(this.props.product)}

@@ -21,17 +21,17 @@ class Prod extends Component {
             return(
               <View key = {[product.id]}>
                  <Card 
-                    containerStyle = {{height: 250, width: 200, justifyContent: 'center', margin: 0, borderWidth: 0,}}
+                    containerStyle = {{height: 250, width: 175, justifyContent: 'center', margin: 1, borderWidth: 0,}}
                  >
                     <TouchableOpacity onPress = { () => this.props.navigation.navigate('Product', {Product: product})}>
                     <Image source={{uri: product.images[0].src}} style = {styles.buttonStyle6} />
                     </TouchableOpacity>
                         <TouchableOpacity
                         onPress = {() => this.props.addItemToCart(product)}
-                        style={{borderRadius: 50, borderWidth: 2,height: 35, width: 35, backgroundColor: '#086522', position: "absolute", padding: 4, right: 1, top: 1}}
-                        title={product.variants[0].price + "$"}><Text adjustsFontSizeToFit minimumFontScale= {.5} style = {{fontWeight: 'bold', color: 'white', textAlign: 'center',}}> {this.props.cartItems[this.props.cartItems.findIndex(prod => prod.id === product.id)] && this.props.cartItems[this.props.cartItems.findIndex(prod => prod.id === product.id)].id === product.id ? (this.props.cartItems[this.props.cartItems.findIndex(prod => prod.id === product.id)].qty) : ("+")}  </Text></TouchableOpacity>
+                        style={{borderRadius: 50, borderWidth: 0,height: 25, width: 25, backgroundColor: '#086522', position: "absolute", padding: 5, right: 1, top: 1}}
+                        title={product.variants[0].price + "$"}><Text adjustsFontSizeToFit minimumFontScale= {.5} style = {{fontWeight: 'bold', color: 'white', textAlign: 'right', fontSize: 8}}> {this.props.cartItems[this.props.cartItems.findIndex(prod => prod.id === product.id)] && this.props.cartItems[this.props.cartItems.findIndex(prod => prod.id === product.id)].id === product.id ? (this.props.cartItems[this.props.cartItems.findIndex(prod => prod.id === product.id)].qty) : ("+")}  </Text></TouchableOpacity>
                         <Text>{product.title}</Text>
-                        <Text numberOfLines = {2} style = {{fontSize: 8}}>{product.description}</Text>
+                        <Text numberOfLines = {1} style = {{fontSize: 8}}>{product.description}</Text>
                         <Text style = {{fontWeight: 'bold', alignContent: 'center',}}>${product.variants[0].price}{ this.props.collection === 'Poultry' || this.props.collection === 'Seafood' || this.props.collection === 'Lamb' || this.props.collection === 'Beef' ? ( "/lb") : (" ea")} </Text>
                 </Card> 
                 </View>
