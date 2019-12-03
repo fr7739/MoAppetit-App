@@ -23,7 +23,9 @@ class Collection extends Component {
                     key = {index}
                     style = {{flex: 1,  flexDirection: "row", flexWrap: 'wrap',}}
                 >
+
                     <Text style = {{color: '#086522', fontWeight: 'bold', position: 'absolute', zIndex: 2000, padding: 20}}>{collection.title}</Text>
+
                 
                 <ScrollView
                 horizontal = {true}

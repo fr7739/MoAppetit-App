@@ -9,7 +9,6 @@ export const setAddressAPI = async data => {
       "Content-Type": "application/json"
     }
   };
-
   let body = {
     type: "insert",
     args: {
@@ -22,7 +21,7 @@ export const setAddressAPI = async data => {
           city: data.city,
           state: data.state,
           zip: data.zip,
-          user_id: data.user_id
+          user_id: global.user_id
         }
       ]
     }

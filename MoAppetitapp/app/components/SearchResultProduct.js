@@ -20,7 +20,7 @@ class SearchResultProduct extends Component {
   {
     ///here
     this.setState({currentProduct: product});
-    this.props.clearSearch();
+    // this.props.clearSearch();
     this.props.products = [];
     
     this.forceUpdate(); //Force the page to rerender with the changes
@@ -40,7 +40,8 @@ class SearchResultProduct extends Component {
   {
     
    // const { currentProduct } = this.state.currentProduct;
-    if (currentProduct != null && !(Array.isArray(this.props.products) && this.props.products.length) ) { 
+    if (currentProduct ) { 
+      console.log("Should show...", currentProduct)
      return (
       <Card
       title={currentProduct.title}
@@ -56,6 +57,7 @@ class SearchResultProduct extends Component {
   </Card> 
       );
     } else {//if we are not ready to see current product
+      console.log("But shows...")
       return <View></View>;
     }
   }
@@ -85,7 +87,7 @@ class SearchResultProduct extends Component {
           <View
             style={{ flex: 1, flexDirection: "row", justifyContent: "center" }}
           >
-            <Text onPress={() => this.showProduct(product)} style={{fontSize: 20, marginBottom: 15}}>{product.title}</Text>
+            <Text onPress={() => this.props.showProduct(product)} style={{fontSize: 20, marginBottom: 15}}>{product.title}</Text>
           </View>
           <View
             style={{ flex: 1, display: "none", flexDirection: "row", justifyContent: "center" }}
@@ -95,11 +97,15 @@ class SearchResultProduct extends Component {
         </View>
       );
     });
+    //console.log("asdadfadf", this.props.showingProduct, this.props.productToShow)
     return (
       <View>
-        <ScrollView>{products}</ScrollView>
-        
-        <ScrollView>{this.renderSelectedProduct(this.state.currentProduct)}</ScrollView>
+        {
+          !this.props.showingProduct && 
+          <ScrollView>{products}</ScrollView>
+        }
+        { this.props.showingProduct && this.props.productToShow &&
+         <ScrollView>{this.renderSelectedProduct(this.props.productToShow)}</ScrollView> }
       </View>
     );
   }

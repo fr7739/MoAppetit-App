@@ -4,6 +4,8 @@ import { StyleSheet, Platform, View, ImageBackground,  KeyboardAvoidingView, Ima
 import styles from './styles.js';
 import {Button} from 'react-native-material-ui';
 import passwordAPI from '../hasuraAPI/passwordAPI';
+import { Form, TextValidator } from 'react-native-validator-form';
+
 
 
 
@@ -75,10 +77,12 @@ export default class LoginScreen extends React.Component {
     handleSubmit = async (name) => {
         let registerResponse = await passwordAPI(this.state) // Calling the register API
         const resultResponse = await registerResponse.json()
+        this.refs.form.submit()
 
         // If the response generated from the API has a status of 200 then add the user to the user table
         if (passwordResponse.status === 200) {
-            const userInfo = {
+          this.refs.form.submit()
+          const userInfo = {
                 hasura_id: resultResponse.hasura_id,
                 name: name
             }
@@ -101,9 +105,9 @@ export default class LoginScreen extends React.Component {
 
     // Rendering to the UI the input options and submit button
     render() {
+      const { email } = this.state
         return (
           <ImageBackground source={require('../assets/OpeningPageBackground.jpg')} resizeMode='cover'style={styles.backgroundImage}>
-              {/* Thamima: Changes */} 
           <KeyboardAvoidingView style={styles.KBAV} behavior="position" enabled>
    
           <View style={styles.inputContainer2}>
@@ -113,17 +117,24 @@ export default class LoginScreen extends React.Component {
             We'll send you a link to reset your password
             </Text>
             </Text>
-
        </View>
+
+       <Form
+        ref="form"
+        onSubmit={this.handleSubmit}
+            >
+
        <View style={styles.rectangle3}>
        <View style={styles.inputContainer}>
-          <Image style={[styles.icon, styles.inputIcon]} source={{uri: 'https://png.icons8.com/envelope/androidL/40/3498db'}}/>
-          <TextInput style={styles.inputs}          
-          required
-          value= {this.state.email}
+       <TextValidator  
+          name="email"
+          label="email"
+          validators={['required', 'isEmail']}
+          errorMessages={['This field is required', 'Email invalid']}
+          value= {email}
           onChangeText={this.handleEmailChange}
           placeholder="Email"
-          keyboardType="email-address"
+          //keyboardType="email-address"
           underlineColorAndroid='transparent'/>
           </View>
           <View>
@@ -132,6 +143,7 @@ export default class LoginScreen extends React.Component {
               </TouchableOpacity>
           </View>
       </View>
+      </Form>
       </KeyboardAvoidingView>
       </ImageBackground>
       )

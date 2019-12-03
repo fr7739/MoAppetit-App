@@ -11,6 +11,8 @@ import {AsyncStorage} from 'react-native';
 import styles from './styles.js';
 
 import { Icon } from 'native-base';
+import { Form, TextValidator } from 'react-native-validator-form';
+
 
 
 
@@ -97,12 +99,14 @@ export default class LoginScreen extends React.Component {
       };
   
     handleSubmit = async () => {
+     
         let loginResponse = await loginAPI(this.state)
         const loginResult = await loginResponse.json()
         console.log(loginResult)
         if(loginResponse.status !== 200) {
             console.log(loginResult.message)
             this.setLoginError(loginResult.message)
+            this.refs.form.submit()
         }
         else {
             console.log("Auth Token: " +loginResult.auth_token)
@@ -115,15 +119,7 @@ export default class LoginScreen extends React.Component {
 
       handleSubmitFacebook = async () => {
         let loginResponse2 = await facebooklogIn()
-        // const loginResult2 = await loginResponse2.json()
-        // console.log(loginResult2)
-        // if(loginResponse.status !== 200) {
-        //     console.log(loginResult2.message)
-        //     this.setLoginError(loginResult2.message)
-        // }
-        // else {
-            // console.log("Auth Token: " +loginResponse2.token)
-            // await AsyncStorage.setItem('token', loginResponse2.token);
+        
             this.setLoginError('')
         }
       
@@ -151,6 +147,8 @@ export default class LoginScreen extends React.Component {
 
     // Rendering to the UI the Input options and form button
     render() {
+      const { email } = this.state
+      const { password } = this.state;
       return (
           <ImageBackground source={require('../assets/OpeningPageBackground.jpg')} resizeMode='cover'style={styles.backgroundImage}>
               {/* Thamima: Changes */} 
@@ -173,25 +171,33 @@ export default class LoginScreen extends React.Component {
               onPress={() => this.props.navigation.navigate('Register')}/>
        </View>
        </View>
-
+       <Form
+        ref="form"
+        onSubmit={this.handleSubmit}
+            >
        <View style={styles.rectangle2}>
        <View style={styles.inputContainer}>
-          <Image style={[styles.icon, styles.inputIcon]} source={{uri: 'https://png.icons8.com/envelope/androidL/40/3498db'}}/>
-          <TextInput style={styles.inputs}          
-          required
-          value= {this.state.email}
+          <TextValidator  
+          name="email"
+          label="email"
+          validators={['required', 'isEmail']}
+          errorMessages={['This field is required', 'Email invalid']}
+          value= {email}
           onChangeText={this.handleEmailChange}
           placeholder="Email"
-          keyboardType="email-address"
+          //keyboardType="email-address"
+          keyboardType="default"
           underlineColorAndroid='transparent'/>
           </View>
 
           <View style={styles.inputContainer}>
-          <Image style={[styles.icon, styles.inputIcon]} source={{uri: 'https://png.icons8.com/password/androidL/40/3498db'}}/>
-          <TextInput style={styles.inputs}
-          required
+          <TextValidator    
+          name="password"
+          label="password"
+          validators={['required']}
+          errorMessages={['This field is required']}
           secureTextEntry={true}
-          value= {this.state.password}
+          value= {password}
           onChangeText={this.handlePasswordChange}
           placeholder="Password"
           underlineColorAndroid='transparent'/>
@@ -203,12 +209,14 @@ export default class LoginScreen extends React.Component {
       </View>
       </TouchableOpacity> 
 
-          <View>
+      <View>
           <TouchableOpacity style={[styles.buttonContainer4]}>
               <Button style={{container: styles.buttonContainer4}} text="Login" raised={true} primary={true} onPress={ () => this.handleSubmit()}/>
               </TouchableOpacity>
           </View>
+          
       </View>
+      </Form>
       </KeyboardAvoidingView>
       </ImageBackground>
       )

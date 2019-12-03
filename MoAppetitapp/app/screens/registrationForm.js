@@ -6,9 +6,10 @@ import registerAPI from '../hasuraAPI/registerAPI';
 import setUserAPI from '../hasuraAPI/setUserAPI';
 import { resultKeyNameFromField } from 'apollo-utilities';
 import styles from './styles.js';
+import { Form, TextValidator } from 'react-native-validator-form';
 
 
-// Added by Salwa
+
 export default class RegistrationForm extends React.Component {
     // Initializing state
     constructor(props) {
@@ -43,7 +44,7 @@ export default class RegistrationForm extends React.Component {
       }
 
     // Handling change when user enters text for name 
-    handleNameChange = name => {
+    handleNameChange = (name) => {
         this.setState({name})
     }
 
@@ -53,7 +54,7 @@ export default class RegistrationForm extends React.Component {
       }
 
     // Handling change when user enters text for email and verifying that email is correct
-    handleEmailChange = email => {
+    handleEmailChange = (email) => {
         this.setState({email})
         if (this.emailIsValid(email)) {
             this.setState({emailError: ''})
@@ -64,7 +65,7 @@ export default class RegistrationForm extends React.Component {
     }
 
     // Handling change when user enters text for password and verifying that password length is correct
-    handlePasswordChange = password => {
+    handlePasswordChange = (password) => {
         this.setState({password})
         if (password.length < 8) {
             this.setState({passwordLengthError: 'Password must be at least 8 characters'})
@@ -116,13 +117,16 @@ export default class RegistrationForm extends React.Component {
       handleSubmit = async (name) => {
         let registerResponse = await registerAPI(this.state) // Calling the register API
         const resultResponse = await registerResponse.json()
+        this.refs.form.submit()
 
         // If the response generated from the API has a status of 200 then add the user to the user table
         if (registerResponse.status === 200) {
+            this.refs.form.submit()
             const userInfo = {
                 hasura_id: resultResponse.hasura_id,
                 name: name
             }
+            
 
             // Calling the setUser API
             let setUserResponse = await setUserAPI(userInfo)
@@ -142,6 +146,11 @@ export default class RegistrationForm extends React.Component {
 
     // Rendering to the UI the input options and submit button
     render() {
+        const { name } = this.state
+        const { email } = this.state
+        const { password } = this.state
+        const { password2 } = this.state
+
         return (
             <ImageBackground source={require('../assets/OpeningPageBackground.jpg')} resizeMode='cover'style={styles.backgroundImage}>
             {/* Thamima: Changes */} 
@@ -165,11 +174,20 @@ export default class RegistrationForm extends React.Component {
      </View>
      </View>
 
+
+            <Form
+            ref="form"
+            onSubmit={this.handleSubmit}
+            >
+
             <View style={styles.rectangle}>
             <View style={styles.inputContainer}>
-            <TextInput style={styles.inputs} 
-            required
-            value= {this.state.name}
+            <TextValidator  
+            name="name"
+            label="name"
+            validators={['required']}
+            errorMessages={['This field is required']}
+            value= {name}
             onChangeText={this.handleNameChange}
             placeholder="Name"
             keyboardType="default"
@@ -178,10 +196,12 @@ export default class RegistrationForm extends React.Component {
                         
 
        <View style={styles.inputContainer}>
-          <Image style={[styles.icon, styles.inputIcon]} source={{uri: 'https://png.icons8.com/envelope/androidL/40/3498db'}}/>
-          <TextInput style={styles.inputs}          
-          required
-          value= {this.state.email}
+       <TextValidator          
+          name="email"
+          label="email"
+          validators={['required', 'isEmail']}
+          errorMessages={['This field is required', 'Email invalid']}
+          value= {email}
           onChangeText={this.handleEmailChange}
           placeholder="Email"
           keyboardType="email-address"
@@ -189,36 +209,40 @@ export default class RegistrationForm extends React.Component {
           </View>
 
           <View style={styles.inputContainer}>
-          <Image style={[styles.icon, styles.inputIcon]} source={{uri: 'https://png.icons8.com/password/androidL/40/3498db'}}/>
-          <TextInput style={styles.inputs}
-          required
-          secureTextEntry={true}
-          value= {this.state.password}
-          onChangeText={this.handlePasswordChange}
-          placeholder="Password"
-          underlineColorAndroid='transparent'/>
+          <TextValidator 
+         name="password"
+         label="password"
+         validators={['required']}
+         errorMessages={['This field is required']}
+         secureTextEntry={true}
+         value= {password}
+         onChangeText={this.handlePasswordChange}
+         placeholder="Password"
+         underlineColorAndroid='transparent'/>
           </View>
         
 
           <View style={styles.inputContainer}>
-          <Image style={[styles.icon, styles.inputIcon]} source={{uri: 'https://png.icons8.com/password/androidL/40/3498db'}}/>
-          <TextInput style={styles.inputs}
-          required
+          <TextValidator 
+          name="password"
+          label="password"
+          validators={['required']}
+          errorMessages={['This field is required']}
           secureTextEntry={true}
-            value= {this.state.password2}
-            onChangeText={this.handlePassword2Change}
-            placeholder="Confirm Password"
-            underlineColorAndroid='transparent'/>
+          value= {password2}
+          onChangeText={this.handlePassword2Change}
+          placeholder="Confirm Password"
+          underlineColorAndroid='transparent'/>
             </View>
         <View>
         <TouchableOpacity style={[styles.buttonContainer3]}>
-              <Button style={{ container: styles.buttonContainer3}} onPress={this.handleSubmit} text="Register" raised={true} primary={true} />
+              <Button style={{ container: styles.buttonContainer3}} text="Register" raised={true} primary={true} onPress={() => this.handleSubmit()}/>
               </TouchableOpacity>
 
-              </View>
+        </View>
 
-              </View>
- 
+        </View>
+        </Form>
         </KeyboardAvoidingView>
         </ImageBackground>
         )

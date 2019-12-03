@@ -1,10 +1,8 @@
 import React from 'react';
 import { StyleSheet, View, ImageBackground,  KeyboardAvoidingView, Image, Text} from 'react-native';
 export default StyleSheet.create({
-  TextField:
-  {
-    
-  },
+  
+  // KBAV for Login, Register, and passwordForm
   KBAV:
   {
     flex: 1,
@@ -16,6 +14,7 @@ export default StyleSheet.create({
     paddingRight: 0,
     marginTop: 20
   },
+
     fieldsArea: 
     {
         flex: .53,
@@ -34,10 +33,11 @@ export default StyleSheet.create({
         marginBottom: 0,
         paddingBottom: 0,
         backgroundColor: "white",
-        width: "60%",
+        width: "80%",
         
     },
 
+// CircleMoAppetit for Login and Register Page
     CircleMoAppetit:
     {  
       textAlign: 'center',
@@ -46,7 +46,6 @@ export default StyleSheet.create({
       fontSize:80,
       lineHeight: 0, 
       paddingTop: 65,
-      //fontFamily: 'serif',
       width: 150,
       height: 150,
       color: "#E8E8E8",
@@ -58,25 +57,34 @@ export default StyleSheet.create({
 
     },
 
-    aboutImage:
-    {
-      width: 50,
-      height: 50
-
-    },
+    // ButtonHolder presents in Login and Register Pages
     buttonHolder: 
     {
       flex: .2,
       flexDirection: 'row',
       justifyContent: "space-between",
       width: "60%"
-  
     },
-    backgroundImage: {  // Thamima Changes
-      width: '100%',//
-     height: '100%', //
-    }, //
 
+    // backgroundImage for Login, Register, and PasswordForm
+    backgroundImage: {  
+      width: '100%',
+     height: '100%', 
+    }, 
+
+    // FieldsAea2 for UserScreen
+    fieldsArea2: 
+    {
+        flex: .26,
+        borderWidth: 3,
+        marginBottom: 0,
+        paddingBottom: 0,
+        backgroundColor: "white",
+        width: "60%",
+        
+    },
+
+    // addressLine for Userscreen
     addressLine:
     {
       fontSize:16,
@@ -84,9 +92,10 @@ export default StyleSheet.create({
       color:"black",
       backgroundColor: "white"
     },
+
+    // AddressBox for Userscreen
     AddressBox: {
       flex: 1,
-       //paddingTop: 1,
        alignItems: 'center',
        justifyContent: 'center',
        paddingLeft: 20,
@@ -103,48 +112,31 @@ export default StyleSheet.create({
  
      },
 
+
+     // Container for Login, Register, InitialScree, PostRegister
     container: {
      flex: 1,
-      //paddingTop: 1,
       alignItems: 'center',
       justifyContent: 'center',
       paddingLeft: 20,
       paddingRight: 20,
       borderRadius:200,
       marginTop:0
-
     },
+
+    // ButtonStyle for Userscreen
     buttonStyle2:
     {
     width: 375,
     borderWidth: 3,
     justifyContent: 'center',
     backgroundColor: '#7a42f4',
-      padding: 10,
-      margin: 15,
-      height: 40,
+    padding: 10,
+    margin: 15,
+    height: 40,
     },
 
-    buttonStyle4:
-    {
-      height:45,
-      flexDirection: 'row',
-      justifyContent: 'center',
-      alignItems: 'center',
-      marginBottom:20,
-      width:250,
-      borderRadius:30,
-    },
-
-    buttonStyle3:
-    {
-    width: 300,
-    height: 300,
-    borderWidth: 3,
-    justifyContent: 'center',
-    backgroundColor: 'rgba(132,132,132, 0.85)'
-    },
-
+    // ButtonStyle for SearchResultProduct, Products
     buttonStyle6:
     {
     width: 150,
@@ -157,14 +149,7 @@ export default StyleSheet.create({
     justifyContent: 'center',
     },
 
-    textDisplay:
-    {
-      width: "60%",
-      height: "60%",
-      backgroundColor: 'rgba(132,132,132, 0.85)'
-
-    },
-
+    // ButtonStyleDown for Login and Register pages
     buttonStyleDown: {
       flex: 2,
       backgroundColor: 'rgba(232,232,232, 0.85)',
@@ -174,10 +159,10 @@ export default StyleSheet.create({
       borderRadius: 30,
       overflow: "hidden",
       left: "0%",
-      marginBottom:5,
-
-      
+      marginBottom:5,    
       },
+
+      // ButtonStyle for Register, PostRegister, Login
     buttonStyle: {
       flex: 2,
       backgroundColor: 'rgba(12, 57, 14, 0.85)',
@@ -190,6 +175,8 @@ export default StyleSheet.create({
       marginBottom:5,
     
     },
+
+    // Used in UserScreen
     subPageHeadStyle:
     {
       fontSize:16,
@@ -197,15 +184,6 @@ export default StyleSheet.create({
       justifyContent: "center",
       color:"white"
     },
-    longText:
-    {
-      fontSize: 12,
-      paddingTop: 2,
-      backgroundColor: 'rgba(12, 57, 14, 0.85)',
-      justifyContent: "center",
-      color:"white"
-    },
-
 
     //rectangle Container for Registerform
     rectangle: {
@@ -216,34 +194,8 @@ export default StyleSheet.create({
       borderRadius: 40,
       overflow: "hidden",
       left: 163,
-      marginBottom:25,
-
+      marginBottom:25
   },
-
-  input: {
-    borderBottomColor: '#F5FCFF',
-    backgroundColor: '#FFFFFF',
-    borderRadius:30,
-    borderBottomWidth: 1,
-    width:250,
-    height:45,
-    marginBottom:20,
-    flexDirection: 'row',
-    alignItems:'center'
-
-},
-
-socialButtonContent:{
-  flexDirection: 'row',
-  justifyContent: 'center',
-  alignItems: 'center', 
-},
-
-fabookButton: {
-  backgroundColor: "#3b5998",
-  overflow: "hidden",
-  left: 22,
-},
 
 
 //buttonContainer for loginform
@@ -258,55 +210,20 @@ buttonContainer: {
   left:15,
 },
 
-icon:{
-  width:30,
-  height:30,
-},
-
-inputIcon:{
-  marginLeft:15,
-  justifyContent: 'center'
-},
-
+// Used in Login, Register
 inputContainer: {
   borderBottomColor: '#F5FCFF',
   backgroundColor: '#FFFFFF',
-  borderRadius:10,
+  borderRadius:12,
   borderBottomWidth: 1,
   width:290,
   height:45,
   marginBottom:12,
-  flexDirection: 'row',
-  alignItems:'center',
+  flexDirection: 'column',
+  //alignItems:'flex-start',
   left: 15,
   marginTop:15,
 
-},
-
-inputs:{
-  height:45,
-  marginLeft:16,
-  borderBottomColor: '#FFFFFF',
-  flex:1,
-},
-
-restoreButtonContainer:{
-  width:230,
-  marginBottom:15,
-  left: 20,
-},
-
-loginButton: {
-  backgroundColor: '#3498db',
-  width:250,
-  overflow: "hidden",
-  left: 20,
-
-
-},
-
-loginText: {
-  color: 'white',
 },
 
 //rectangle Container for Loginform
@@ -415,14 +332,6 @@ marginBottom:20,
     height: 40,
     borderColor: "black",
     borderWidth: 1
-  },
-
-  submitButton: {
-    backgroundColor: "black",
-    padding: 10,
-    margin: 15,
-    alignItems: "center",
-    height: 40
   },
 
     // style for password
@@ -534,6 +443,7 @@ CircleMoAppetit2:
 
     },
 
+    // Used in RatingScreen
     existingRatingContainer: {
       flex: 1,
       paddingTop: 20,
@@ -542,15 +452,8 @@ CircleMoAppetit2:
       paddingLeft: 20,
       paddingRight: 20
     },
-      //
-      editRatingContainer: {
-        flex: 5,
-         paddingTop: 20,
-         alignItems: 'center',
-         justifyContent: 'center',
-         paddingLeft: 20,
-         paddingRight: 20
-       },
+      
+    // Used in RatingScreen
     RatingsfieldsArea: 
     {
         flex: 4,
@@ -560,6 +463,7 @@ CircleMoAppetit2:
         width: 325,
     },
 
+    // Used in RatingScreen
     subRatingStyle:
     {
       fontSize:12,
@@ -567,10 +471,6 @@ CircleMoAppetit2:
       backgroundColor: 'rgba(12, 57, 14, 0.85)',
       justifyContent: "center",
       color:"white"
-    },
-    RatingsfieldsAreaPicker:
-    {
-      
     },
 
     //rectangle Container for Registerform
