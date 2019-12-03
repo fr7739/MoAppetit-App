@@ -15,6 +15,28 @@ export default StyleSheet.create({
     marginTop: 20
   },
 
+    fieldsArea: 
+    {
+        flex: .53,
+        borderWidth: 3,
+        marginBottom: 0,
+        paddingBottom: 0,
+        backgroundColor: "white",
+        width: "60%"
+    },
+
+    // Login Area Style
+    fieldsArea2: 
+    {
+        flex: .26,
+        borderWidth: 3,
+        marginBottom: 0,
+        paddingBottom: 0,
+        backgroundColor: "white",
+        width: "80%",
+        
+    },
+
 // CircleMoAppetit for Login and Register Page
     CircleMoAppetit:
     {  
@@ -89,6 +111,7 @@ export default StyleSheet.create({
         width: "80%"
  
      },
+
 
      // Container for Login, Register, InitialScree, PostRegister
     container: {
