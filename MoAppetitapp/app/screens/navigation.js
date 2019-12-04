@@ -18,7 +18,12 @@ import PasswordScreen from './passwordForm';
 import CartScreen from './cartScreen';
 import initialScreen from './initialScreen';
 import productScreen from './productScreen'
-import cartIcon from '../containers/cartIcon'
+import CartIcon from '../containers/cartIcon'
+
+import Col from '../screens/Col';
+import CollectionScreen from './collectionScreen';
+
+
 
 
 
@@ -101,6 +106,20 @@ const drawNav = createDrawerNavigator({
       )
     }
   },
+
+  Collection: {
+    screen: Col,
+    navigationOptions: {
+      drawerIcon: () => (
+        <Image
+          source={require('../../assets/icon-cart.png')}
+          resizeMode="contain"
+          style={{ width: 20, height: 20 }}
+        />
+      )
+    }
+  },
+
 })
 
 const AppNavigator = createStackNavigator({
@@ -112,6 +131,9 @@ Product: productScreen,
 'User Info': UserScreen,
 'About Us':AboutScreen,
 Cart: CartScreen,
+CartIcon: CartIcon,
+Collections: CollectionScreen,
+Col: Col
   },
   {
     headerMode: 'none',
