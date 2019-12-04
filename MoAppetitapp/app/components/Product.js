@@ -29,10 +29,31 @@ class Prod extends Component {
                         <TouchableOpacity
                         onPress = {() => this.props.addItemToCart(product)}
                         style={{borderRadius: 50, borderWidth: 0,height: 25, width: 25, backgroundColor: '#086522', position: "absolute", padding: 5, right: 1, top: 1}}
-                        title={product.variants[0].price + "$"}><Text adjustsFontSizeToFit minimumFontScale= {.5} style = {{fontWeight: 'bold', color: 'white', textAlign: 'right', fontSize: 8}}> {this.props.cartItems[this.props.cartItems.findIndex(prod => prod.id === product.id)] && this.props.cartItems[this.props.cartItems.findIndex(prod => prod.id === product.id)].id === product.id ? (this.props.cartItems[this.props.cartItems.findIndex(prod => prod.id === product.id)].qty) : ("+")}  </Text></TouchableOpacity>
+                        title={product.variants[0].price + "$"}><Text adjustsFontSizeToFit minimumFontScale= {.5} style = {{fontWeight: 'bold', color: 'white', textAlign: 'right', fontSize: 10}}> {this.props.cartItems[this.props.cartItems.findIndex(prod => prod.id === product.id)] && this.props.cartItems[this.props.cartItems.findIndex(prod => prod.id === product.id)].id === product.id ? (this.props.cartItems[this.props.cartItems.findIndex(prod => prod.id === product.id)].qty) : ("+")}  </Text></TouchableOpacity>
                         <Text>{product.title}</Text>
                         <Text numberOfLines = {1} style = {{fontSize: 8}}>{product.description}</Text>
                         <Text style = {{fontWeight: 'bold', alignContent: 'center',}}>${product.variants[0].price}{ this.props.collection === 'Poultry' || this.props.collection === 'Seafood' || this.props.collection === 'Lamb' || this.props.collection === 'Beef' ? ( "/lb") : (" ea")} </Text>
+                        {this.props.cartItems[this.props.cartItems.findIndex(prod => prod.id === product.id)] && this.props.cartItems[this.props.cartItems.findIndex(prod => prod.id === product.id)].id === product.id && this.props.cartItems[this.props.cartItems.findIndex(prod => prod.id === product.id)].qty > 1 ?
+                            (<TouchableOpacity
+                            onPress = {() => this.props.decrementCart(product)}
+                            style={{borderRadius: 50, borderWidth: 0,height: 25, width: 25, backgroundColor: '#086522', position: "absolute", padding: 3, right: 1, bottom: 1}}
+                            title={product.variants[0].price + "$"}><Text style = {{fontWeight: 'bold', color: 'white', textAlign: 'center', fontSize: 10}}> - </Text></TouchableOpacity>) 
+            
+                            : 
+                            (null)
+            
+                        }
+                        {this.props.cartItems[this.props.cartItems.findIndex(prod => prod.id === product.id)] && this.props.cartItems[this.props.cartItems.findIndex(prod => prod.id === product.id)].id === product.id && this.props.cartItems[this.props.cartItems.findIndex(prod => prod.id === product.id)].qty === 1 ?
+                            (<TouchableOpacity
+                            onPress = {() => this.props.removeItem(product)}
+                            style={{borderRadius: 50, borderWidth: 0,height: 25, width: 25, backgroundColor: '#086522', position: "absolute", padding: 3, right: 1, bottom: 1}}
+                            title={product.variants[0].price + "$"}><Text style = {{fontWeight: 'bold', color: 'white', textAlign: 'center', fontSize: 10}}> - </Text></TouchableOpacity>) 
+            
+                            : 
+                            (null)
+            
+                        }
+
                 </Card> 
                 </View>
             )
@@ -46,7 +67,9 @@ class Prod extends Component {
 }
 const mapDispatchToProps = (dispatch) =>{
     return{
-      addItemToCart: (product) => dispatch({type: 'ADD_TO_CART', payload: product})
+      addItemToCart: (product) => dispatch({type: 'ADD_TO_CART', payload: product}),
+      decrementCart: (product) => dispatch({type: 'DECREMENT_FROM_CART', payload: product}),
+      removeItem: (product) => dispatch({type: 'REMOVE_FROM_CART', payload: product})
     }
   }
 
