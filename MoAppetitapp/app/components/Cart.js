@@ -39,8 +39,8 @@ addTotals = () => {
             <View style= {{flexDirection: 'row', borderWidth: 0, borderTopWidth: 0}}>
             <View style= {{flexDirection: 'column', borderWidth: 0, borderTopWidth: 0, paddingRight: 2, marginRight: 2, alignItems: 'center', justifyContent: 'center', width: 200}}>
             <Text>Item: {cartItem.title}</Text> 
-            <Text>Price: {cartItem.variants[0].price}</Text> 
-            <Text>Subtotal: {(cartItem.variants[0].price * cartItem.qty).toFixed(2)} </Text>  
+            <Text>Price: ${cartItem.variants[0].price}</Text> 
+            <Text>Subtotal: ${(cartItem.variants[0].price * cartItem.qty).toFixed(2)} </Text>  
             <Text style = {{flex: 0, position:'absolute', opacity: 0}}>{total = total + (cartItem.variants[0].price * cartItem.qty)}</Text>
             </View>
             <View style= {{flexDirection: 'column', alignItems: 'center', justifyContent: 'center', borderWidth: 0, borderTopWidth: 0, right: 1, paddingLeft: 20}}>
