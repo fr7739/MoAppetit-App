@@ -8,9 +8,8 @@ import setAddressAPI from "../hasuraAPI/setAddressAPI";
 import getFullUserAPI from "../hasuraAPI/getFullUserAPI";
 import deleteAddressAPI from "../hasuraAPI/deleteAddressAPI";
 import setUseFullInfoAPI from "../hasuraAPI/setUserFullInfoAPI.js";
-import { Header } from 'react-native-elements';
-import { Icon } from 'native-base';
-
+import { Header } from "react-native-elements";
+import { Icon } from "native-base";
 
 export default class UserScreen extends React.Component {
   constructor(props) {
@@ -29,17 +28,15 @@ export default class UserScreen extends React.Component {
       zip: "",
       id: 0,
       user_id: 0,
+      editingAddressID: null,
+      isInEditMode: false,
       error: ""
     };
     this.addresses = [];
 
-
     this.userState = {
-      "id:": "0",/////////////
-      hasura_id: global.hasura_id,///////////
-
-
-
+      "id:": "0",
+      hasura_id: global.hasura_id,
       config: "null",
       name: "",
       phone: "0"
@@ -59,7 +56,7 @@ export default class UserScreen extends React.Component {
       { cancelable: false }
     );
     console.trace();
-  } 
+  }
 
   async loadUserInfo() {
     const passInUserObject = {
@@ -71,6 +68,7 @@ export default class UserScreen extends React.Component {
       this.ShowDatabaseError();
       return;
     }
+
     const resultResponseGetFullUser = await getFullUserResponse.json();
 
     global.User_ID = this.userState.user_id;
@@ -80,7 +78,6 @@ export default class UserScreen extends React.Component {
     this.userState.name = String(resultResponseGetFullUser[0].name);
     this.userState.phone = String(resultResponseGetFullUser[0].phone);
     this.forceUpdate();
-    console.log("this.state: " + JSON.stringify(this.userState));
   }
   async loadAddresses() {
     this.addresses = [];
@@ -92,7 +89,6 @@ export default class UserScreen extends React.Component {
     let getAddressResponse = await getAddressAPI(addressInfo);
     if (getAddressResponse.status != 200) {
       console.log(getAddressResponse.json());
-      console.log("Statttttttttttus is " + getAddressResponse.status)
       this.ShowDatabaseError();
 
       return;
@@ -168,62 +164,65 @@ export default class UserScreen extends React.Component {
     const resultUserResponse = await UserResponse.json();
   };
 
-
   handleDelete = async value => {
-    console.log("Value: "+value);
-      // Calling the deleteAddressAPI API
-      let deleteAddressResponse = await deleteAddressAPI(value);//pass in value, which is just an ID
-      if (deleteAddressResponse.status != 200) {
-        this.ShowDatabaseError();
-        return;
-      }
-      this.loadAddresses();
-      this.forceUpdate();
-  }
+    console.log("Value: " + value);
+    // Calling the deleteAddressAPI API
+    let deleteAddressResponse = await deleteAddressAPI(value); //pass in value, which is just an ID
+    if (deleteAddressResponse.status != 200) {
+      this.ShowDatabaseError();
+      return;
+    }
+    this.loadAddresses();
+    this.forceUpdate();
+  };
 
+  /* push that data for the record selected for edit ti the bottom most edit form and set flags that this data is for an edit*/
   handleEdit = async value => {
-    console.log("Value: "+value);
-    //To do for HandleEdit
-          //put the data for this record into the bottom form by updating the state
-            //to do this find the address in this.addresses
-            //update the state using this address
-            //set a flag that this address is in edit mode and not insert mode
-              //and change the text of "Add Address" to "Insert Address"
-            //Now When the user hits the button and handleSubmit is called the edit flag is evaluated
-              //if the edit flag is true call [a new file] UpdateAddressAPI.js
-          //after update, clear as it does now, but change the flag back to insert mode, and change the text back to "Add Address"
-  }
+    console.log("Value: " + value);
+    //Put the data for this record into the bottom form by updating the state
+    //to do this find the address in this.addresses
+    var add = this.addresses.find(add => add.id === value);
+    //update the state using this address
+    this.state.phone = add.phone;
+    this.state.addressline1 = add.addressline1;
+    this.state.addressline2 = add.addressline2;
+    this.state.addressline3 = add.addressline3;
+    this.state.city = add.city;
+    this.state.state = add.state;
+    this.state.zip = add.zip;
+    this.state.editingAddressID = add.id;
+    //set a flag that this address is in edit mode and not insert mode
+    this.state.isInEditMode = true;
+
+    this.forceUpdate();
+    this.refs.scrollView.scrollTo({ x: 999, y: 999, animated: true }); // Scroll to the bottom to show that the Address is in edit mode
+    //x is an arbitrarily large number
+    //y is an arbitrarily large number
+  };
 
   /*structures the data, then send the data to the hasura API, 
   then reloads the list of address to see the new record within the list*/
-  handleSubmit = async name => {
+  handleSubmit = async () => {
     if (this.state.addressline1 == "") {
       this.setAddressError("Address Line 1 is required.");
       this.forceUpdate();
       return;
     }
-    let AddressResponse = await setAddressAPI(this.state);
-    if (AddressResponse.status != 200) {
-      this.ShowDatabaseError();
-      return;
-    }
-    if (AddressResponse.status === 200) {
-      this.setAddressError("Got bad response from server.");
-    }
-    const resultResponse = await AddressResponse.json();
 
     const addressInfo = {
-      address_id: resultResponse.id,
-      addressline1: resultResponse.addressline1,
-      addressline2: resultResponse.addressline2,
-      addressline3: resultResponse.addressline3,
-      city: resultResponse.city,
-      state: resultResponse.state,
-      zip: resultResponse.zip,
-      user_id: resultResponse.user_id
+      address_id: this.state.id,
+      addressline1: this.state.addressline1,
+      addressline2: this.state.addressline2,
+      addressline3: this.state.addressline3,
+      city: this.state.city,
+      state: this.state.state,
+      zip: this.state.zip,
+      user_id: this.state.user_id,
+      isInEditMode: this.state.isInEditMode,
+      editingAddressID: this.state.editingAddressID
     };
 
-    // Calling the setAddressAPI API
+    // Calling the setAddressAPI API in which edit flag is evaluated
     let setAddressResponse = await setAddressAPI(addressInfo);
     if (setAddressResponse.status != 200) {
       this.ShowDatabaseError();
@@ -234,10 +233,12 @@ export default class UserScreen extends React.Component {
       this.setAddressError("");
       console.log("No error");
     } else {
-      this.setAddressError("Error adding to database");
-      console.log("Error pulling from the  database");
+      this.setAddressError("Error adding to database.");
+      console.log("Error pulling from the database.");
     }
 
+    this.state.isInEditMode = false; //change the flag back to insert mode,  which will also change the text back to "Add Address"
+    this.state.editingAddressID = 0;
     this.state.addressline1 = "";
     this.state.addressline2 = "";
     this.state.addressline3 = "";
@@ -252,28 +253,30 @@ export default class UserScreen extends React.Component {
   renderAddresses() {
     return this.addresses.map(item => {
       return (
-
         <View style={styles.AddressBox} key={item.id}>
+          <Text style={styles.addressLine}>{item.addressline1}</Text>
+          <Text style={styles.addressLine}>{item.addressline2}</Text>
+          <Text style={styles.addressLine}>{item.addressline3}</Text>
           <Text style={styles.addressLine}>
-            {item.addressline1}
+            {item.city}, {item.state} {item.zip}
           </Text>
-          <Text style={styles.addressLine}>
-            {item.addressline2}
-          </Text>
-          <Text style={styles.addressLine}>
-            {item.addressline3}
-          </Text>
-          <Text style={styles.addressLine}>{item.city},  {item.state} {item.zip}</Text>
-     
+
           <View style={styles.AddressButtonContainer}>
-              <View style={styles.AddressSingleButtonContainer}>
-                  <Button onPress={() => this.handleDelete(item.id)} value={item.id} text="Delete" 
-                        style={{ container: styles.buttonStyle2Mini }}></Button>
-              </View>
-              <View style={styles.AddressSingleButtonContainer}>
-                <Button onPress={() => this.handleEdit(item.id)}  text="Edit" 
-                      style={{ container: styles.buttonStyle2Mini }}></Button>
-              </View>
+            <View style={styles.AddressSingleButtonContainer}>
+              <Button
+                onPress={() => this.handleDelete(item.id)}
+                value={item.id}
+                text="Delete"
+                style={{ container: styles.buttonStyle2Mini }}
+              ></Button>
+            </View>
+            <View style={styles.AddressSingleButtonContainer}>
+              <Button
+                onPress={() => this.handleEdit(item.id)}
+                text="Edit"
+                style={{ container: styles.buttonStyle2Mini }}
+              ></Button>
+            </View>
           </View>
         </View>
       );
@@ -287,14 +290,20 @@ export default class UserScreen extends React.Component {
         resizeMode="cover"
         style={styles.backgroundImage}
       >
-        <Header transparent
-          backgroundColor = "#086522"
-          leftComponent={<Icon name="menu" onPress={() => this.props.navigation.openDrawer()} />}
-         />
+        <Header
+          transparent
+          backgroundColor="#086522"
+          leftComponent={
+            <Icon
+              name="menu"
+              onPress={() => this.props.navigation.openDrawer()}
+            />
+          }
+        />
         <ScrollView>
           <View style={styles.container}>{this.renderAddresses()}</View>
         </ScrollView>
-        <ScrollView>
+        <ScrollView ref="scrollView">
           <View style={styles.container}>
             <View>
               <Text style={styles.subPageHeadStyle}>User Info</Text>
@@ -315,7 +324,7 @@ export default class UserScreen extends React.Component {
                 onChangeText={this.handlePhoneChange}
               />
             </View>
-            
+
             <View>
               <Button
                 style={{ container: styles.buttonStyle2 }}
@@ -383,7 +392,7 @@ export default class UserScreen extends React.Component {
               <Button
                 style={{ container: styles.buttonStyle2 }}
                 onPress={this.handleSubmit}
-                text="Add Addresss"
+                text={this.state.isInEditMode ? "Save Edit" : "Add Addresss"}
                 raised={true}
                 primary={true}
               />
