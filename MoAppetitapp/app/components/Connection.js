@@ -22,32 +22,29 @@ class Connection extends Component {
             return(
                 <View 
                     key = {index}
-                    style = {{flex: 1, padding: 0, margin: 0, justifyContent: 'flex-start', flexDirection: "row", flexWrap: 'wrap', backgroundColor: 'black', position: 'relative'}}
+                    containerStyle = {{height: 175, width: 175, justifyContent: 'center'}}
                 >
                 <Card key = {collection.id}
-                style={{borderRadius: 50, borderWidth: 2,height: 35, width: 35, flexDirection: "row", position: "absolute", padding: 4, right: 1, left: 1, top: 1}}>
+                containerStyle = {{height: 175, width: 175, justifyContent: 'center'}}
+                >
                    
                    
                    <Text style = {{color: 'black', fontWeight: 'bold'}}>{collection.title}</Text>
-                    <TouchableOpacity onPress = { () => this.props.navigation.navigate('Collections', {Connection :collection})}>
+                    <TouchableOpacity onPress = { () => this.props.navigation.navigate('Collection', {Connection :collection})}>
                     {collection.image ? (<Image source={{uri: collection.image.src}} style = {styles.buttonStyle6} />) : (<View style = {styles.buttonStyle6}></View>)}
                     </TouchableOpacity>
                         
                 </Card>
-
-{/* <ScrollView
-// horizontal = {true}
-// showsHorizontalScrollIndicator = {false}
->
-<Prod products = {collection.products} navigation = {this.props.navigation} client = {this.props.client} collection = {collection.title} />
-</ScrollView> */}
-</View>
+            </View>
             )
         })
         return(
-            <View>  
+
+            <ScrollView>
+            <View style = {{flex: 1, alignContent:"space-between", justifyContent: 'flex-start', flexDirection: "row", flexWrap: "wrap", backgroundColor: 'white'}}>  
             {collections}
             </View>
+            </ScrollView>
         )
     }
 }

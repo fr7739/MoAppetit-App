@@ -33,7 +33,9 @@ constructor(props){
         })
             return(
             <ScrollView>
+            <View style = {{flex: 1, alignContent:"space-between", justifyContent: 'flex-start', flexDirection: "row", flexWrap: "wrap", backgroundColor: 'white'}}>
             {colProd}
+            </View>
             </ScrollView>
 
             )

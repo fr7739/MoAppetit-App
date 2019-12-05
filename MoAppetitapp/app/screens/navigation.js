@@ -107,12 +107,12 @@ const drawNav = createDrawerNavigator({
     }
   },
 
-  Collection: {
+  Collections: {
     screen: Col,
     navigationOptions: {
       drawerIcon: () => (
         <Image
-          source={require('../../assets/icon-cart.png')}
+          source={require('../assets/grocery.png')}
           resizeMode="contain"
           style={{ width: 20, height: 20 }}
         />
@@ -132,7 +132,7 @@ Product: productScreen,
 'About Us':AboutScreen,
 Cart: CartScreen,
 CartIcon: CartIcon,
-Collections: CollectionScreen,
+Collection: CollectionScreen,
 Col: Col
   },
   {
