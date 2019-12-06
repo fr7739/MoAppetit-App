@@ -147,10 +147,11 @@ export default class MainScreen extends React.Component {
 
       <View>
         <KeyboardAvoidingView>  
-          <SearchBar   
+          <SearchBar  
+          containerStyle={{backgroundColor: 'white'}}
+          lightTheme 
           round
           searchIcon={() => (<Icon name="search" onPress={() => this.clearSearch()} />)}
-          inputStyle={{ backgroundColor: "black" }}
           placeholder="Search..."
           placeholderTextColor={'#FFFFFF'}
           onChangeText={this.updateSearch}
