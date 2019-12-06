@@ -23,9 +23,9 @@ class Collection extends Component {
                     key = {index}
                     style = {{flex: 1,  flexDirection: "row", flexWrap: 'wrap',}}
                 >
-
-                    <Text style = {{color: '#086522', fontWeight: 'bold', position: 'absolute', zIndex: 2000, padding: 20}}>{collection.title}</Text>
-
+                    <TouchableOpacity style = {{color: '#086522', fontWeight: 'bold', position: 'absolute', zIndex: 2000, padding: 20}} onPress = { () => this.props.navigation.navigate('Collection', {Connection :collection})}>
+                    <Text>{collection.title}</Text>
+                    </TouchableOpacity>
                 
                 <ScrollView
                 horizontal = {true}
