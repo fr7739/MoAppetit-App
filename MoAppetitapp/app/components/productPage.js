@@ -38,7 +38,13 @@ constructor(props){
                             buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0, backgroundColor: '#086522'}}
                         title='ADD TO CART' />
                 </Card> 
-                <Reviews />
+                <ScrollView
+                horizontal = {true}
+                showsHorizontalScrollIndicator = {false}
+                style = {{padding: 5, margin: 0}}
+                >
+                    <Reviews prodName = {this.props.product.title}/>
+                </ScrollView>
                 </View>
             )
         }

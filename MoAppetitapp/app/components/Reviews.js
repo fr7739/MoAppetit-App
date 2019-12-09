@@ -46,16 +46,29 @@ export default class Reviews extends Component {
         this.forceUpdate(); //Force the page to rerender with the changes
       }
 
-    render() {
-        
-           return(
-           <View>{console.log(this.ratings)}</View>
-
-           )
-        // return(
-        //     <View style = {{flex: 1, justifyContent: 'flex-start', flexDirection: "row", flexWrap: "wrap", backgroundColor: 'white', padding: 0, margin: 0, marginTop: 3, marginBottom: 3, paddingRight: 1, borderWidth: 0, minWidth: 500}}>
-        //     {products}
-        //     </View>
-        // )
+      render() {
+        let review = this.ratings.map((rev, index) => {
+            return(
+                
+              <View key = {[index]}>
+               {rev.product_name === this.props.prodName ?
+                (<Card
+                    title={rev.product_name}
+                >
+                    <Text style={{marginBottom: 10}}>
+                        {rev.ratingDescription}
+                    </Text>
+                    <Text style={{fontWeight: 'bold'}}>
+                        Rating: {rev.ratingLevel}
+                    </Text>
+                </Card>) : (null)}
+                </View>
+            )
+        })
+        return(
+            <View style = {{flex: 1, flexDirection: "row", backgroundColor: 'white'}}>
+            {review}
+            </View>
+        )
     }
 }
