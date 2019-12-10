@@ -2,13 +2,8 @@
   "devToolsPort": 19002,
   "expoServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 12828,
-  "expoServerNgrokUrl": "https://dv-xp4.anonymous.moappetitapp.exp.direct",
-  "packagerNgrokUrl": "https://packager.dv-xp4.anonymous.moappetitapp.exp.direct",
-<<<<<<< HEAD
-  "ngrokPid": 6392
-=======
-  "ngrokPid": 23404
-
->>>>>>> 120cc8d8b9d8010699a4da69f262b6182cfe5d8b
+  "packagerPid": 22872,
+  "expoServerNgrokUrl": "https://e3-ss3.anonymous.moappetitapp.exp.direct",
+  "packagerNgrokUrl": "https://packager.e3-ss3.anonymous.moappetitapp.exp.direct",
+  "ngrokPid": 28076
 }
