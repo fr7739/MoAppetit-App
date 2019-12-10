@@ -72,17 +72,13 @@ class SearchResultProduct extends Component {
       return (
         <View
           key={product.id.toString()}
-          style={{ borderWidth: 0, backgroundColor: "white" }}//asdsdad
+          style={{ borderWidth: 0,  }}//asdsdad
         >
 
           <Text>{console.log(product.images[0].src)}</Text>
           <View
-            style={{ display: "none", flex: 1, flexDirection: "row", justifyContent: "center" }}
+            style={{ flex: 1, flexDirection: "row", justifyContent: "center" }}
           >
-            <Image
-              source={{ uri: product.images[0].src }}
-              style={styles.buttonStyle6}
-            />
           </View>
           <View
             style={{ flex: 1, flexDirection: "row", justifyContent: "center" }}
@@ -102,7 +98,7 @@ class SearchResultProduct extends Component {
       <View>
         {
           !this.props.showingProduct && 
-          <ScrollView>{products}</ScrollView>
+          <ScrollView >{products}</ScrollView>
         }
         { this.props.showingProduct && this.props.productToShow &&
          <ScrollView>{this.renderSelectedProduct(this.props.productToShow)}</ScrollView> }

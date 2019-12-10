@@ -29,7 +29,7 @@ constructor(props){
           backgroundColor = "#086522"
           leftComponent={<Icon name="md-arrow-back" onPress={() => this.props.navigation.goBack()} />}
           rightComponent={<CartIcon navigation = {this.props.navigation} />} />
-        <ProductPage product = {this.state.product} client = {client} product = {this.state.product} />
+        <ProductPage product = {this.state.product} client = {client} product = {this.state.product} navigation = {this.props.navigation}/>
         
         </Container>
         </Provider> 

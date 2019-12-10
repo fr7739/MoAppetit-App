@@ -1,7 +1,7 @@
 import React from 'react';
 import {Provider} from 'react-redux'
 import store from '../redux/index'
-import {View, KeyboardAvoidingView, ScrollView} from 'react-native';
+import {View, KeyboardAvoidingView, ScrollView,ImageBackground} from 'react-native';
 import {AsyncStorage} from 'react-native';
 import { Icon } from 'native-base';
 import { client } from '../hasuraAPI/shopifyAPI';
@@ -10,8 +10,11 @@ import CartIcon from '../containers/cartIcon'
 import Collection from '../components/Collection';
 import AnimatedHeader from 'react-native-animated-header';
 import HeaderImage from '../../assets/HeaderImage.png';
-
+import styles from '../screens/styles';
 import SearchResultProduct from "../components/SearchResultProduct";
+
+import plusIMG from '../../assets/plus.png'
+import minusIMG from '../../assets/minus.png'
 
 
 export default class MainScreen extends React.Component {
@@ -131,7 +134,7 @@ export default class MainScreen extends React.Component {
       return (
         
         <Provider store = {store}>
-          
+          <ImageBackground source={require('../assets/OpeningPageBackground.jpg')} resizeMode='cover' style={styles.backgroundImage}>
         <AnimatedHeader 
         style={{flex: 1 }}
         renderLeft={() => (<Icon style={{ marginLeft: 20 }} size={80} name="menu" onPress={() => this.props.navigation.openDrawer()} />)}
@@ -139,6 +142,7 @@ export default class MainScreen extends React.Component {
         headerMaxHeight={170}
         imageSource={HeaderImage}
         toolbarColor='#086522'
+        parallax
         disabled={false}
         
       >
@@ -148,17 +152,19 @@ export default class MainScreen extends React.Component {
       <View>
         <KeyboardAvoidingView>  
           <SearchBar  
-          containerStyle={{backgroundColor: 'white'}}
+          containerStyle={{backgroundColor: 'rgba(52, 52, 52, 0.0)', borderWidth: 0}}
           lightTheme 
+          style = {{borderWidth: 0}}
           round
           searchIcon={() => (<Icon name="search" onPress={() => this.clearSearch()} />)}
           placeholder="Search..."
           placeholderTextColor={'#FFFFFF'}
           onChangeText={this.updateSearch}
+          onfo
           value={search}
           />
-          </KeyboardAvoidingView>
-          <View style={{ backgroundColor: "white" }}>
+        </KeyboardAvoidingView>
+          <View>
           {this.renderResultsContainer()}
         </View>
         </View>
@@ -166,6 +172,7 @@ export default class MainScreen extends React.Component {
         <Collection collections = {this.state.collections} navigation = {this.props.navigation} client = {client}/>
         </ScrollView>
         </AnimatedHeader>
+        </ImageBackground>
         </Provider>
         
       );

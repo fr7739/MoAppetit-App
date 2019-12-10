@@ -182,18 +182,28 @@ export default class UserScreen extends React.Component {
   }
 
   handleEdit = async value => {
-    console.log("Value: "+value);
-    //To do for HandleEdit
-          //put the data for this record into the bottom form by updating the state
-            //to do this find the address in this.addresses
-            //update the state using this address
-            //set a flag that this address is in edit mode and not insert mode
-              //and change the text of "Add Address" to "Insert Address"
-            //Now When the user hits the button and handleSubmit is called the edit flag is evaluated
-              //if the edit flag is true call [a new file] UpdateAddressAPI.js
-          //after update, clear as it does now, but change the flag back to insert mode, and change the text back to "Add Address"
-  }
+    console.log("Value: " + value);
+    //Put the data for this record into the bottom form by updating the state
+    //to do this find the address in this.addresses
+    var add = this.addresses.find(add => add.id === value);
+    //update the state using this address
+    this.state.phone = add.phone;
+    this.state.addressline1 = add.addressline1;
+    this.state.addressline2 = add.addressline2;
+    this.state.addressline3 = add.addressline3;
+    this.state.city = add.city;
+    this.state.state = add.state;
+    this.state.zip = add.zip;
+    this.state.editingAddressID = add.id;
+    //set a flag that this address is in edit mode and not insert mode
+    this.state.isInEditMode = true;
 
+    this.forceUpdate();
+    this.refs.scrollView.scrollTo({ x: 999, y: 999, animated: true }); // Scroll to the bottom to show that the Address is in edit mode
+    //x is an arbitrarily large number
+    //y is an arbitrarily large number
+  };
+  
   /*structures the data, then send the data to the hasura API, 
   then reloads the list of address to see the new record within the list*/
   handleSubmit = async name => {
@@ -382,7 +392,7 @@ export default class UserScreen extends React.Component {
             <View>
               <Button
                 style={{ container: styles.buttonStyle2 }}
-                onPress={this.handleSubmit}
+                onPress={() => this.handleSubmit()}
                 text="Add Addresss"
                 raised={true}
                 primary={true}
