@@ -19,52 +19,23 @@ export default class RatingsScreen extends React.Component {
     super(props);
 
     this.state = {
-      user_id: "",
-      hasura_id: global.hasura_id,
+      user_id: 0,
+      hasura_id: 0,
       ratingLevel: "",
       ratingDescription: "",
-      product_id: ""
+      product_id: 0,
+      product_name: this.props.navigation.getParam('rateMe')
     };
-    this.allProducts = [];
-    this.ratings = [];
 
-    if (this.loadRatings()) {
-    }
-    if (this.loadAllProducts()) {
-      console.log("Products Loaded");
-    }
   }
   /** Clears all products entries in memory, request the products from the hasura API, 
    * Then places them into the AllProducts array while preventing duplicates. */
-  async loadAllProducts() {
-    this.allProducts = []; //Clear out products and start fresh
-    while (this.allProducts.length > 0) {
-      this.allProducts.pop();
-    }
-    let getProductsResponse = await getAllProductsAPI(this.state);
-    if (getProductsResponse.status != 200) {
-      this.ShowDatabaseError();
-      return;
-    }
-    const resultProducts = await getProductsResponse.json();
-    for (const key in resultProducts) {
-      if (
-        this.allProducts.findIndex(x => x.id == resultProducts[key].id) == -1
-      ) {
-        //Not insert duplicates
-        this.allProducts.push({
-          id: resultProducts[key].id,
-          name: resultProducts[key].Name
-        });
-      }
-    }
-    this.forceUpdate(); //Force the page to rerender with the changes
-  }
+
 
   ShowDatabaseError() {
     Alert.alert(
       "Error",
-      "Error retreving data from the Database, Check your internet connection",
+      "Error retreving data from the Database, Check your internet connection Source: rating page",
       [{ text: "OK", onPress: () => console.log("OK Pressed") }],
       { cancelable: false }
     );
@@ -73,48 +44,6 @@ export default class RatingsScreen extends React.Component {
   /**: First this function, loads all products if none exist because they 
    * need to display there names for ratings. The function then clears out 
    * the rating array and populated them from a request sent to the hasura API.*/
-  async loadRatings() {
-    if (Array.isArray(this.allProducts) && this.allProducts.length) {
-      if (this.loadAllProducts()) {
-      }
-    }
-
-    this.ratings = [];
-    const ratingsInfo = {
-      user_id: 0
-    };
-    // Calling the getRatingAPI API
-    let getRatingResponse = await getRatingAPI(ratingsInfo);
-    if (getRatingResponse.status != 200) {
-      this.ShowDatabaseError();
-      return;
-    }
-    const resultResponseGetRating = await getRatingResponse.json();
-    for (const key in resultResponseGetRating) {
-      var product = this.allProducts.find(function(element) {
-        return element.id == resultResponseGetRating[key].product_id;
-      });
-      var foundproductname = "Product Not found";
-      if (product != null)
-        //handle Error from record corruption in database
-        foundproductname = product.name;
-      else {
-        console.log(
-          "Product Id not found: " + resultResponseGetRating[key].product_id
-        );
-      }
-      this.ratings.push({
-        user_id: resultResponseGetRating[key].user_id,
-        product_id: resultResponseGetRating[key].product_id,
-        /*Join*/
-        productName: foundproductname,
-        id: resultResponseGetRating[key].id,
-        ratingLevel: resultResponseGetRating[key].ratinglevel,
-        ratingDescription: resultResponseGetRating[key].ratingDescription
-      });
-    }
-    this.forceUpdate(); //Force the page to rerender with the changes
-  }
 
   // Handling change when user enters text
   handlerratinglevelChange = (itemValue, itemIndex) => {
@@ -127,17 +56,14 @@ export default class RatingsScreen extends React.Component {
     this.state.ratingDescription = String(ratingDescription);
   };
 
-  handleproduct_idChange = (itemValue, itemIndex) => {
-    console.log("itemValue: " + itemValue);
-    this.setState({ product_id: itemValue });
-  };
-
   /*Takes the bound rating data within the form and sends it to the hasura API code section 
    for parsing and submission, then once sent to hasura Clears out the form to prepare for
    another submission*/
   handleRatingSubmit = async userInfo => {
     let RatingResponse = await setRatingAPI(this.state); //Sends the inputed information to the hasura api
     if (RatingResponse.status != 200) {
+      console.log(RatingResponse)
+      console.log(this.state)
       this.ShowDatabaseError();
       return;
     }
@@ -148,42 +74,15 @@ export default class RatingsScreen extends React.Component {
     this.state.product_id = 0;
     this.state.id = 0;
     //Reload the list to get the list with the added information
-    this.loadRatings();
-    this.loadAllProducts();
     this.forceUpdate(); //Force the page to rerender with the changes
+    this.props.navigation.goBack();
   };
 
-  /**Rendered the ratings called withing the main render */
-  renderRatings() {
-    var i = 0;
-    return this.ratings.map(item => {
-      return (
-        <Card key={item.id} title={item.productName}>
-        {
-        <View style={styles.user}>
-          <Text>{"Rating: " +item.ratingLevel}</Text>
-          <Text>{"Review: " +item.ratingDescription}</Text>
-        </View>
-        }
-        </Card>
-      //   <View key={item.id} style={styles.container}>
-      //     <Text style={styles.subRatingStyle}>Product {item.productName}</Text>
-      //     <Text style={styles.subRatingStyle}>Rating: {item.ratingLevel}</Text>
-      //     <Text style={styles.subRatingStyle}>
-      //       Description: {item.ratingDescription}
-      //     </Text>
-      //   </View>
-      // );
-    )
-      })
-      i = i+1
-}
+  /**Rendered the ratings called withing the main rende           r */
+  
 
   //Render means draw on screen, this is on all screens, and is called by default.
   render() {
-    let productItems = this.allProducts.map(item => {
-      return <Picker.Item key={item.id} value={item.id} label={item.name} />;
-    });
     return (
       <ImageBackground
         source={require("../assets/OpeningPageBackground.jpg")}
@@ -191,24 +90,25 @@ export default class RatingsScreen extends React.Component {
         style={styles.backgroundImage}
       >
        <Header transparent
-          centerComponent = {<Text style = {{color: 'white', fontWeight: 'bold', fontSize: 18}}>Ratings</Text>}
           backgroundColor = "#086522"
           leftComponent={<Icon name="menu" onPress={() => this.props.navigation.openDrawer()} />}
          />
         <ScrollView>
-          <View style={styles.existingRatingContainer}>
-            <Text style={styles.subPageHeadStyle}>Existing Ratings</Text>
-          </View>
-          <View style={styles.container}>{this.renderRatings()}</View> 
-
-          <View style={styles.inputContainer6}>
              
         <Text style={styles.welcome}>
             New Rating
             </Text>
-            </View>
           <View style={styles.rectangle8}>
             <View style={styles.RatingsfieldsArea}>
+            <TextField
+                tintColor="rgba(12, 57, 14, 0.85)"
+                disabled
+                label = {this.state.product_name}
+                value={this.state["product_name"]}
+                placeholder={this.state.product_name}
+                keyboardType="default"
+                onChangeText={this.handleratingDescriptionChange}
+              />
               <TextField
                 tintColor="rgba(12, 57, 14, 0.85)"
                 required
@@ -234,20 +134,12 @@ export default class RatingsScreen extends React.Component {
                 <Picker.Item key="5" label="5" value="5" />
               </Picker>
 
-              <Picker
-                prompt="Product"
-                label="Product"
-                mode="dialog"
-                selectedValue={this.state["product_id"]}
-                style={styles.RatingsfieldsAreaPicker}
-                onValueChange={this.handleproduct_idChange}
-              >
-                <Picker.Item label="Picker" value="0" />
-                {productItems}
-              </Picker>
+              {console.log(this.state["product_name"])}
+              {console.log(this.state["ratingLevel"])}
+              {console.log(this.state["ratingDescription"])}
             </View>
             <Button
-              style={{ container: styles.buttonStyle2 }}
+              style={{ container: styles.quickpls }}
               onPress={this.handleRatingSubmit}
               text="Save Rating"
               raised={true}

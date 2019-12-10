@@ -200,6 +200,13 @@ export default class UserScreen extends React.Component {
     //y is an arbitrarily large number
   };
 
+
+    this.forceUpdate();
+    this.refs.scrollView.scrollTo({ x: 999, y: 999, animated: true }); // Scroll to the bottom to show that the Address is in edit mode
+    //x is an arbitrarily large number
+    //y is an arbitrarily large number
+  };
+  
   /*structures the data, then send the data to the hasura API, 
   then reloads the list of address to see the new record within the list*/
   handleSubmit = async () => {
@@ -391,8 +398,12 @@ export default class UserScreen extends React.Component {
             <View>
               <Button
                 style={{ container: styles.buttonStyle2 }}
+
                 onPress={this.handleSubmit}
                 text={this.state.isInEditMode ? "Save Edit" : "Add Addresss"}
+
+                onPress={() => this.handleSubmit()}
+                text="Add Address"
                 raised={true}
                 primary={true}
               />

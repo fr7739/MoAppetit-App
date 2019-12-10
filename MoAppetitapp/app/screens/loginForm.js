@@ -152,24 +152,22 @@ export default class LoginScreen extends React.Component {
       return (
           <ImageBackground source={require('../assets/OpeningPageBackground.jpg')} resizeMode='cover'style={styles.backgroundImage}>
               {/* Thamima: Changes */} 
-          <KeyboardAvoidingView style={styles.KBAV} behavior="position" enabled>
-          <View style={styles.container}>
-          
+          <View style={styles.KBAV}  >
           <Text style={styles.CircleMoAppetit}>"MoAppetit"</Text>
+
           <View style={styles.buttonHolder}>
                 <Button 
               style={{ container: styles.buttonStyleDown}} 
               primary={true} 
               text="Login" 
-              raised={true}  
+              raised={false}  
               onPress={() => this.props.navigation.navigate('Login')}/>
               <Button 
               style={{ container: styles.buttonStyle}} 
               primary={true} 
               text="Sign Up" 
-              raised={true} 
+              raised={false} 
               onPress={() => this.props.navigation.navigate('Register')}/>
-       </View>
        </View>
        <Form
         ref="form"
@@ -217,7 +215,7 @@ export default class LoginScreen extends React.Component {
           
       </View>
       </Form>
-      </KeyboardAvoidingView>
+      </View>
       </ImageBackground>
       )
   }
