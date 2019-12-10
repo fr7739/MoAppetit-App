@@ -34,17 +34,26 @@ constructor(props){
                     </View>
                         <Button
                             onPress = {() => this.props.addItemToCart(this.props.product)}
-                            icon={<Icon name='md-cart' color='#ffffff' style = {{padding: 1}} />}
+                            icon={<Icon name='md-cart' color='#ffffff' style = {{padding: 2}} />}
                             buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0, backgroundColor: '#086522'}}
                         title='ADD TO CART' />
+                    {this.props.cartItems[this.props.cartItems.findIndex(prod => prod.id === this.props.product.id)] 
+                    && this.props.cartItems[this.props.cartItems.findIndex(prod => prod.id === this.props.product.id)].id === this.props.product.id 
+                    && this.props.cartItems[this.props.cartItems.findIndex(prod => prod.id === this.props.product.id)].qty >= 1 ?    
+                        (<Button
+                            onPress = {() => this.props.removeItem(this.props.product)}
+                            icon={<Icon name='md-close' color='#CC0000' style = {{padding: 2}} />}
+                            buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0, backgroundColor: '#CC0000', marginTop: 3}}
+                        title='REMOVE ALL FROM CART' />) : (null)}
                 </Card> 
                 <ScrollView
                 horizontal = {true}
                 showsHorizontalScrollIndicator = {false}
                 style = {{padding: 5, margin: 0}}
                 >
-                    <Reviews prodName = {this.props.product.title}/>
+                 <Reviews prodName = {this.props.product.title}/>
                 </ScrollView>
+                <Button onPress = {() => this.props.navigation.navigate('Ratings', {rateMe: this.props.product.title})} />
                 </View>
             )
         }
@@ -55,7 +64,9 @@ constructor(props){
     }
     const mapDispatchToProps = (dispatch) =>{
         return{
-          addItemToCart: (product) => dispatch({type: 'ADD_TO_CART', payload: product})
+          addItemToCart: (product) => dispatch({type: 'ADD_TO_CART', payload: product}),
+          decrementCart: (product) => dispatch({type: 'DECREMENT_FROM_CART', payload: product}),
+          removeItem: (product) => dispatch({type: 'REMOVE_FROM_CART', payload: product})
         }
       }
       const mapStateToProps = (state) => {

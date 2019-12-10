@@ -6,6 +6,8 @@ import { Card, ListItem, Button } from 'react-native-elements'
 import { Icon, Container } from 'native-base';
 import {connect} from 'react-redux'
 import Collection from './Collection';
+import plusIMG from '../../assets/plus.png'
+import minusIMG from '../../assets/minus.png'
 
 class Prod extends Component {
     constructor(props){
@@ -28,7 +30,7 @@ class Prod extends Component {
                     </TouchableOpacity>
                         <TouchableOpacity
                         onPress = {() => this.props.addItemToCart(product)}
-                        style={{borderRadius: 50, borderWidth: 0,height: 25, width: 25, backgroundColor: '#086522', position: "absolute", padding: 5, right: 1, top: 1}}
+                        style={{borderRadius: 50, borderWidth: 0,height: 25, width: 25, backgroundColor: '#086522', position: "absolute", padding: 4, right: 1, top: 1}}
                         title={product.variants[0].price + "$"}><Text adjustsFontSizeToFit minimumFontScale= {.5} style = {{fontWeight: 'bold', color: 'white', textAlign: 'right', fontSize: 10}}> {this.props.cartItems[this.props.cartItems.findIndex(prod => prod.id === product.id)] && this.props.cartItems[this.props.cartItems.findIndex(prod => prod.id === product.id)].id === product.id ? (this.props.cartItems[this.props.cartItems.findIndex(prod => prod.id === product.id)].qty) : ("+")}  </Text></TouchableOpacity>
                         <Text>{product.title}</Text>
                         <Text numberOfLines = {1} style = {{fontSize: 8}}>{product.description}</Text>
@@ -36,7 +38,7 @@ class Prod extends Component {
                         {this.props.cartItems[this.props.cartItems.findIndex(prod => prod.id === product.id)] && this.props.cartItems[this.props.cartItems.findIndex(prod => prod.id === product.id)].id === product.id && this.props.cartItems[this.props.cartItems.findIndex(prod => prod.id === product.id)].qty > 1 ?
                             (<TouchableOpacity
                             onPress = {() => this.props.decrementCart(product)}
-                            style={{borderRadius: 50, borderWidth: 0,height: 25, width: 25, backgroundColor: '#086522', position: "absolute", padding: 3, right: 1, bottom: 1}}
+                            style={{borderRadius: 50, borderWidth: 0,height: 25, width: 25, backgroundColor: '#CC0000', position: "absolute", padding: 4, right: 1, bottom: 1, marginBottom: 60 }}
                             title={product.variants[0].price + "$"}><Text style = {{fontWeight: 'bold', color: 'white', textAlign: 'center', fontSize: 10}}> - </Text></TouchableOpacity>) 
             
                             : 
@@ -46,7 +48,7 @@ class Prod extends Component {
                         {this.props.cartItems[this.props.cartItems.findIndex(prod => prod.id === product.id)] && this.props.cartItems[this.props.cartItems.findIndex(prod => prod.id === product.id)].id === product.id && this.props.cartItems[this.props.cartItems.findIndex(prod => prod.id === product.id)].qty === 1 ?
                             (<TouchableOpacity
                             onPress = {() => this.props.removeItem(product)}
-                            style={{borderRadius: 50, borderWidth: 0,height: 25, width: 25, backgroundColor: '#086522', position: "absolute", padding: 3, right: 1, bottom: 1}}
+                            style={{borderRadius: 50, borderWidth: 0,height: 25, width: 25, backgroundColor: '#CC0000', position: "absolute", padding: 4, right: 1, bottom:1, marginBottom: 60 }}
                             title={product.variants[0].price + "$"}><Text style = {{fontWeight: 'bold', color: 'white', textAlign: 'center', fontSize: 10}}> - </Text></TouchableOpacity>) 
             
                             : 

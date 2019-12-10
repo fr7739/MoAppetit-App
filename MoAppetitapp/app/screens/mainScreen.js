@@ -13,6 +13,9 @@ import HeaderImage from '../../assets/HeaderImage.png';
 import styles from '../screens/styles';
 import SearchResultProduct from "../components/SearchResultProduct";
 
+import plusIMG from '../../assets/plus.png'
+import minusIMG from '../../assets/minus.png'
+
 
 export default class MainScreen extends React.Component {
   constructor(props) {
@@ -149,17 +152,19 @@ export default class MainScreen extends React.Component {
       <View>
         <KeyboardAvoidingView>  
           <SearchBar  
-          containerStyle={{backgroundColor: 'white'}}
+          containerStyle={{backgroundColor: 'rgba(52, 52, 52, 0.0)', borderWidth: 0}}
           lightTheme 
+          style = {{borderWidth: 0}}
           round
           searchIcon={() => (<Icon name="search" onPress={() => this.clearSearch()} />)}
           placeholder="Search..."
           placeholderTextColor={'#FFFFFF'}
           onChangeText={this.updateSearch}
+          onfo
           value={search}
           />
         </KeyboardAvoidingView>
-          <View style={{ backgroundColor: "white" }}>
+          <View>
           {this.renderResultsContainer()}
         </View>
         </View>

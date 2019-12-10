@@ -8,11 +8,8 @@ export default StyleSheet.create({
     flex: 1,
     paddingTop: 1,
     alignItems: 'center',
-    marginLeft: -100,
-    marginRight: -100,
-    paddingLeft: 0,
-    paddingRight: 0,
-    marginTop: 20
+    justifyContent: 'center',
+    flexDirection: 'column'
   },
 
     fieldsArea: 
@@ -62,7 +59,6 @@ export default StyleSheet.create({
     {
       flex: .2,
       flexDirection: 'row',
-      justifyContent: "space-between",
       width: "60%"
     },
 
@@ -121,13 +117,26 @@ export default StyleSheet.create({
       paddingLeft: 20,
       paddingRight: 20,
       borderRadius:200,
-      marginTop:0
+      marginTop:0,
+      margin: 0,
+      paddingTop: 0,
     },
 
     // ButtonStyle for Userscreen
     buttonStyle2:
     {
     width: 375,
+    borderWidth: 3,
+    justifyContent: 'center',
+    backgroundColor: '#7a42f4',
+    padding: 10,
+    margin: 15,
+    height: 40,
+    },
+
+    quickpls:
+    {
+    width: 285,
     borderWidth: 3,
     justifyContent: 'center',
     backgroundColor: '#7a42f4',
@@ -153,26 +162,20 @@ export default StyleSheet.create({
     buttonStyleDown: {
       flex: 2,
       backgroundColor: 'rgba(232,232,232, 0.85)',
-      width: 299,
-      height: 40,
       borderWidth: 3,
       borderRadius: 30,
       overflow: "hidden",
       left: "0%",
-      marginBottom:5,    
       },
 
       // ButtonStyle for Register, PostRegister, Login
     buttonStyle: {
       flex: 2,
       backgroundColor: 'rgba(12, 57, 14, 0.85)',
-      width: 299,
-      height: 40,
       borderWidth: 3,
       borderRadius: 30,
       overflow: "hidden",
       left: "3%",
-      marginBottom:5,
     
     },
 
@@ -193,7 +196,6 @@ export default StyleSheet.create({
       borderWidth: 2,
       borderRadius: 40,
       overflow: "hidden",
-      left: 163,
       marginBottom:25
   },
 
@@ -234,7 +236,6 @@ inputContainer: {
     borderWidth: 2,
     borderRadius: 40,
     overflow: "hidden",
-    left: 163,
     marginBottom:70,
 },
 
@@ -655,5 +656,3 @@ rectangle8: {
 },
 
   });
-
-  

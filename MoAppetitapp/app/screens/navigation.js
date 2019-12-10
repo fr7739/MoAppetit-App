@@ -19,7 +19,7 @@ import CartScreen from './cartScreen';
 import initialScreen from './initialScreen';
 import productScreen from './productScreen'
 import CartIcon from '../containers/cartIcon'
-
+import productPage from '../components/productPage'
 import Col from '../screens/Col';
 import CollectionScreen from './collectionScreen';
 
@@ -120,6 +120,8 @@ const drawNav = createDrawerNavigator({
     }
   },
 
+  
+
 })
 
 const AppNavigator = createStackNavigator({
@@ -133,7 +135,8 @@ Product: productScreen,
 Cart: CartScreen,
 CartIcon: CartIcon,
 Collection: CollectionScreen,
-Col: Col
+Col: Col,
+ProductPage: productPage
   },
   {
     headerMode: 'none',
