@@ -199,13 +199,6 @@ export default class UserScreen extends React.Component {
     //x is an arbitrarily large number
     //y is an arbitrarily large number
   };
-
-
-    this.forceUpdate();
-    this.refs.scrollView.scrollTo({ x: 999, y: 999, animated: true }); // Scroll to the bottom to show that the Address is in edit mode
-    //x is an arbitrarily large number
-    //y is an arbitrarily large number
-  };
   
   /*structures the data, then send the data to the hasura API, 
   then reloads the list of address to see the new record within the list*/

@@ -151,9 +151,7 @@ export default class LoginScreen extends React.Component {
       const { password } = this.state;
       return (
           <ImageBackground source={require('../assets/OpeningPageBackground.jpg')} resizeMode='cover'style={styles.backgroundImage}>
-              {/* Thamima: Changes */} 
           <View style={styles.KBAV}  >
-          <Text style={styles.CircleMoAppetit}>"MoAppetit"</Text>
 
           <View style={styles.buttonHolder}>
                 <Button 

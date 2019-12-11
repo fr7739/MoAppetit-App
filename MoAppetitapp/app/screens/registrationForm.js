@@ -153,12 +153,9 @@ export default class RegistrationForm extends React.Component {
 
         return (
             <ImageBackground source={require('../assets/OpeningPageBackground.jpg')} resizeMode='cover'style={styles.backgroundImage}>
-            {/* Thamima: Changes */} 
         <View style={styles.KBAV}>
-        
- 
-        <Text style={styles.CircleMoAppetit}>"MoAppetit"</Text>
-        <View style={styles.buttonHolder}>
+
+        <View style={styles.buttonHolder2}>
               <Button 
             style={{ container: styles.buttonStyleDown}} 
             primary={true} 
