@@ -24,7 +24,7 @@ export default class AboutUsScreen extends React.Component {
           <Header transparent
           centerComponent = {<Text style = {{color: 'white', fontWeight: 'bold', fontSize: 18}}>About Us</Text>}
           backgroundColor = "#086522"
-          leftComponent={<Icon name="menu" onPress={() => this.props.navigation.openDrawer()} />}
+          leftComponent={<Icon name="md-arrow-back" onPress={() => this.props.navigation.goBack()} />}
          />
         
 
