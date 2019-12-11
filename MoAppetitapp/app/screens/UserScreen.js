@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, ScrollView, ImageBackground, Alert } from "react-native";
+import { View, Text, ScrollView, ImageBackground, Alert, StyleSheet } from "react-native";
 import { TextField } from "react-native-materialui-textfield";
 import { Button } from "react-native-material-ui";
 import styles from "./styles.js";
@@ -9,9 +9,14 @@ import getFullUserAPI from "../hasuraAPI/getFullUserAPI";
 import deleteAddressAPI from "../hasuraAPI/deleteAddressAPI";
 import setUseFullInfoAPI from "../hasuraAPI/setUserFullInfoAPI.js";
 import { Header } from "react-native-elements";
-import { Icon } from "native-base";
+import { CardItem, Item, Input, Body, Right, Left, Container, Content, Form } from "native-base";
+import { Card } from 'react-native-elements'
 
-export default class UserScreen extends React.Component {
+
+import SegmentControl from 'react-native-segment-control';
+
+
+class UserScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -284,126 +289,204 @@ export default class UserScreen extends React.Component {
   }
 
   render() {
-    return (
-      <ImageBackground
-        source={require("../assets/OpeningPageBackground.jpg")}
-        resizeMode="cover"
-        style={styles.backgroundImage}
-      >
-        <Header
-          transparent
-          backgroundColor="#086522"
-          leftComponent={
-            <Icon
-              name="menu"
-              onPress={() => this.props.navigation.openDrawer()}
-            />
-          }
-        />
-        <ScrollView>
-          <View style={styles.container}>{this.renderAddresses()}</View>
-        </ScrollView>
+
+// Render Edit Profile on one side of userscreen
+const One = () => {
+        return (
+          <View>
         <ScrollView ref="scrollView">
-          <View style={styles.container}>
-            <View>
-              <Text style={styles.subPageHeadStyle}>User Info</Text>
-            </View>
-            <View style={styles.fieldsArea2}>
-              <TextField
+        <Container>
+        <Content>
+          <Card style={styles.postCard}>
+            <View>  
+              <Form style={{ marginLeft: 20, marginRight: 20 }}>
+                <TextField
                 tintColor="rgba(12, 57, 14, 0.85)"
                 required
+                placeholder="Name"
                 value={this.userState["name"]}
-                label="Name"
+                label=""
                 onChangeText={this.handleNameChange}
-              />
-              <TextField
+                />
+                </Form>
+
+               <Form style={{ marginLeft: 20, marginRight: 20 }}>
+                <TextField
                 tintColor="rgba(12, 57, 14, 0.85)"
                 required
+                placeholder="Phone"
                 value={this.userState["phone"]}
-                label="Phone"
+                label=""
                 onChangeText={this.handlePhoneChange}
               />
-            </View>
+            </Form>
 
-            <View>
-              <Button
-                style={{ container: styles.buttonStyle2 }}
+              <CardItem>
+                  <Left></Left>
+                  <Body>
+            <Button
                 onPress={this.handleUserSubmit}
                 text="Edit Info"
                 raised={true}
                 primary={true}
-              />
+              >
+            </Button>
+                  </Body>
+                  <Right></Right>
+                </CardItem>
             </View>
-            <View>
-              <Text style={styles.subPageHeadStyle}>Add Address</Text>
+            </Card>
+        </Content>
+      </Container>
+            </ScrollView>
             </View>
-            <View style={styles.fieldsArea2}>
-              <Text id="errorText">{this.state.error}</Text>
-              <TextField
+
+            )
+          }
+
+// Render Address on one side of userscreen
+const Two = () => {
+        return (     
+          <View>
+            <ScrollView ref="scrollView">      
+            <Container>
+        <Content>
+          <Card style={styles.postCard}>
+            <View>  
+              <Form style={{ marginLeft: 20, marginRight: 20 }}>
+                <TextField
                 tintColor="rgba(12, 57, 14, 0.85)"
                 required
+                placeholder="Address Line 1"
                 value={this.state.addressline1}
                 onChangeText={this.handleaddressline1Change}
-                label="Address Line 1"
-              />
-              <TextField
+                label=""
+                />
+                </Form>
+
+               <Form style={{ marginLeft: 20, marginRight: 20 }}>
+                <TextField
                 tintColor="rgba(12, 57, 14, 0.85)"
                 required
+                placeholder="Address Line 2"
                 secureTextEntry={false}
                 value={this.state.addressline2}
                 onChangeText={this.handleaddressline2Change}
-                label="Address Line 2"
-              />
+                label=""
+                />
+                </Form>
 
-              <TextField
+                <Form style={{ marginLeft: 20, marginRight: 20 }}>
+                <TextField
                 tintColor="rgba(12, 57, 14, 0.85)"
                 required
+                placeholder="Address Line 3"
                 secureTextEntry={false}
                 value={this.state.addressline3}
                 onChangeText={this.handleaddressline3Change}
-                label="Address Line 3"
-              />
-              <TextField
+                label=""
+                />
+                </Form>
+
+              <Form style={{ marginLeft: 20, marginRight: 20 }}>
+                <TextField
                 tintColor="rgba(12, 57, 14, 0.85)"
                 required
+                placeholder="City"
                 secureTextEntry={false}
                 onChangeText={this.handlecityChange}
                 value={this.state.city}
-                label="City"
-              />
-              <TextField
+                label=""
+                />
+                </Form>
+
+              <Form style={{ marginLeft: 20, marginRight: 20 }}>
+                <TextField
                 tintColor="rgba(12, 57, 14, 0.85)"
                 required
+                placeholder="State"
                 secureTextEntry={false}
                 value={this.state.state}
                 onChangeText={this.handlestateChange}
-                label="State"
-              />
-              <TextField
+                label=""
+                />
+                </Form>
+
+              <Form style={{ marginLeft: 20, marginRight: 20 }}>
+                <TextField
                 tintColor="rgba(12, 57, 14, 0.85)"
                 required
+                placeholder="Zip"
                 secureTextEntry={false}
                 onChangeText={this.handlezipChange}
                 value={this.state.zip}
-                label="Zip"
-              />
-            </View>
-            <View>
-              <Button
-                style={{ container: styles.buttonStyle2 }}
+                label=""
+                />
+                </Form>
 
+            <CardItem>
+                  <Left></Left>
+                  <Body>
+            <Button
                 onPress={this.handleSubmit}
                 text={this.state.isInEditMode ? "Save Edit" : "Add Addresss"}
-
                 onPress={() => this.handleSubmit()}
-                text="Add Address"
+                text="Submit"
                 raised={true}
                 primary={true}
-              />
-            </View>
+                >
+                </Button>
+              </Body>
+              <Right></Right>
+            </CardItem>
           </View>
-        </ScrollView>
-      </ImageBackground>
-    );
-  }
-}
+          </Card>
+          </Content>
+          </Container>
+          </ScrollView> 
+          </View>
+    )
+        }
+
+        // Render address on one side of userscreen
+          const Three = () => {
+            return (
+              <View>
+          <ScrollView>
+          <Container>
+          <Content>
+          <Card style={styles.postCard}>
+          <View style={styles.container}>{this.renderAddresses()}</View>
+          </Card>
+          </Content>
+          </Container>
+          </ScrollView>
+          </View>
+            )
+          }
+
+const segments = [
+            {
+              title: 'EDIT PROFILE',
+              view: One
+            },
+            {
+              title: 'EDIT ADDRESS',
+              view: Two
+            },
+            {
+                title: 'SAVED ADDRESS',
+                view: Three
+            },
+        ];
+  
+          return (
+            <View style={styles.container3}>
+              <SegmentControl segments={segments} />
+            </View>
+          );
+        };
+        
+      }
+        
+export default UserScreen;

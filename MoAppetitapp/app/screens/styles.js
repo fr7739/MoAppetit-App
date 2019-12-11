@@ -669,4 +669,18 @@ rectangle8: {
   marginTop:-30
 },
 
+// Container for Usercreen
+container3: {
+  //flex: 1,
+   //alignItems: 'center',
+   //justifyContent: 'center',
+   //paddingLeft: 20,
+   //paddingRight: 20,
+   //borderRadius:200,
+   marginBottom:150,
+   //margin: 0,
+   //paddingTop: 0,
+   height:600
+ },
+
   });

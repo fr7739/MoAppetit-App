@@ -8,10 +8,7 @@ import getRatingAPI from "../hasuraAPI/getRatingAPI";
 import setRatingAPI from "../hasuraAPI/setRatingAPI";
 import getAllProductsAPI from "../hasuraAPI/getAllProductAPI";
 import { Header } from 'react-native-elements';
-import { Icon,  CardItem,
-  Item,
-  Input, Textarea, Form, Body,
-  Right, Left, Container, Content } from 'native-base';
+import { Icon, CardItem, Item, Input, Textarea, Form, Body, Right, Left, Container, Content } from 'native-base';
 import { Card } from 'react-native-elements'
 import CartIcon from '../containers/cartIcon'
 
