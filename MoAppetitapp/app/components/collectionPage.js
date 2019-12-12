@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import { Card, Button } from 'react-native-elements';
-import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView, Icon, Container } from 'react-native';
+import { View, Image, TouchableOpacity, ScrollView } from 'react-native';
 import styles from '../screens/styles';
 import {connect} from 'react-redux'
 
 
-
+// this page displays products and a user can choose a specific product to view more details
 class collectionPage extends Component {
 constructor(props){
     super(props)

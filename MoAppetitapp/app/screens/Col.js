@@ -1,22 +1,16 @@
 import React from 'react';
 import {Provider} from 'react-redux'
 import store from '../redux/index'
-import { StyleSheet, View, ImageBackground, KeyboardAvoidingView, Image, Text, ScrollView} from 'react-native';
-import {AsyncStorage} from 'react-native';
-import {Button} from 'react-native-material-ui';
+import { View, ImageBackground, ScrollView} from 'react-native';
 import styles from '../screens/styles';
 import { Icon } from 'native-base';
 import { Header } from 'react-native-elements';
 import { client } from '../hasuraAPI/shopifyAPI';
-//import Col from '../components/Col2';
 import Search from '../components/Search';
-import { SearchBar } from 'react-native-elements';
 import CartIcon from '../containers/cartIcon';
 import Connection from '../components/Connection';
 
- 
-// Added by Mamadou Store Token
-// Rendering to the UI the post Registration screen with the login button and informing the user that they need to validate their email
+
 export default class Col extends React.Component {
   constructor(props) {
     super(props);
@@ -27,6 +21,8 @@ export default class Col extends React.Component {
         search: [],
       };
     }
+
+    // Fetch All the products from Shopify
     componentWillMount(){
         client.collection.fetchAllWithProducts().then((res) => {
           this.setState({
@@ -35,17 +31,7 @@ export default class Col extends React.Component {
         })
       }
 
-  getValue = async () => {
-    try {
-      const auth = await AsyncStorage.getItem('token');
-        console.log("Token: " +auth)
-    }
-    catch (error) {
-        console.log("error")
-    }
-  }
-
-
+  // Show the search product on screen
   showSearch = x =>
   {
     this.setState({showSearch: !this.state.showSearch}, () =>
@@ -64,7 +50,7 @@ export default class Col extends React.Component {
     }
   }
 
-
+// call collections from connection component
   renderAll = () => {
     if (!this.state.showSearch) { 
       return (
@@ -77,8 +63,7 @@ export default class Col extends React.Component {
     }
   }
 
-//Store Token End 
-
+// Render or show the whole products on screen
   render() {
     
       return (
@@ -95,8 +80,3 @@ export default class Col extends React.Component {
       );
   }
 }
-
-
-
-
-// END: Added by Mamadou

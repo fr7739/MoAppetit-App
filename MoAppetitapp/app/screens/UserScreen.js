@@ -200,9 +200,7 @@ class UserScreen extends React.Component {
     this.state.isInEditMode = true;
 
     this.forceUpdate();
-    this.refs.scrollView.scrollTo({ x: 999, y: 999, animated: true }); // Scroll to the bottom to show that the Address is in edit mode
-    //x is an arbitrarily large number
-    //y is an arbitrarily large number
+    
   };
   
   /*structures the data, then send the data to the hasura API, 
@@ -251,6 +249,7 @@ class UserScreen extends React.Component {
     this.state.state = "";
     this.state.zip = "";
     this.loadAddresses();
+    this.state.isInEditMode = false;
     this.forceUpdate();
   };
 
@@ -488,5 +487,6 @@ const segments = [
         };
         
       }
+      
         
 export default UserScreen;

@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView } from 'react-native';
-import styles from '../screens/styles'
-import {AsyncStorage} from 'react-native';
-import { Card, ListItem, Button } from 'react-native-elements'
-import { Icon, Container } from 'native-base';
+import { Text, View, ScrollView } from 'react-native';
+import { Card, Button } from 'react-native-elements'
+import { Icon} from 'native-base';
 import Reviews from './Reviews'
 import {connect} from 'react-redux'
+
+// display the products on mainscreen and user can click on a apecific product then see more details of it.
+// User can add and remove the product on the cart
 class productPage extends Component {
 constructor(props){
     super(props)

@@ -1,12 +1,11 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView } from 'react-native';
+import { Text, View, Image, TouchableOpacity, ScrollView } from 'react-native';
 import styles from '../screens/styles'
-import {AsyncStorage} from 'react-native';
-import { Card, ListItem, Button } from 'react-native-elements'
-import { Icon, Container } from 'native-base';
+import { Card} from 'react-native-elements'
 import {connect} from 'react-redux'
 
-
+// This component displays the collections titles as well their respectives images 
+// and once a user clicks on a collection image it will take him/her to the product page
 class Connection extends Component {
     constructor(props){
         super(props)
