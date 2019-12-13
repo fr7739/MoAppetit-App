@@ -1,13 +1,9 @@
   
 import React from 'react';
-import { StyleSheet, View, Text, ScrollView, Image, ImageBackground} from 'react-native';
-import {AsyncStorage} from 'react-native';
-import {Button} from 'react-native-material-ui';
+import { View, Text, ImageBackground} from 'react-native';
 import styles from './styles.js';
 import { Header } from 'react-native-elements';
 import { Icon } from 'native-base';
-
-import { Card} from 'react-native-elements';
 
 
 export default class AboutUsScreen extends React.Component {
@@ -48,8 +44,6 @@ export default class AboutUsScreen extends React.Component {
             </Text>
 
        </View>
-          {/* </ScrollView> */}
-          
       </ImageBackground>
 
       );

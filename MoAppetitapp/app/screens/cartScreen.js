@@ -1,9 +1,5 @@
 
-import React, { Component } from 'react';
- 
-import { StyleSheet, View, Text, Image, ScrollView, TouchableOpacity, Animated, Platform } from 'react-native';
-
-import {Button} from 'react-native-material-ui';
+import React from 'react';
 import { Header } from 'react-native-elements';
 import { Icon } from 'native-base';
 import {Provider} from 'react-redux'
@@ -25,56 +21,21 @@ export default class CartScreen extends React.Component {
     {
         return(
             <Provider store = {store}>
-        <Header transparent
-          backgroundColor = "#086522"
-          leftComponent={<Icon name="md-arrow-back" onPress={() => this.props.navigation.goBack()} />}
-          rightComponent={<CartIcon navigation = {this.props.navigation} />} />
-            <Cart />
+                
+                {/* Calls a special header that allows our created cart icon to be used */}
+                <Header transparent
+                    backgroundColor = "#086522"
+                    leftComponent={<Icon name="md-arrow-back" onPress={() => this.props.navigation.goBack()} />}
+                    rightComponent={<CartIcon navigation = {this.props.navigation} />} 
+                />
+                
+                {/* Calls the cart component to disply the objects contained within the cart */}
+                <Cart />
+
             </Provider>
         )
     }
 
 }
  
-const styles = StyleSheet.create(
-{
-    MainContainer:
-    {
-        flex: 1,
-        backgroundColor: '#eee',
-        justifyContent: 'center',
-    },
- 
-    Animated_View_Style:
-    {
-        height: 70,
-        backgroundColor: '#72a0c1',
-        alignItems: 'center',
-        justifyContent: 'center',
-        margin: 5
-    },
- 
-    View_Inside_Text:
-    {
-        color: '#fff',
-        fontSize: 24
-    },
- 
-    TouchableOpacityStyle:{
-  
-      position: 'absolute',
-      width: 50,
-      height: 50,
-      alignItems: 'center',
-      justifyContent: 'center',
-      right: 30,
-      bottom: 30,
-    },
- 
-    FloatingButtonStyle: {
-  
-      resizeMode: 'contain',
-      width: 50,
-      height: 50,
-    }
-});
+//Jordan Dickerson

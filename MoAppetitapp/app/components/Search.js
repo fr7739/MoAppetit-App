@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { View, KeyboardAvoidingView } from "react-native";
 import { SearchBar } from "react-native-elements";
-import { client } from "../hasuraAPI/shopifyAPI";
+import { client } from "../API/ShopifyAPI/shopifyAPI";
 import SearchResultProduct from "./SearchResultProduct";
 
 class Search extends Component {

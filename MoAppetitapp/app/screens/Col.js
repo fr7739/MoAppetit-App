@@ -1,16 +1,13 @@
 import React from 'react';
 import {Provider} from 'react-redux'
 import store from '../redux/index'
-import { StyleSheet, View, ImageBackground, KeyboardAvoidingView, Image, Text, ScrollView} from 'react-native';
+import { View, ImageBackground, ScrollView} from 'react-native';
 import {AsyncStorage} from 'react-native';
-import {Button} from 'react-native-material-ui';
 import styles from '../screens/styles';
 import { Icon } from 'native-base';
 import { Header } from 'react-native-elements';
-import { client } from '../hasuraAPI/shopifyAPI';
-//import Col from '../components/Col2';
+import { client } from '../API/ShopifyAPI/shopifyAPI';
 import Search from '../components/Search';
-import { SearchBar } from 'react-native-elements';
 import CartIcon from '../containers/cartIcon';
 import Connection from '../components/Connection';
 

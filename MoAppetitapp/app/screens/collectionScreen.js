@@ -1,12 +1,7 @@
 import React from 'react';
-import { StyleSheet, View, ImageBackground, KeyboardAvoidingView, Image, Text} from 'react-native';
-import {AsyncStorage} from 'react-native';
-import { StackActions, NavigationActions } from 'react-navigation';
 import { Icon, Container } from 'native-base';
 import { Header } from 'react-native-elements';
-import { client } from '../hasuraAPI/shopifyAPI';
 import { string } from 'prop-types';
-import CollectionPage from '../components/collectionPage';
 import CartIcon from '../containers/cartIcon';
 import {Provider} from 'react-redux'
 import store from '../redux/index'

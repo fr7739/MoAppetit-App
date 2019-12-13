@@ -1,9 +1,8 @@
 import React from 'react';
-import { TextField } from 'react-native-materialui-textfield';
-import { StyleSheet, Platform, View, ImageBackground,  KeyboardAvoidingView, Image, Text, TouchableOpacity, TextInput} from 'react-native';
+import { View, ImageBackground,  KeyboardAvoidingView, Image, Text, TouchableOpacity, TextInput} from 'react-native';
 import styles from './styles.js';
 import {Button} from 'react-native-material-ui';
-import passwordAPI from '../hasuraAPI/passwordAPI';
+import passwordAPI from '../API/hasuraAPI/passwordAPI';
 import { Form, TextValidator } from 'react-native-validator-form';
 
 

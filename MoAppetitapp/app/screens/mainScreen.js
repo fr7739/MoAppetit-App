@@ -4,7 +4,7 @@ import store from '../redux/index'
 import {View, KeyboardAvoidingView, ScrollView,ImageBackground} from 'react-native';
 import {AsyncStorage} from 'react-native';
 import { Icon } from 'native-base';
-import { client } from '../hasuraAPI/shopifyAPI';
+import { client } from '../API/ShopifyAPI/shopifyAPI'
 import { SearchBar, Card } from 'react-native-elements';
 import CartIcon from '../containers/cartIcon'
 import Collection from '../components/Collection';
@@ -13,8 +13,6 @@ import HeaderImage from '../../assets/HeaderImage.png';
 import styles from '../screens/styles';
 import SearchResultProduct from "../components/SearchResultProduct";
 
-import plusIMG from '../../assets/plus.png'
-import minusIMG from '../../assets/minus.png'
 
 
 export default class MainScreen extends React.Component {

@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import { Text, View, Image, ScrollView } from "react-native";
-import styles from "../screens/styles";
-import { Card, ListItem, Button } from 'react-native-elements'
+import { Text, View, ScrollView } from "react-native";
+import { Card, Button } from 'react-native-elements'
 import {connect} from 'react-redux'
-import { Icon, Container } from 'native-base';
+import { Icon } from 'native-base';
 
 
 /**This component represent a collection of items(product) that is found in the Search component’s state’s searchResultProducts 

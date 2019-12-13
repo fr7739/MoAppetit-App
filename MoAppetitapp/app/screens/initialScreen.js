@@ -3,9 +3,7 @@ import { View, KeyboardAvoidingView, Image, Text, TouchableOpacity} from 'react-
 import { Button } from 'react-native-material-ui';
 
 import styles from './styles.js';
-
-import { Icon } from 'native-base';
-import facebooklogIn from '../hasuraAPI/facebookAPI';
+import facebooklogIn from '../API/SocialMediaAPI/facebookAPI';
 
 import { Card} from 'react-native-elements';
 
@@ -26,19 +24,10 @@ export default class InitialScreen extends React.Component {
 }
 
   handleSubmitFacebook = async () => {
-    let loginResponse2 = await facebooklogIn()
-    // const loginResult2 = await loginResponse2.json()
-    // console.log(loginResult2)
-    // if(loginResponse.status !== 200) {
-    //     console.log(loginResult2.message)
-    //     this.setLoginError(loginResult2.message)
-    // }
-    // else {
-        // console.log("Auth Token: " +loginResponse2.token)
-        // await AsyncStorage.setItem('token', loginResponse2.token);
+    let loginResponse = await facebooklogIn().then()
+    console.log(loginResponse)
         this.setLoginError('')
-    }
-
+  }
   render() {
       return (
         <KeyboardAvoidingView style={styles.KBAV} behavior="position" enabled>

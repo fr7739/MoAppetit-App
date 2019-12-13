@@ -3,11 +3,11 @@ import { View, Text, ScrollView, ImageBackground, Alert } from "react-native";
 import { TextField } from "react-native-materialui-textfield";
 import { Button } from "react-native-material-ui";
 import styles from "./styles.js";
-import getAddressAPI from "../hasuraAPI/getAddressAPI";
-import setAddressAPI from "../hasuraAPI/setAddressAPI";
-import getFullUserAPI from "../hasuraAPI/getFullUserAPI";
-import deleteAddressAPI from "../hasuraAPI/deleteAddressAPI";
-import setUseFullInfoAPI from "../hasuraAPI/setUserFullInfoAPI.js";
+import getAddressAPI from "../API/hasuraAPI/getAddressAPI";
+import setAddressAPI from "../API/hasuraAPI/setAddressAPI";
+import getFullUserAPI from "../API/hasuraAPI/getFullUserAPI";
+import deleteAddressAPI from "../API/hasuraAPI/deleteAddressAPI";
+import setUseFullInfoAPI from "../API/hasuraAPI/setUserFullInfoAPI.js";
 import { Header } from "react-native-elements";
 import { Icon } from "native-base";
 
@@ -195,16 +195,6 @@ export default class UserScreen extends React.Component {
     this.state.isInEditMode = true;
 
     this.forceUpdate();
-    this.refs.scrollView.scrollTo({ x: 999, y: 999, animated: true }); // Scroll to the bottom to show that the Address is in edit mode
-    //x is an arbitrarily large number
-    //y is an arbitrarily large number
-  };
-
-
-    this.forceUpdate();
-    this.refs.scrollView.scrollTo({ x: 999, y: 999, animated: true }); // Scroll to the bottom to show that the Address is in edit mode
-    //x is an arbitrarily large number
-    //y is an arbitrarily large number
   };
   
   /*structures the data, then send the data to the hasura API, 

@@ -1,10 +1,5 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView } from 'react-native';
-import styles from '../screens/styles'
-import {AsyncStorage} from 'react-native';
-import { Card, ListItem, Button } from 'react-native-elements'
-import { Icon, Container } from 'native-base';
-import {connect} from 'react-redux'
+import {Text, View, TouchableOpacity, ScrollView } from 'react-native';
 import Prod from '../components/Product'
 
 class Collection extends Component {
@@ -19,14 +14,18 @@ class Collection extends Component {
         let collections = this.props.collections.map((collection, index) => {
                 let title = collection.title
             return(
+                // This component is used to seperate the products into their individual collections.
                 <View 
                     key = {index}
                     style = {{flex: 1,  flexDirection: "row", flexWrap: 'wrap',}}
                 >
-                    <TouchableOpacity style = {{position: 'absolute', zIndex: 2000, padding: 20}} onPress = { () => this.props.navigation.navigate('Collection', {Connection :collection})}>
-                    <Text style = {{color: '#086522', fontWeight: 'bold'}}>{collection.title}</Text>
+                    {/* This decides the position, and appearance of the collection labels */}
+                    <TouchableOpacity style = {{position: 'absolute', zIndex: 2000, padding: 20}} 
+                    onPress = { () => this.props.navigation.navigate('Collection', {Connection :collection})}>
+                        <Text style = {{color: '#086522', fontWeight: 'bold'}}>{collection.title}</Text>
                     </TouchableOpacity>
                 
+                {/* The prod component is called to display the products held within the collection */}
                 <ScrollView
                 horizontal = {true}
                 showsHorizontalScrollIndicator = {false}
@@ -45,10 +44,7 @@ class Collection extends Component {
     }
 }
 
-const mapDispatchToProps = (dispatch) =>{
-    return{
-      addItemToCart: (product) => dispatch({type: 'ADD_TO_CART', payload: product})
-    }
-  }
 
-export default connect(null, mapDispatchToProps)(Collection)
+export default Collection
+
+//Jordan Dickerson

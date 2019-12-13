@@ -1,12 +1,7 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView } from 'react-native';
-import styles from '../screens/styles'
-import {AsyncStorage} from 'react-native';
-import { Card, ListItem, Button } from 'react-native-elements'
-import { Icon, Container } from 'native-base';
-import {connect} from 'react-redux'
-import Collection from './Collection';
-import getRatingAPI from "../hasuraAPI/getRatingAPI";
+import {Text, View } from 'react-native';
+import { Card } from 'react-native-elements'
+import getRatingAPI from "../API/hasuraAPI/getRatingAPI";
 
 export default class Reviews extends Component {
     constructor(props){
@@ -18,7 +13,7 @@ export default class Reviews extends Component {
         if (this.loadRatings()) {
         }
     }
-
+    // This function calls the rating api and fetches the ratings, storing them in the state.
     loadRatings = async () => {
     
         this.ratings = [];
@@ -47,22 +42,26 @@ export default class Reviews extends Component {
       }
 
       render() {
+        // The render method maps the reviews that were fetched and keeps rendering them until it reaches the end of the list
         let review = this.ratings.map((rev, index) => {
             return(
                 
               <View key = {[index]}>
                {rev.product_name === this.props.prodName ?
-                (<Card
-                    title={rev.product_name}
-                >
-                    <Text style={{marginBottom: 10}}>
+                  (
+                    <Card
+                      title={rev.product_name}
+                    >
+                      <Text style={{marginBottom: 10}}>
                         {rev.ratingDescription}
-                    </Text>
-                    <Text style={{fontWeight: 'bold'}}>
+                      </Text>
+                      
+                      <Text style={{fontWeight: 'bold'}}>
                         Rating: {rev.ratingLevel}
-                    </Text>
-                </Card>) : (null)}
-                </View>
+                      </Text>
+                    </Card>
+                  ) : (null)}
+              </View>
             )
         })
         return(
@@ -72,3 +71,5 @@ export default class Reviews extends Component {
         )
     }
 }
+
+//added by Jordan Dickerson

@@ -1,10 +1,8 @@
 import React from 'react';
-import { StyleSheet, View, ImageBackground, Image, KeyboardAvoidingView, Text, TextInput, TouchableOpacity} from 'react-native';
+import { View, ImageBackground, Text, TouchableOpacity} from 'react-native';
 import {Button} from 'react-native-material-ui';
-import { TextField } from 'react-native-materialui-textfield';
-import registerAPI from '../hasuraAPI/registerAPI';
-import setUserAPI from '../hasuraAPI/setUserAPI';
-import { resultKeyNameFromField } from 'apollo-utilities';
+import registerAPI from '../API/hasuraAPI/registerAPI';
+import setUserAPI from '../API/hasuraAPI/setUserAPI';
 import styles from './styles.js';
 import { Form, TextValidator } from 'react-native-validator-form';
 

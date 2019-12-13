@@ -1,16 +1,11 @@
 import React from 'react';
-import { StyleSheet, View, ImageBackground,  KeyboardAvoidingView, Image, Text, TouchableOpacity,TextInput} from 'react-native';
+import { View, ImageBackground, Text, TouchableOpacity} from 'react-native';
 import {Button} from 'react-native-material-ui';
-import { TextField } from 'react-native-materialui-textfield';
-import loginAPI from '../hasuraAPI/loginAPI';
-import googleAPI from '../hasuraAPI/googleAPI';
-import * as Facebook from 'expo-facebook';
-import facebooklogIn from '../hasuraAPI/facebookAPI';
-import { initAsync } from 'expo-google-sign-in';
+import loginAPI from '../API/hasuraAPI/loginAPI';
+import googleAPI from '../API/SocialMediaAPI/googleAPI';
+import facebooklogIn from '../API/SocialMediaAPI/facebookAPI';
 import {AsyncStorage} from 'react-native';
 import styles from './styles.js';
-
-import { Icon } from 'native-base';
 import { Form, TextValidator } from 'react-native-validator-form';
 
 

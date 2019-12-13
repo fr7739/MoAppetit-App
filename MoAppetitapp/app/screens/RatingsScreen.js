@@ -1,16 +1,12 @@
 import React from "react";
 import { View, Text, ScrollView, Picker, Alert, ImageBackground } from "react-native";
 import { TextField } from "react-native-materialui-textfield";
-
 import { Button } from "react-native-material-ui";
 import styles from "./styles.js";
-import getRatingAPI from "../hasuraAPI/getRatingAPI";
-import setRatingAPI from "../hasuraAPI/setRatingAPI";
-import getAllProductsAPI from "../hasuraAPI/getAllProductAPI";
+import setRatingAPI from "../API/hasuraAPI/setRatingAPI";
 import { Header } from 'react-native-elements';
 import { Icon } from 'native-base';
-import { Card } from 'react-native-elements'
-import CartIcon from '../containers/cartIcon'
+
 
 
 

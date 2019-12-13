@@ -2,9 +2,6 @@ import React from 'react';
 
 import { createDrawerNavigator } from 'react-navigation-drawer';
 import{ createAppContainer, createSwitchNavigator } from 'react-navigation';
-import HomeScreen from '../components/Homescreen';
-import AboutScreen from '../components/Aboutscreen';
-import DebugScreen from '../components/Debugscreen';
 import { StyleSheet, Text, View, Image, Dimensions } from 'react-native';
 import MainScreen from './mainScreen';
 import ContactUs from '../screens/contactUs';
@@ -23,10 +20,6 @@ import productPage from '../components/productPage'
 import Col from '../screens/Col';
 import CollectionScreen from './collectionScreen';
 
-
-
-
-
 import { createStackNavigator, StackNavigator } from 'react-navigation-stack';
 
 
@@ -41,6 +34,7 @@ class Hidden extends React.Component {
     return null;
   }
 }
+//This drawer navigator decides which screens appear in the side drawer.
 const drawNav = createDrawerNavigator({
   Main: {
     screen: MainScreen,
@@ -124,6 +118,8 @@ const drawNav = createDrawerNavigator({
 
 })
 
+//This is the general stack navigator for the app that allows the back button and navigation functions to work. 
+//The back button can be used to take one back to the main screen
 const AppNavigator = createStackNavigator({
 
 drawNavigator: drawNav,
@@ -131,7 +127,7 @@ Main: MainScreen,
 Ratings: RatingsScreen,
 Product: productScreen,
 'User Info': UserScreen,
-'About Us':AboutScreen,
+'About Us':AboutUs,
 Cart: CartScreen,
 CartIcon: CartIcon,
 Collection: CollectionScreen,
@@ -145,7 +141,8 @@ ProductPage: productPage
     }
    });
 
-  const authNavigator = createStackNavigator({
+//This is the stack navigator that encompasses the login process, the back button can be used to take you back to the initial screen
+const authNavigator = createStackNavigator({
 
     Initial: {
       screen: initialScreen,
@@ -177,6 +174,7 @@ ProductPage: productPage
     },
   });
 
+  //Allows one to switch between navigation stacks. This prevents the back button from taking the user back to the initial screen.
   const switchNav = createSwitchNavigator({
     authNav: authNavigator,
     appNav: AppNavigator,
@@ -184,18 +182,7 @@ ProductPage: productPage
     
     initialRouteName: authNavigator
   })
-// Stores the navigation for the entire app
-
-// const logNavigator = StackNavigator({
-//   Login: {
-//     screen: LoginScreen,
-//     navigationOptions: ({ navigation }) => ({
-//       title: 'Login',  // Title to appear in status bar
-//       headerLeft: <Image source={require('../../assets/drawer.png')} size={35} onPress={ () => navigation.navigate('DrawerOpen') } />,
-//     })
-//   }
-// });
 
 const AppContainer = createAppContainer(switchNav);
 
-// END: Added by Salwa
+//Jordan Dickerson
