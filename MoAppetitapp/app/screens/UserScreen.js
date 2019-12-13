@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, ScrollView, ImageBackground, Alert, StyleSheet } from "react-native";
 import { TextField } from "react-native-materialui-textfield";
 import { Button } from "react-native-material-ui";
@@ -276,7 +276,16 @@ class UserScreen extends React.Component {
             </View>
             <View style={styles.AddressSingleButtonContainer}>
               <Button
-                onPress={() => this.handleEdit(item.id)}
+                onPress={() => {
+                  this.handleEdit(item.id);
+                  if (this.segmentRef) {
+                    this.segmentRef.scrollView.scrollTo({
+                      x: 1 * this.segmentRef.state.containerWidth,
+                      y: 0,
+                      animated: true
+                    });
+                  }
+                }}
                 text="Edit"
                 style={{ container: styles.buttonStyle2Mini }}
               ></Button>
@@ -287,8 +296,9 @@ class UserScreen extends React.Component {
     });
   }
 
-  render() {
+  segmentRef = null;
 
+  render() {
 // Render Edit Profile on one side of userscreen
 const One = () => {
         return (
@@ -481,7 +491,7 @@ const segments = [
   
           return (
             <View style={styles.container3}>
-              <SegmentControl segments={segments} />
+              <SegmentControl segments={segments} ref={(ref) => this.segmentRef = ref} />
             </View>
           );
         };
