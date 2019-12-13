@@ -2,7 +2,6 @@ import React from 'react';
 
 import { createDrawerNavigator } from 'react-navigation-drawer';
 import{ createAppContainer, createSwitchNavigator } from 'react-navigation';
-import AboutScreen from '../components/Aboutscreen';
 import { StyleSheet, Text, View, Image, Dimensions } from 'react-native';
 import MainScreen from './mainScreen';
 import AboutUs from '../screens/aboutUs';
@@ -128,7 +127,7 @@ Main: MainScreen,
 Ratings: RatingsScreen,
 Product: productScreen,
 'User Info': UserScreen,
-'About Us':AboutScreen,
+'About Us':AboutUs,
 Cart: CartScreen,
 CartIcon: CartIcon,
 Collection: CollectionScreen,
