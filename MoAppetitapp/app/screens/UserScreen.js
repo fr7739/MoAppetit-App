@@ -439,7 +439,6 @@ const Two = () => {
             <Button
                 onPress={this.handleSubmit}
                 text={this.state.isInEditMode ? "Save Edit" : "Add Addresss"}
-                onPress={() => this.handleSubmit()}
                 text="Submit"
                 raised={true}
                 primary={true}
@@ -480,7 +479,7 @@ const segments = [
               view: One
             },
             {
-              title: 'EDIT ADDRESS',
+              title: 'ADD/EDIT ADDRESS',
               view: Two
             },
             {
