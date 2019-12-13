@@ -2,12 +2,9 @@ import React from 'react';
 
 import { createDrawerNavigator } from 'react-navigation-drawer';
 import{ createAppContainer, createSwitchNavigator } from 'react-navigation';
-import HomeScreen from '../components/Homescreen';
 import AboutScreen from '../components/Aboutscreen';
-import DebugScreen from '../components/Debugscreen';
 import { StyleSheet, Text, View, Image, Dimensions } from 'react-native';
 import MainScreen from './mainScreen';
-import ContactUs from '../screens/contactUs';
 import AboutUs from '../screens/aboutUs';
 import UserScreen from "../screens/UserScreen";
 import RatingsScreen from "../screens/RatingsScreen"
