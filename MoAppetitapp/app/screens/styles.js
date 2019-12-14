@@ -83,7 +83,6 @@ export default StyleSheet.create({
     addressLine:
     {
       fontSize:16,
-      justifyContent: "flex-start",
       color:"black",
       backgroundColor: "white"
     },
