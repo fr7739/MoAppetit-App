@@ -1,12 +1,12 @@
 import React from "react";
-import { View, Text, ScrollView, Picker, Alert, ImageBackground } from "react-native";
+import { View, Text, ScrollView, Picker, Alert, ImageBackground} from "react-native";
 import { TextField } from "react-native-materialui-textfield";
 import { Button } from "react-native-material-ui";
 import styles from "./styles.js";
-import setRatingAPI from "../API/hasuraAPI/setRatingAPI";
+import setRatingAPI from "../../app/API/hasuraAPI/setRatingAPI";
 import { Header } from 'react-native-elements';
-import { Icon } from 'native-base';
-
+import { Icon, CardItem, Item, Input, Textarea, Form, Body, Right, Left, Container, Content } from 'native-base';
+import { Card } from 'react-native-elements'
 
 
 
@@ -80,23 +80,20 @@ export default class RatingsScreen extends React.Component {
   //Render means draw on screen, this is on all screens, and is called by default.
   render() {
     return (
-      <ImageBackground
-        source={require("../assets/OpeningPageBackground.jpg")}
-        resizeMode="cover"
-        style={styles.backgroundImage}
-      >
-       <Header transparent
+       <ImageBackground source={require('../assets/OpeningPageBackground.jpg')} resizeMode='cover'style={styles.backgroundImage}>
+          <Header transparent
+          centerComponent = {<Text style = {{color: 'white', fontWeight: 'bold', fontSize: 18}}>Rating</Text>}
           backgroundColor = "#086522"
-          leftComponent={<Icon name="menu" onPress={() => this.props.navigation.openDrawer()} />}
+          leftComponent={<Icon name="md-arrow-back" onPress={() => this.props.navigation.goBack()} />}
          />
-        <ScrollView>
-             
-        <Text style={styles.welcome}>
-            New Rating
-            </Text>
-          <View style={styles.rectangle8}>
-            <View style={styles.RatingsfieldsArea}>
-            <TextField
+
+        <Container>
+        <Content>
+          <Card style={styles.postCard}>
+            <View>
+              <CardItem>
+              <Item>
+              <Input
                 tintColor="rgba(12, 57, 14, 0.85)"
                 disabled
                 label = {this.state.product_name}
@@ -104,16 +101,22 @@ export default class RatingsScreen extends React.Component {
                 placeholder={this.state.product_name}
                 keyboardType="default"
                 onChangeText={this.handleratingDescriptionChange}
-              />
-              <TextField
-                tintColor="rgba(12, 57, 14, 0.85)"
-                required
-                label = "desc"
+                />
+                </Item>
+              </CardItem>
+              <Form style={{ marginLeft: 20, marginRight: 20 }}>
+                <TextField
+                rowSpan={5}
+                bordered
+                placeholder="Type your description"
                 value={this.state["ratingDescription"]}
                 placeholder="Description"
+                label=" "
                 keyboardType="default"
                 onChangeText={this.handleratingDescriptionChange}
-              />
+                />
+                </Form>
+
               <Picker
                 label="Rating"
                 mode="dropdown"
@@ -123,26 +126,34 @@ export default class RatingsScreen extends React.Component {
                 tintColor="rgba(12, 57, 14, 0.85)"
                 onValueChange={this.handlerratinglevelChange}
               >
-                <Picker.Item key="1" label="1" value="1" />
-                <Picker.Item key="2" label="2" value="2" />
-                <Picker.Item key="3" label="3" value="3" />
-                <Picker.Item key="4" label="4" value="4" />
-                <Picker.Item key="5" label="5" value="5" />
+                <Picker.Item key="1" label="Terrible" value="1" />
+                <Picker.Item key="2" label="Bad" value="2" />
+                <Picker.Item key="3" label="Okay" value="3" />
+                <Picker.Item key="4" label="Good" value="4" />
+                <Picker.Item key="5" label="Great" value="5" />
               </Picker>
 
               {console.log(this.state["product_name"])}
               {console.log(this.state["ratingLevel"])}
               {console.log(this.state["ratingDescription"])}
-            </View>
+            
+              <CardItem>
+                  <Left></Left>
+                  <Body>
             <Button
-              style={{ container: styles.quickpls }}
               onPress={this.handleRatingSubmit}
-              text="Save Rating"
+              text="Submit"
               raised={true}
               primary={true}
-            />
-          </View>
-        </ScrollView>
+            >
+                    </Button>
+                  </Body>
+                  <Right></Right>
+                </CardItem>
+            </View>
+            </Card>
+        </Content>
+      </Container>
         </ImageBackground>
     );
   }

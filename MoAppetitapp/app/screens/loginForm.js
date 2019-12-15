@@ -8,13 +8,6 @@ import {AsyncStorage} from 'react-native';
 import styles from './styles.js';
 import { Form, TextValidator } from 'react-native-validator-form';
 
-
-
-
-
-
-// Added by Salwa
-
 export default class LoginScreen extends React.Component {
     // Added by MAMADOU
     // Initializing state
@@ -146,9 +139,7 @@ export default class LoginScreen extends React.Component {
       const { password } = this.state;
       return (
           <ImageBackground source={require('../assets/OpeningPageBackground.jpg')} resizeMode='cover'style={styles.backgroundImage}>
-              {/* Thamima: Changes */} 
           <View style={styles.KBAV}  >
-          <Text style={styles.CircleMoAppetit}>"MoAppetit"</Text>
 
           <View style={styles.buttonHolder}>
                 <Button 

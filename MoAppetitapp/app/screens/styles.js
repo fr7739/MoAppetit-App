@@ -1,4 +1,5 @@
-import { StyleSheet} from 'react-native';
+import React from 'react';
+import { StyleSheet, View, ImageBackground,  KeyboardAvoidingView, Image, Text} from 'react-native';
 export default StyleSheet.create({
   
   // KBAV for Login, Register, and passwordForm
@@ -7,19 +8,12 @@ export default StyleSheet.create({
     flex: 1,
     paddingTop: 1,
     alignItems: 'center',
-    justifyContent: 'center',
-    flexDirection: 'column'
+    marginLeft: -100,
+    marginRight: -100,
+    paddingLeft: 0,
+    paddingRight: 0,
+    marginTop: 0
   },
-
-    fieldsArea: 
-    {
-        flex: .53,
-        borderWidth: 3,
-        marginBottom: 0,
-        paddingBottom: 0,
-        backgroundColor: "white",
-        width: "60%"
-    },
 
     // Login Area Style
     fieldsArea2: 
@@ -58,7 +52,25 @@ export default StyleSheet.create({
     {
       flex: .2,
       flexDirection: 'row',
-      width: "60%"
+      width: "60%",
+      justifyContent: "space-between",
+      marginTop:120,
+      left: -5,
+      //marginBottom:90
+
+    },
+
+    // ButtonHolder presents Register Page
+    buttonHolder2: 
+    {
+      flex: .2,
+      flexDirection: 'row',
+      width: "60%",
+      justifyContent: "space-between",
+      marginTop:40,
+      left: -5,
+      //marginBottom:10,
+
     },
 
     // backgroundImage for Login, Register, and PasswordForm
@@ -83,6 +95,7 @@ export default StyleSheet.create({
     addressLine:
     {
       fontSize:16,
+      justifyContent: "flex-start",
       color:"black",
       backgroundColor: "white"
     },
@@ -194,7 +207,8 @@ export default StyleSheet.create({
       borderWidth: 2,
       borderRadius: 40,
       overflow: "hidden",
-      marginBottom:25
+      //marginBottom:10,
+      marginTop:50
   },
 
 
@@ -228,13 +242,15 @@ inputContainer: {
 
 //rectangle Container for Loginform
    rectangle2: {
-    height: 300,
+    height: 280,
     width: 325,
     backgroundColor: 'rgba(12, 57, 14, 0.85)',
     borderWidth: 2,
     borderRadius: 40,
     overflow: "hidden",
-    marginBottom:70,
+    marginTop:70,
+    left: 4,
+    marginBottom:180
 },
 
 // style for Initialscreen
@@ -652,5 +668,11 @@ rectangle8: {
   marginBottom:80,
   marginTop:-30
 },
+
+// Container for Usercreen
+container3: {
+   marginBottom:150,
+   height:600
+ },
 
   });
