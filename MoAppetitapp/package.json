@@ -49,7 +49,7 @@
     "redux": "^4.0.4",
     "shopify-buy": "^2.7.2",
     "styled-components": "^4.4.0",
-    "ws": "^7.1.2"
+    "ws": "^7.4.6"
   },
   "devDependencies": {
     "babel-preset-expo": "^6.0.0"
